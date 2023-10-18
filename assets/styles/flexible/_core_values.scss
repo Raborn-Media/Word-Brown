@@ -1,0 +1,56 @@
+.core-values-section {
+  background-color: $light-gray;
+  padding: 100px 0 50px;
+  text-align: center;
+
+  .section-title {
+    margin-bottom: 50px;
+  }
+  .section-text {
+    margin-bottom: 75px;
+  }
+
+  .values-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 1063px;
+    margin: 0 auto;
+    &__item {
+      text-align: center;
+      width: 100%;
+      max-width: 16.5%;
+      img {
+        height: 64px;
+        transform: scale(0.95);
+        margin-bottom: 30px;
+        transition: all 0.5s ease-out;
+      }
+      .value-title {
+        margin-bottom: 30px;
+        font-size: 22px;
+        line-height: 32px;
+        transition: all 0.5s ease-out;
+      }
+
+      .value-hover-text {
+        opacity: 0;
+        color: $gold;
+        transition: all 1s ease-out;
+        padding: 0 5px;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1);
+        }
+        .value-title {
+          color: $gold;
+        }
+        .value-hover-text {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

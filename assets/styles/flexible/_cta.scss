@@ -1,0 +1,18 @@
+.cta-section {
+  padding: 52px 0 73px;
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+
+    .cta-title {
+      font-size: 50px;
+    }
+
+    .button {
+      padding: 25px 76px;
+    }
+  }
+}

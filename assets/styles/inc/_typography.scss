@@ -1,0 +1,277 @@
+/* ---------------------------------------
+	Typography
+--------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  a {
+    color: inherit;
+  }
+}
+
+h1,
+.h1 {
+  /* basic heading styles */
+  font-family: $sub-font;
+  font-weight: 300;
+  font-size: 3.5em; //56px
+  line-height: 55px;
+}
+
+h2,
+.h2 {
+  /* basic heading styles */
+  font-family: $sub-font;
+  font-weight: 500;
+  font-size: 3em; //(48px)
+  line-height: 47.5px;
+}
+
+h3,
+.h3 {
+  /* basic heading styles */
+  font-family: $sub-font;
+  font-weight: 700;
+  font-size: 2em; //(32px)
+  line-height: 33px;
+}
+
+h4,
+.h4 {
+  /* basic heading styles */
+  //font-family: 'avenir';
+  font-weight: 700;
+  font-size: 1.5em; //(24px)
+  line-height: 32.5px;
+}
+
+h5,
+.h5 {
+  /* basic heading styles */
+  //font-family:Avenir
+  font-weight: 700;
+  font-size: 1em; //(16px)
+  line-height: 27px;
+}
+
+h6,
+.h6 {
+  /* basic heading styles */
+  //font-family:Avenir
+  font-weight: 700;
+  font-size: 0.75em; //(14px)
+  line-height: 20px;
+}
+
+p {
+  /* basic paragraph styles */
+
+  //font-family:Avenir
+  font-weight: 400;
+  font-size: 1em; //(16px)
+  &:empty {
+    display: none;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+small {
+  //font-family:Avenir
+  font-weight: 600;
+  font-size: 0.75em; // (14px)
+  line-height: 19.25px;
+}
+
+ul {
+  /* basic list styles */
+  font-size: inherit;
+
+  li {
+    /* basic list-item styles */
+  }
+}
+
+address {
+  font-style: normal;
+  margin-bottom: $global-margin;
+}
+
+a {
+  color: $primary-color;
+  transition: all 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    /* basic hover and focus effects */
+    color: darken($primary-color, 20);
+  }
+}
+
+/* ---------------------------------------
+	Tiny MCE formats
+--------------------------------------- */
+
+.text-large {
+  font-size: 125%;
+}
+
+.text-align-justify {
+  text-align: justify;
+}
+
+/* ---------------------------------------
+	Tables
+--------------------------------------- */
+table {
+  margin-bottom: 1rem;
+
+  th,
+  td {
+    border: $table-border;
+    padding: 0.75rem;
+  }
+}
+
+/* ---------------------------------------
+	Forms/Inputs
+--------------------------------------- */
+
+.no-outline {
+  button,
+  a,
+  [tabindex] {
+    outline: none;
+  }
+}
+
+/* Placeholder styling */
+
+input,
+textarea {
+  &::placeholder {
+    opacity: 1;
+  }
+}
+
+/* Input Styling */
+
+[type='color'],
+[type='date'],
+[type='datetime-local'],
+[type='datetime'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='text'],
+[type='time'],
+[type='url'],
+[type='week'],
+textarea,
+select,
+.select-styled {
+  $height: ($input-font-size * unitless-calc($input-line-height)) +
+    (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) +
+    rem-calc(get-border-value($input-border, 'width') * 2);
+
+  /* STYLES GO THERE */
+  height: $height;
+  margin-bottom: 0;
+}
+
+textarea[rows] {
+  /* Styles for TextArea */
+  height: 150px;
+  max-width: 100%;
+}
+
+[type='number'] {
+  -moz-appearance: textfield;
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+[type='checkbox'],
+[type='file'],
+[type='radio'] {
+  margin-bottom: 0;
+}
+
+button,
+.button,
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+  border-width: $button-hollow-border-width;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+
+  //&:hover,
+  //&:focus {
+  //}
+}
+
+/* Button additional styles */
+
+.button {
+  color: $gold;
+  font-size: 20px;
+  background-color: $white;
+  border: 3px solid $gold;
+  text-transform: uppercase;
+  border-radius: 3px;
+  &:hover,
+  &:focus {
+    /* basic hover and focus effects */
+    background-color: $gold;
+  }
+}
+
+.section-title {
+  text-align: center;
+  color: $corporate-blue;
+  max-width: 45%;
+  padding-bottom: 27px;
+  margin: 0 auto 20px;
+  position: relative;
+  font-size: 50px;
+
+  &:after {
+    content: '';
+    width: 70px;
+    height: 2px;
+    background-color: $gold;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.section-text {
+  max-width: 865px;
+  margin: auto;
+  p {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}

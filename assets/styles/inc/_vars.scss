@@ -1,0 +1,33 @@
+// Project variables
+// Note: Prefer using framework variables
+
+//$blue: #1a608b;
+
+$gold: #c89211;
+$dark-gold: #9a6126;
+$corporate-blue: #1c355e;
+$light-gray: #d9d8d6;
+$gray: #54565a;
+$corporate-black: #222;
+
+$footer-text-color: #858585;
+//
+$text-color: $corporate-black;
+
+//$primary-color: $blue;
+//$sub-color: $primary-color;
+
+$font: 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+$sub-font: 'minion-pro', serif;
+$fa: 'Font Awesome 6 Free';
+//$fab: 'Font Awesome 6 Brands';
+
+// Font Awesome Vars
+//$fa-font-display: swap;
+
+// Project mixins
+
+// Custom fonts
+:root {
+  --content-size: 120rem;
+}

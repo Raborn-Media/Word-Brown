@@ -1,0 +1,52 @@
+.service-in-number-section {
+  background-color: $corporate-blue;
+  color: $white;
+  text-align: center;
+  padding: 100px 0;
+  .section-title {
+    color: $white;
+    margin: 0 auto 70px;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .services-list__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      display: block;
+      margin-bottom: 20px;
+      max-width: 80%;
+    }
+
+    h3 {
+      font-size: 80px;
+      font-weight: 400;
+      line-height: 1;
+      display: block;
+      margin-bottom: 20px;
+      &:after {
+        content: '+';
+        font-size: 40px;
+        margin-left: -15px;
+      }
+    }
+    p {
+      font-size: 22px;
+    }
+  }
+  .lives-impacted h3:after {
+    content: 'M';
+    font-family: $font;
+    margin-left: -15px;
+  }
+}

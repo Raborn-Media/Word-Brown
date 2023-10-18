@@ -1,0 +1,43 @@
+.family-of-companies-section {
+  text-align: center;
+  padding: 100px 0;
+
+  .section-logo {
+    margin: 66px auto;
+    width: 100%;
+    max-width: 344px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .companies-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1408px;
+    margin: 0 auto;
+
+    .companies-list__item {
+      //max-width: 25%;
+    }
+
+    .companies-list__item-img {
+      width: 100%;
+    }
+    .wb-2019-logo-pms-full {
+      max-width: 301px;
+    }
+    .choice-administrators {
+      max-width: 169px;
+    }
+    .company-logo-calrx-color {
+      width: 320px;
+    }
+    .nevada-drug-card-logo-color {
+      max-width: 267px;
+    }
+  }
+}

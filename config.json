@@ -1,0 +1,10 @@
+{
+  "devUrl": "http://wordbrown.local",
+  "themeName": "wordbrowncompanies",
+  "proxyUrl": "http://localhost:3002",
+  "open": true,
+  "bsWatchFiles": [
+    "**/*.php",
+    "assets/**/*.js"
+  ]
+}

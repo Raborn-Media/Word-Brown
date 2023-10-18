@@ -314,6 +314,26 @@
                                     "parent_repeater": "field_652e5c926bcf8"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_652fd138f4b67",
+                            "label": "Logos display style",
+                            "name": "logos_display_style",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui_on_text": "Colorful logos",
+                            "ui_off_text": "Black logos",
+                            "ui": 1
                         }
                     ],
                     "min": "",
@@ -655,5 +675,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697631461
+    "modified": 1697632684
 }

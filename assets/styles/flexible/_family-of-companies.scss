@@ -3,9 +3,10 @@
   padding: 100px 0;
 
   .section-logo {
-    margin: 66px auto;
+    margin: 66px auto 0;
     width: 100%;
     max-width: 344px;
+
     img {
       width: 100%;
     }
@@ -18,26 +19,66 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1408px;
-    margin: 0 auto;
+    margin: 66px auto 0;
 
     .companies-list__item {
       //max-width: 25%;
+      svg {
+        display: block;
+        width: 100%;
+      }
     }
 
-    .companies-list__item-img {
-      width: 100%;
-    }
-    .wb-2019-logo-pms-full {
+    //.companies-list__item-img {
+    //  width: 100%;
+    //  height: auto;
+    //}
+
+    .vb-01 {
       max-width: 301px;
+      path {
+        fill: #000000;
+      }
+      .cls-2 {
+        fill: #01529c;
+      }
     }
-    .choice-administrators {
+
+    .choice-administrators-01-01,
+    .choice-administrators-4,
+    .choice-administrators-2 {
+      width: 100%;
       max-width: 169px;
+      display: block;
+      height: auto;
+      path {
+        fill: #059bda;
+      }
     }
+
     .company-logo-calrx-color {
-      width: 320px;
+      width: 340px;
     }
+
     .nevada-drug-card-logo-color {
       max-width: 267px;
+    }
+
+    .black-logos {
+      svg {
+        path,
+        .cls-2 {
+          fill: #000000;
+        }
+
+        polygon {
+          fill: transparent;
+          stroke: #000;
+          stroke-width: 1px;
+          //fill-rule: evenodd;
+          text-stroke: 1px solid #000;
+        }
+      }
     }
   }
 }

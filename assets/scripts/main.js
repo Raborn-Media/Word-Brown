@@ -64,6 +64,30 @@ function resizeVideo() {
  * Scripts which runs after DOM load
  */
 $(document).on('ready', function () {
+  $('.black-logos-container .companies-list__item').on(
+    'mouseenter',
+    function () {
+      $(this).removeClass('black-logos');
+    }
+  );
+  $('.black-logos-container .companies-list__item').on(
+    'mouseleave',
+    function () {
+      $('.companies-list__item').addClass('black-logos');
+    }
+  );
+
+  // $('svg path, svg polygon').each(function () {
+  //   var originalColor = $(this).css('fill');
+  //
+  //   $(this).on('mouseenter', function () {
+  //     $(this).css('fill', originalColor);
+  //   });
+  //
+  //   $(this).on('mouseleave', function () {
+  //     $(this).css('fill', '#000000'); // Set the default color
+  //   });
+  // });
   /**
    * Scroll to top
    */

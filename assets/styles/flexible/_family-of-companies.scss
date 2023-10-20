@@ -22,10 +22,15 @@
     margin: 66px auto 0;
 
     .companies-list__item {
-      //max-width: 25%;
+      display: flex;
+      align-items: center;
+      padding: 30px 15px;
+      min-height: 100px;
+      max-width: fit-content;
       svg {
         display: block;
         width: 100%;
+        max-width: 100%;
       }
     }
 
@@ -48,7 +53,7 @@
     .choice-administrators-4,
     .choice-administrators-2 {
       width: 100%;
-      max-width: 169px;
+      max-width: 169px !important;
       display: block;
       height: auto;
       path {
@@ -56,10 +61,13 @@
       }
     }
 
+    .company-logo-calrx-color,
     .company-logo-calrx-color {
-      width: 340px;
+      padding: 0 15px;
+      transform: scale(1.2);
     }
 
+    .nv-drug-card-logo-benefit123-01,
     .nevada-drug-card-logo-color {
       max-width: 267px;
     }
@@ -80,5 +88,10 @@
         }
       }
     }
+  }
+}
+.black-logos-container {
+  .gray-bg {
+    background-color: $light-gray;
   }
 }

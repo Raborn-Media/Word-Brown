@@ -68,14 +68,21 @@ $(document).on('ready', function () {
     'mouseenter',
     function () {
       $(this).removeClass('black-logos');
+      $(this).addClass('gray-bg');
     }
   );
   $('.black-logos-container .companies-list__item').on(
     'mouseleave',
     function () {
       $('.companies-list__item').addClass('black-logos');
+      $('.companies-list__item').removeClass('gray-bg');
     }
   );
+  // quoteSlider();
+  // if (window.matchMedia('(max-width: 640px)').matches) {
+  //   /* the viewport is less than 768 pixels wide */
+  //   $('.quotes-list').slick();
+  // }
 
   // $('svg path, svg polygon').each(function () {
   //   var originalColor = $(this).css('fill');
@@ -252,7 +259,6 @@ $(window).on('load', function () {
  */
 $(window).on('resize', function () {
   // jQuery code goes here
-
   resizeVideo();
 });
 
@@ -273,10 +279,46 @@ $(window).on('scroll', function () {
   var headerHeight = $('.header').outerHeight();
 
   if (Y > 1) {
+    $('.page-template-default header').addClass('header-bg');
     $('.mobile-header-contacts-wrapper').addClass('scroll-hide');
     $('.navbar-collapse').css('top', headerHeight);
   } else if (Y < 1) {
+    $('.page-template-default header').removeClass('header-bg');
     $('.mobile-header-contacts-wrapper').removeClass('scroll-hide');
     $('.navbar-collapse').css('top', headerHeight);
+  }
+});
+
+$(window).on('load resize orientationchange', function () {
+  $('.carousel').each(function () {
+    var $carousel = $(this);
+    /* Initializes a slick carousel only on mobile screens */
+    // slick on mobile
+    if ($(window).width() > 800) {
+      if ($carousel.hasClass('slick-initialized')) {
+        $carousel.slick('unslick');
+      }
+    } else {
+      if (!$carousel.hasClass('slick-initialized')) {
+        $carousel.slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          mobileFirst: true,
+          adaptiveHeight: true,
+        });
+      }
+    }
+  });
+  if ($(window).width() <= 1024) {
+    // Get the height of the first gallery__image element
+    var imageHeight = $('.gallery__image').height();
+
+    // Calculate the desired height for the gallery element
+    var galleryHeight = imageHeight * 2 + 15;
+    console.log(galleryHeight);
+    // Set the height of the gallery element
+    $('.gallery').height(galleryHeight);
+  } else {
+    $('.gallery').height('auto');
   }
 });

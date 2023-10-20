@@ -1,0 +1,157 @@
+.benefits-and-culture-section {
+  padding-top: 90px;
+  position: relative;
+  overflow: hidden;
+
+  .grid-container {
+    max-width: 1166px;
+    padding: 0;
+
+    .cell {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .gallery-col {
+      //position: relative;
+      padding: 0;
+    }
+  }
+
+  .section-title {
+    color: $corporate-black;
+    text-align: left;
+    margin-left: 0;
+    max-width: 100%;
+
+    &:after {
+      left: 0;
+      transform: translateX(0);
+    }
+  }
+
+  .benefits-text,
+  .culture-text {
+    max-width: 49%;
+
+    article {
+      display: inline-block;
+    }
+
+    p,
+    li {
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+
+    li::marker {
+      color: $gold;
+      font-size: 16px;
+    }
+  }
+
+  .culture-text {
+    position: relative;
+    padding-top: 60px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200vw;
+      background-color: #e4e4e4;
+    }
+  }
+
+  .gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $corporate-black;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 47%;
+
+    &__image {
+      width: 100%;
+      max-width: 25%;
+      aspect-ratio: 1/1;
+      position: relative;
+      opacity: 0.6;
+      transition: all 0.5s ease-out;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s ease-out;
+      }
+
+      &:nth-child(even) {
+        opacity: 0.4;
+      }
+
+      &:hover {
+        opacity: 1;
+
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  @include breakpoint(1200px down) {
+    .benefits-text,
+    .culture-text {
+      max-width: 100%;
+    }
+    .gallery {
+      position: relative;
+      max-width: 100%;
+    }
+  }
+  @include breakpoint(medium down) {
+    .gallery {
+      flex-direction: column;
+      //height: 555px;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        width: rem-calc(5px);
+        height: rem-calc(15px);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $gold;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: rgba($gray, 0.5);
+        border-radius: 10px;
+      }
+
+      &__image {
+        max-width: 25%;
+        //height: 50%;
+        //aspect-ratio: unset;
+      }
+    }
+  }
+  @include breakpoint(1920px) {
+    .gallery {
+      max-width: 940px;
+      &__image {
+        max-width: 235px;
+      }
+    }
+  }
+}

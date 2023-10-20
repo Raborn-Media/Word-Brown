@@ -78,13 +78,17 @@ p {
 
   //font-family:Avenir
   font-weight: 400;
-  font-size: 1em; //(16px)
+  font-size: 20px;
   &:empty {
     display: none;
   }
 
   a {
+    color: #c6922c;
     text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -235,7 +239,7 @@ input[type='button'] {
 .button {
   color: $gold;
   font-size: 20px;
-  background-color: $white;
+  background-color: transparent;
   border: 3px solid $gold;
   text-transform: uppercase;
   border-radius: 3px;
@@ -254,6 +258,7 @@ input[type='button'] {
   margin: 0 auto 20px;
   position: relative;
   font-size: 50px;
+  letter-spacing: 1.1px;
 
   &:after {
     content: '';
@@ -270,6 +275,7 @@ input[type='button'] {
 .section-text {
   max-width: 865px;
   margin: auto;
+  text-align: center;
   p {
     font-size: 20px;
     line-height: 32px;

@@ -9,9 +9,25 @@
     font-size: 16px;
   }
   .section-title {
-    font-size: 56px;
+    font-size: 50px;
     line-height: 64px;
     margin-bottom: 50px;
+    letter-spacing: 1.1px;
+    color: $corporate-black;
+  }
+  .section-text {
+    max-width: 840px;
+    p {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+}
+
+.home {
+  .section-title {
+    font-size: 56px;
+    color: $corporate-blue;
     &:after {
       width: 150px;
       height: 4px;

@@ -5,7 +5,41 @@ header {
   background-color: $white;
 }
 
+.page-template-default {
+  header {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &:before {
+      content: '';
+      background: linear-gradient(rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      z-index: 0;
+    }
+
+    .menu-grid-container {
+      max-width: 1156px;
+    }
+  }
+
+  .header-bg {
+    &:before {
+      display: block;
+    }
+  }
+}
+
 .logo {
+  position: relative;
+  z-index: 1;
   h1 {
     font-size: 0;
   }
@@ -161,6 +195,17 @@ header {
         > a {
           /* Style of Current page and Ancestor page */
           //color: $white;
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 90%;
+            height: 2px;
+            background-color: $gold;
+            transform: translateX(-50%);
+            transition: all 0.5s ease-out;
+          }
         }
       }
 
@@ -209,6 +254,63 @@ header {
 
       .submenu {
         /* Styles for 2nd level dropdown menu */
+      }
+    }
+  }
+  .page-template-default {
+    .header-menu.menu {
+      /* Align menu items to the right */
+      justify-content: flex-end;
+
+      /* Align menu items to the center */
+      // justify-content: center;
+
+      li {
+        > a {
+          /* Regular menu item style */
+          color: #b8ac95;
+          position: relative;
+
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: $gold;
+            transform: translateX(-50%);
+            transition: all 0.5s ease-out;
+          }
+
+          &:hover {
+            /* menu item style on hover */
+            &:before {
+              width: 90%;
+            }
+          }
+        }
+
+        &.current-menu-item,
+        &.current_page_ancestor,
+        &.current_page_parent {
+          > a {
+            /* Style of Current page and Ancestor page */
+            color: $white;
+
+            &:before {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              width: 90%;
+              height: 2px;
+              background-color: $gold;
+              transform: translateX(-50%);
+              transition: all 0.5s ease-out;
+            }
+          }
+        }
       }
     }
   }

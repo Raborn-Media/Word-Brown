@@ -1,0 +1,101 @@
+.milestones-section {
+  padding: 97px 0 194px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .grid-container {
+    max-width: 1200px;
+  }
+
+  .section-title {
+    color: $corporate-black;
+  }
+
+  .milestones-tabs-row {
+    width: 100%;
+
+    .tabs {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-bottom: 48px;
+      //column-gap: 1px;
+
+      .tabs-title {
+        width: 100%;
+        text-align: center;
+        background-color: $corporate-black;
+
+        a {
+          color: $white;
+          font-size: 25px;
+          line-height: 28px;
+          background-color: transparent !important;
+          padding-top: 33px;
+          padding-bottom: 38px;
+        }
+      }
+
+      .tabs-title.is-active {
+        background-color: $gold;
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 99%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 54px;
+          height: 27px;
+          background-color: $gold;
+          clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+      }
+    }
+  }
+
+  .tabs-content {
+    background-color: transparent;
+    border: none;
+    max-width: 100%;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: rem-calc(5px);
+      height: rem-calc(15px);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $gold;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba($gray, 0.5);
+      border-radius: 10px;
+    }
+
+    .tabs-panel {
+      width: 100%;
+    }
+
+    .tabs-panel__content {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      column-gap: 25px;
+      width: fit-content;
+      //width: 3000px;
+
+      &-item {
+        display: inline-block;
+        width: 365px !important;
+        background-color: $white;
+        padding: 35px 32px;
+        min-height: 360px;
+      }
+    }
+  }
+}

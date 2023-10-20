@@ -38,7 +38,7 @@ $logos_display_style = get_sub_field( 'logos_display_style' );
                                 ?>
                                 <a href="<?php echo $company_link; ?>"
                                    target="_self"
-                                   class="companies-list__item <?php echo $logos_display_style == true ? '' : 'black-logos'; ?>">
+                                   class="companies-list__item matchHeight <?php echo $logos_display_style == true ? '' : 'black-logos'; ?>">
                                     <?php display_svg( $company_logo, $company_logo_name, 'small' ) ?>
                                 </a>
                             <?php endif; ?>

@@ -17,7 +17,9 @@ $text-color: $corporate-black;
 //$primary-color: $blue;
 //$sub-color: $primary-color;
 
-$font: 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+//$font: 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+$avenir: 'avenir', serif;
+$font: $avenir;
 $sub-font: 'minion-pro', serif;
 $fa: 'Font Awesome 6 Free';
 //$fab: 'Font Awesome 6 Brands';
@@ -30,4 +32,11 @@ $fa: 'Font Awesome 6 Free';
 // Custom fonts
 :root {
   --content-size: 120rem;
+}
+
+@font-face {
+  font-family: 'avenir'; /* Назва, яку ви хочете дати вашому шрифту */
+  src: url('../../fonts/Avenir.ttc') format('truetype-collection');
+  font-weight: normal;
+  font-style: normal;
 }

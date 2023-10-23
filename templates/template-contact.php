@@ -5,64 +5,103 @@
 
 get_header(); ?>
 
-<main class="main-content">
-    <section class="contact">
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) :
-                the_post(); ?>
-                <article id="<?php the_ID(); ?>" <?php post_class(); ?>>
-                    <div class="grid-container">
-                        <div class="grid-x grid-margin-x">
-                            <div class="cell medium-6">
-                                <h1 class="page-title"><?php the_title(); ?></h1>
-                                <div class="contact__content">
-                                    <?php the_content(); ?>
+<!-- BEGIN of main content -->
+<?php if ( have_rows( 'flexible' ) ) : ?>
+    <?php while ( have_rows( 'flexible' ) ) :
+        the_row();
+        $layout = get_row_layout(); ?>
+        <?php get_template_part( 'parts/flexible/flexible', $layout );
+        ?>
+    <?php endwhile; ?>
+<?php endif; ?>
+
+
+<?php
+$contact_information_title = get_field( 'contact_information_title' );
+$media_contact             = get_field( 'media_contact' );
+?>
+
+<!-- BEGIN  contact-information-section -->
+<section class="contact-information-section">
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">
+                <?php if ( $contact_information_title ) : ?>
+                    <h2 class="section-title">
+                        <?php echo $contact_information_title; ?>
+                    </h2>
+                <?php endif; ?>
+
+                <?php if ( have_rows( 'companies_list' ) ) : ?>
+                    <div class="companies-list">
+                        <?php while ( have_rows( 'companies_list' ) ) :
+                            the_row();
+                            $company_logo         = get_sub_field( 'company_logo' );
+                            $company_contact_info = get_sub_field( 'company_contact_info' );
+                            ?>
+                            <div class="companies-list__item">
+                                <div class="company-logo">
+                                    <div class="image-wrap">
+                                        <?php echo wp_get_attachment_image( $company_logo['id'], 'large' ); ?>
+                                    </div>
                                 </div>
-                                <div class="contact__links">
-                                    <?php if ($address = get_field('address', 'option')) : ?>
-                                        <address class="contact-link contact-link--address">
-                                            <?php echo $address; ?>
-                                        </address>
-                                    <?php endif; ?>
-                                    <?php if ($email = get_field('email', 'options')) : ?>
-                                        <p class="contact-link contact-link--email">
-                                            <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
-                                        </p>
-                                    <?php endif; ?>
-                                    <?php if ($phone = get_field('phone', 'options')) : ?>
-                                        <p class="contact-link contact-link--phone">
-                                            <a href="tel:<?php echo sanitize_number($phone); ?>"><?php echo $phone; ?></a>
-                                        </p>
-                                    <?php endif; ?>
-                                </div>
+                                <article class="company-contact-info">
+                                    <?php echo $company_contact_info; ?>
+                                </article>
                             </div>
-                            <?php $contact_form = get_field('contact_form'); ?>
-                            <?php if (class_exists('GFAPI') && !empty($contact_form) && is_array($contact_form)) : ?>
-                                <div class="cell medium-6">
-                                    <div class="contact__form">
-                                        <?php echo do_shortcode("[gravityform id='{$contact_form['id']}' title='false' description='false' ajax='true']"); ?>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                            <?php if ($location = get_field('location', 'options')) : ?>
-                                <div class="cell contact__map-wrap">
-                                    <div class="acf-map contact__map">
-                                        <div class="marker"
-                                             data-lat="<?php echo $location['lat']; ?>"
-                                             data-lng="<?php echo $location['lng']; ?>"
-                                             data-marker-icon="<?php echo asset_path('images/map_marker.png'); ?>"
-                                        >
-                                            <p><?php echo $location['address']; ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                        <?php endwhile; ?>
                     </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END  contact-information-section -->
+
+<!-- BEGIN  contact-section -->
+<section class="contact-section">
+    <div class="grid-container fluid">
+        <div class="grid-x">
+            <div class="cell large-5 media-contact-col">
+                <article class="company-contact-info">
+                    <?php echo $media_contact; ?>
                 </article>
-            <?php endwhile; ?>
-        <?php endif; ?>
-    </section>
-</main>
+
+                <?php if ( have_rows( 'contact_socials' ) ) : ?>
+                    <div class="contact-socials">
+                        <p>
+                            <?php _e( 'CONNECT WITH US ON SOCIAL' ); ?>
+                        </p>
+                        <?php while ( have_rows( 'contact_socials' ) ) :
+                            the_row(); ?>
+                            <?php $social_network = get_sub_field( 'social_network' ); ?>
+                            <div class="contact-socials__item">
+                                <a class="contact-socials__link "
+                                   href="<?php the_sub_field( 'social_profile' ); ?>"
+                                   target="_blank"
+                                   aria-label="<?php echo $social_network['label']; ?>"
+                                   rel="noopener">
+                                        <span aria-hidden="true"
+                                              class="fab fa-<?php echo $social_network['value']; ?>"></span>
+                                    <span>
+                                        <?php echo $social_network['label']; ?>
+                                    </span>
+                                </a>
+
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="cell large-7 form-col">
+                <?php $contact_form = get_field( 'contact_form' ); ?>
+                <div class="contact__form">
+                    <?php echo do_shortcode( "[gravityform id='{$contact_form['id']}' title='true' description='false' ajax='true']" ); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END  contact-section -->
 
 <?php get_footer(); ?>

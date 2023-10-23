@@ -279,10 +279,12 @@ $(window).on('scroll', function () {
   var headerHeight = $('.header').outerHeight();
 
   if (Y > 1) {
+    $('.page-template-template-contact header').addClass('header-bg');
     $('.page-template-default header').addClass('header-bg');
     $('.mobile-header-contacts-wrapper').addClass('scroll-hide');
     $('.navbar-collapse').css('top', headerHeight);
   } else if (Y < 1) {
+    $('.page-template-template-contact header').removeClass('header-bg');
     $('.page-template-default header').removeClass('header-bg');
     $('.mobile-header-contacts-wrapper').removeClass('scroll-hide');
     $('.navbar-collapse').css('top', headerHeight);

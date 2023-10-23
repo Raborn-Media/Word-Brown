@@ -1,0 +1,181 @@
+.persona-section {
+  padding-bottom: 50px;
+
+  .grid-container {
+    padding: 0;
+  }
+
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    //margin-bottom: 48px;
+    justify-content: center;
+    border: none;
+    position: relative;
+    z-index: 10;
+    background-color: transparent;
+
+    .tabs-title {
+      width: 100%;
+      text-align: center;
+      background-color: $corporate-black;
+
+      a {
+        color: $white;
+        font-size: 25px;
+        line-height: 28px;
+        background-color: transparent !important;
+        padding-top: 33px;
+        padding-bottom: 38px;
+        min-width: 300px;
+      }
+    }
+
+    .tabs-title.is-active {
+      background-color: $gold;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 99%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 54px;
+        height: 27px;
+        background-color: $gold;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        z-index: 10;
+      }
+    }
+    @include breakpoint(medium down) {
+      flex-direction: column;
+
+      //.tabs-title {
+      //  border: 1px solid $white;
+      //  border-top: 0px;
+      //}
+      .tabs-title.is-active {
+        border: none;
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .tabs-content {
+    border: none;
+    //display: flex;
+    //flex-direction: row;
+    margin-top: -40px;
+    position: relative;
+
+    .tabs-panel {
+      padding: 0;
+    }
+
+    .tabs-panel__content {
+      max-width: 1170px;
+      margin-left: auto;
+      margin-right: auto;
+      //position: relative;
+
+      .tab-text {
+        position: relative;
+        z-index: 1;
+        color: $white;
+        padding: 88px 40px 91px;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 100vw;
+          bottom: 0;
+          background-color: $corporate-blue;
+          z-index: -1;
+        }
+
+        ul {
+          margin-left: 0;
+
+          li {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+
+            &::marker {
+              font-size: 0;
+            }
+
+            &:before {
+              width: 20px;
+              height: 20px;
+              display: inline-block;
+              margin-right: 15px;
+              content: '';
+              background-image: url('../../images/list-mark-schevron.png');
+            }
+          }
+        }
+      }
+
+      .tab-image {
+        img {
+          height: 100%;
+          aspect-ratio: 1/1;
+          object-fit: cover;
+        }
+
+        @include breakpoint(medium down) {
+          img {
+            //aspect-ratio: unset;
+            width: 100%;
+            height: auto;
+            //max-height: 400px;
+            object-position: center;
+          }
+        }
+      }
+
+      .tab-quote {
+        background-color: $white;
+        position: absolute;
+        bottom: -25px;
+        z-index: 11;
+        width: 720px;
+        max-width: 35vw;
+        //right: -50%;
+        right: 0;
+        padding: 20px;
+
+        p:first-child {
+          &:before {
+            content: '';
+            width: 61px;
+            height: 46px;
+            display: block;
+            margin-top: -35px;
+            background-image: url('../../images/quotationMarks.png');
+            background-size: contain;
+            margin-bottom: 15px;
+          }
+        }
+
+        small {
+          font-weight: 400;
+        }
+
+        @include breakpoint(medium down) {
+          position: relative;
+          bottom: unset;
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

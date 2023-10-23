@@ -5,6 +5,7 @@ header {
   background-color: $white;
 }
 
+.page-template-template-contact,
 .page-template-default {
   header {
     background-color: transparent;
@@ -168,6 +169,7 @@ header {
         /* Regular menu item style */
         color: #707070;
         position: relative;
+        text-transform: uppercase;
 
         &:before {
           content: '';
@@ -257,6 +259,7 @@ header {
       }
     }
   }
+  .page-template-template-contact,
   .page-template-default {
     .header-menu.menu {
       /* Align menu items to the right */

@@ -66,3 +66,167 @@
     }
   }
 }
+
+.contact-information-section {
+  padding-top: 80px;
+  padding-bottom: 70px;
+  .companies-list {
+    max-width: 1165px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__item {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 50px 15px;
+      border-bottom: 1px solid #707070;
+
+      .company-contact-info,
+      .company-logo {
+        width: 50%;
+      }
+
+      .company-logo {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 55px;
+      }
+
+      .image-wrap {
+        text-align: left;
+        width: 320px;
+      }
+    }
+
+    &__item:nth-last-child(1),
+    &__item:nth-last-child(2) {
+      border-bottom: none;
+    }
+  }
+}
+
+.contact-section {
+  background-color: $corporate-blue;
+  overflow: hidden;
+
+  .fluid {
+    padding: 0;
+  }
+
+  .media-contact-col {
+    padding: 87px 47px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: $white;
+    a {
+      color: $white;
+    }
+    .company-contact-info {
+      max-width: 358px;
+      margin-bottom: 50px;
+    }
+
+    .contact-socials {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      max-width: 358px;
+      //align-items: center;
+      &__item {
+        display: block;
+        width: 100%;
+        .fab {
+          width: 18px;
+          margin-right: 40px;
+        }
+      }
+      &__link {
+        font-size: 19px;
+        &:hover {
+          color: $gold;
+        }
+      }
+    }
+  }
+  .form-col {
+    position: relative;
+    padding: 67px 197px 73px;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100vw;
+      background-color: #dcddde;
+      z-index: 0;
+    }
+
+    .contact__form {
+      max-width: 770px;
+      position: relative;
+      z-index: 5;
+
+      .gform_title {
+        text-align: center;
+        padding-bottom: 27px;
+        margin: 0 auto 35px;
+        position: relative;
+        font-size: 50px;
+        letter-spacing: 1.1px;
+        &:after {
+          content: '';
+          width: 70px;
+          height: 2px;
+          background-color: $gold;
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .gform_fields {
+        grid-row-gap: 0;
+        grid-column-gap: 27px;
+        .gfield {
+          margin-bottom: 31px;
+        }
+      }
+
+      .gfield_label {
+        font-size: 19px;
+        font-weight: 400;
+      }
+
+      input,
+      textarea {
+        border: none;
+        box-shadow: none;
+        min-height: 56px;
+
+        &::placeholder {
+          font-size: 20px;
+          color: #000;
+          line-height: 32px;
+          font-weight: 300;
+        }
+      }
+      textarea {
+        max-height: 144px;
+      }
+      .gform_footer {
+        justify-content: center;
+        .gform_button {
+          width: 100%;
+          max-width: 410px;
+        }
+      }
+    }
+  }
+}

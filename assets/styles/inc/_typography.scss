@@ -272,6 +272,12 @@ input[type='button'] {
     transform: translateX(-50%);
   }
 }
+.page-template-template-contact,
+.page-template-default {
+  .section-title {
+    color: $corporate-black;
+  }
+}
 .section-text {
   max-width: 865px;
   margin: auto;

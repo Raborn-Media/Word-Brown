@@ -8,7 +8,7 @@
 @import 'autoload/**/*';
 
 // Plugins
-//@import '~@fancyapps/fancybox/dist/jquery.fancybox.min.css';
+@import '~@fancyapps/fancybox/dist/jquery.fancybox.min.css';
 //@import '~jarallax/src/jarallax.css';
 
 /* -----------------------------------------
@@ -93,6 +93,11 @@ comment or delete styles below */
   TMPL: Contact page
 ----------------------------------------- */
 @import 'templates/contact';
+
+/* -----------------------------------------
+  TMPL: Latest News
+----------------------------------------- */
+@import 'templates/latest-news';
 
 /* -----------------------------------------
   Home slider

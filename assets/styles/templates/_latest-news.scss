@@ -110,6 +110,7 @@
       font-size: 18px;
       line-height: 38px;
     }
+
     .list-filter-date {
       display: none;
     }
@@ -146,12 +147,14 @@
 
     a.video-wrap {
       margin-bottom: 10px;
+
       img {
         width: 100%;
         aspect-ratio: 269/151;
         object-fit: cover;
       }
     }
+
     .video-footer {
       h4 {
         font-size: 18px;
@@ -159,6 +162,7 @@
         //color: #707070;
         font-weight: 400;
       }
+
       p {
         color: #606060;
         font-size: 16px;
@@ -199,6 +203,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     &:hover {
       color: $gold;
       border-color: $gold;
@@ -219,4 +224,127 @@
 body.fixed {
   position: fixed;
   overflow: hidden;
+}
+
+.partnering-section {
+  background-color: #f0f0f0;
+  padding-top: 82px;
+  padding-bottom: 68px;
+
+  .grid-container {
+    max-width: 1160px;
+  }
+
+  .gform_heading {
+    margin-bottom: 64px;
+
+    h2 {
+      font-size: 50px;
+      text-align: center;
+    }
+  }
+
+  .gform_fields {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px !important;
+  }
+
+  .gfield_label {
+    margin-bottom: 0 !important;
+    font-size: 40px !important;
+    line-height: 1;
+    font-weight: 400 !important;
+  }
+
+  .gfield {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+
+    .ginput_container {
+      display: block;
+      max-width: fit-content;
+      margin-top: 20px;
+      position: relative;
+      padding-right: 15px;
+
+      &:after {
+        content: '.';
+        font-size: 40px;
+        line-height: 0.8;
+        display: inline-block;
+        margin-left: 5px !important;
+        width: 10px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    input {
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+      border-bottom: 2px solid $gold;
+      text-align: center;
+
+      //font-size: 26px !important;
+      font-style: italic;
+      color: #606060;
+      font-family: $sub-font;
+
+      &::placeholder {
+        font-size: 26px;
+        font-style: italic;
+        color: #606060;
+        font-family: $sub-font;
+      }
+    }
+  }
+
+  #field_2_1 {
+    width: 100%;
+
+    input {
+      width: 450px;
+      max-width: 100% !important;
+    }
+  }
+
+  #field_2_5 {
+    input {
+      width: 450px;
+      max-width: 100%;
+    }
+  }
+
+  #field_2_7,
+  #field_2_3 {
+    .ginput_container {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  @include breakpoint(small down) {
+    .gfield_label {
+      font-size: 32px !important;
+      line-height: 1.2;
+    }
+    .gfield {
+      input {
+        width: 70vw !important;
+        &::placeholder {
+          font-size: 18px;
+        }
+      }
+    }
+  }
 }

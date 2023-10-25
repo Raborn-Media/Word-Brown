@@ -220,13 +220,14 @@
       textarea {
         max-height: 144px;
       }
-      .gform_footer {
-        justify-content: center;
-        .gform_button {
-          width: 100%;
-          max-width: 410px;
-        }
-      }
     }
+  }
+}
+.gform_footer {
+  justify-content: center;
+  .gform_button {
+    width: 100%;
+    max-width: 410px;
+    padding: 25px;
   }
 }

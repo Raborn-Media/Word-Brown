@@ -5,6 +5,8 @@ import './autoload/**/*'; // eslint-disable-line
 import './plugins/lazyload';
 import './plugins/modernizr.min';
 import 'slick-carousel';
+import skrollr from 'skrollr';
+import MobileDetect from 'mobile-detect';
 import 'jquery-match-height';
 import objectFitImages from 'object-fit-images';
 // import '@fancyapps/fancybox/dist/jquery.fancybox.min';
@@ -60,6 +62,182 @@ function resizeVideo() {
   });
 }
 
+window.filters = {
+  news: 'all',
+  social: 'all',
+  videos: 'all',
+};
+function fetchNews() {
+  jQuery.getJSON(
+    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/5',
+    function (response) {
+      var list = jQuery('#blog-list');
+      // var listArchive = jQuery('#blog-list-archive');
+
+      list.empty();
+      if (response.results.length) {
+        for (var i = 0; i < response.results.length; i++) {
+          var result = response.results[i];
+
+          list.append(
+            '<li class="lazy-load feed-post">' +
+              '<div class="post-image">' +
+              '<a href="' +
+              result.href +
+              '">' +
+              '<img src="' +
+              result.thumbnail +
+              '" alt="Image">' +
+              '</a>' +
+              '</div>' +
+              '<div class="post-content">' +
+              '<a href="' +
+              result.href +
+              '">' +
+              '<h3>' +
+              result.title +
+              '</h3>' +
+              '</a>' +
+              '<div class="post-date">' +
+              result.date +
+              '</div>' +
+              '<p>' +
+              result.description +
+              '</p>' +
+              '</div>' +
+              '</li>'
+          );
+        }
+      }
+    }
+  );
+}
+
+function fetchArchiveDates() {
+  jQuery.getJSON(
+    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/5',
+    function (response) {
+      var listArchive = jQuery('#blog-list-archive');
+      var addedDates = [];
+
+      if (response.results.length) {
+        for (var i = 0; i < response.results.length; i++) {
+          var result = response.results[i];
+          if (addedDates.indexOf(result.archive_date) === -1) {
+            listArchive.append(
+              '<li class="archive-item">' +
+                '<div class="archive-date" data-date="' +
+                result.archive_date +
+                '">' +
+                result.archive_date +
+                '</div>' +
+                '</li>'
+            );
+
+            // Add the archive_date to the addedDates array
+            addedDates.push(result.archive_date);
+          }
+        }
+
+        // Додайте обробник подій до archive-date
+        listArchive.find('.archive-date').click(function () {
+          var clickedDate = jQuery(this).data('date');
+          console.log(clickedDate);
+
+          // Очистіть список перед додаванням нових постів
+          var list = jQuery('#blog-list');
+          list.empty();
+
+          // Перевірте кожен пост
+          for (var i = 0; i < response.results.length; i++) {
+            var result = response.results[i];
+            if (result.list_filter_date === clickedDate) {
+              list.append(
+                '<li class="lazy-load feed-post">' +
+                  '<div class="post-image">' +
+                  '<a href="' +
+                  result.href +
+                  '">' +
+                  '<img src="' +
+                  result.thumbnail +
+                  '" alt="Image">' +
+                  '</a>' +
+                  '</div>' +
+                  '<div class="post-content">' +
+                  '<a href="' +
+                  result.href +
+                  '">' +
+                  '<h3>' +
+                  result.title +
+                  '</h3>' +
+                  '</a>' +
+                  '<div class="post-date">' +
+                  result.date +
+                  '</div>' +
+                  '<div class="list-filter-date">' +
+                  result.list_filter_date +
+                  '</div>' +
+                  '<p>' +
+                  result.description +
+                  '</p>' +
+                  '</div>' +
+                  '</li>'
+              );
+            }
+          }
+        });
+      }
+    }
+  );
+}
+
+function fetchVideos() {
+  jQuery.getJSON(
+    '/wp-json/media-feeds/v1/videos/' + window.filters.videos + '/0/8',
+    function (response) {
+      var list = jQuery('#video-list');
+
+      list.empty();
+
+      if (response.results.length) {
+        for (var i = 0; i < response.results.length; i++) {
+          var result = response.results[i];
+
+          setTimeout(
+            function (result) {
+              list.append(
+                '<li class="lazy-load">' +
+                  '<a data-fancybox class="video-wrap " video="' +
+                  result.href +
+                  '">' +
+                  // '<a href="' + result.href + '">' +
+                  '<img src="' +
+                  result.thumbnail +
+                  '" />' +
+                  '</a>' +
+                  '</div>' +
+                  '<div class="video-footer">' +
+                  '<h4>' +
+                  result.title +
+                  '</h4>' +
+                  '<p class="post-date">' +
+                  result.timestamp +
+                  '</p>' +
+                  '<p>' +
+                  result.author +
+                  '</p>' +
+                  '</div>' +
+                  '</li>'
+              );
+            },
+            i * 100,
+            result
+          );
+        }
+      }
+    }
+  );
+}
 /**
  * Scripts which runs after DOM load
  */
@@ -78,6 +256,84 @@ $(document).on('ready', function () {
       $('.companies-list__item').removeClass('gray-bg');
     }
   );
+  $('a#headerpush').on('click', function (event) {
+    if (this.hash !== '') {
+      event.preventDefault();
+
+      var hash = this.hash;
+
+      $('html, body').animate(
+        {
+          scrollTop: $(hash).offset().top,
+        },
+        800,
+        function () {
+          window.location.hash = hash;
+        }
+      );
+    }
+  });
+
+  // $('input').focusin(function () {
+  //   input = $(this);
+  //   input.data('place-holder-text', input.attr('placeholder'));
+  //   input.attr('placeholder', '');
+  // });
+  //
+  // $('input').focusout(function () {
+  //   input = $(this);
+  //   input.attr('placeholder', input.data('place-holder-text'));
+  // });
+
+  $('#youtube-lightbox .fa').click(function () {
+    $('#youtube-lightbox').addClass('hidden');
+    $('body').removeClass('fixed');
+    var lightbox = $('#youtube-lightbox');
+    lightbox.find('.wrapper').html('<iframe src="" />');
+  });
+
+  $('body').on('click', '[video]', function () {
+    var lightbox = $('#youtube-lightbox');
+    var video = $(this).attr('video').replace('watch?v=', 'embed/');
+
+    lightbox.find('.wrapper').html('<iframe src="' + video + '" />');
+    lightbox.removeClass('hidden');
+    $('body').addClass('fixed');
+  });
+
+  $('[filter-news-press]').click(function (e) {
+    var filter = $(this).attr('filter-news-press');
+
+    $('[filter-news-press]').parent().removeClass('active');
+    $(this).parent().addClass('active');
+
+    window.filters.news = filter;
+    window.filters.social = filter;
+
+    fetchNews();
+    // fetchSocial();
+
+    e.preventDefault();
+    return false;
+  });
+
+  $('[filter-videos]').click(function (e) {
+    var filter = $(this).attr('filter-videos');
+
+    $('[filter-videos]').parent().removeClass('active');
+    $(this).parent().addClass('active');
+
+    window.filters.videos = filter;
+
+    fetchVideos();
+
+    e.preventDefault();
+    return false;
+  });
+
+  fetchNews();
+  fetchArchiveDates();
+  fetchVideos();
   // quoteSlider();
   // if (window.matchMedia('(max-width: 640px)').matches) {
   //   /* the viewport is less than 768 pixels wide */
@@ -279,11 +535,13 @@ $(window).on('scroll', function () {
   var headerHeight = $('.header').outerHeight();
 
   if (Y > 1) {
+    $('.page-template-template-latest-news header').addClass('header-bg');
     $('.page-template-template-contact header').addClass('header-bg');
     $('.page-template-default header').addClass('header-bg');
     $('.mobile-header-contacts-wrapper').addClass('scroll-hide');
     $('.navbar-collapse').css('top', headerHeight);
   } else if (Y < 1) {
+    $('.page-template-template-latest-news header').removeClass('header-bg');
     $('.page-template-template-contact header').removeClass('header-bg');
     $('.page-template-default header').removeClass('header-bg');
     $('.mobile-header-contacts-wrapper').removeClass('scroll-hide');
@@ -324,3 +582,56 @@ $(window).on('load resize orientationchange', function () {
     $('.gallery').height('auto');
   }
 });
+
+var md = new MobileDetect(window.navigator.userAgent);
+
+function enableSkrollr() {
+  // Enable Skroll
+  var s = skrollr.init();
+  s.destroy();
+  skrollr.init({
+    skrollrBody: 'culture-desktop',
+    smoothScrolling: true,
+    smoothScrollingDuration: 500,
+    forceHeight: false,
+    easing: {
+      inverted: function (p) {
+        return 1 - p * p * p * p * p;
+      },
+    },
+  });
+  //alert('enable');
+}
+
+function disableSkrollr() {
+  var s = skrollr.init();
+  s.destroy();
+  //alert('disable');
+}
+
+var desktopView = function () {
+  //alert('desktop');
+  $('#culture-mobile, #culture-desktop').removeClass('visible-module');
+  $('#culture-desktop').addClass('visible-module');
+};
+
+var mobileView = function () {
+  //alert('mobile');
+  $('#culture-mobile, #culture-desktop').removeClass('visible-module');
+  $('#culture-mobile').addClass('visible-module');
+};
+
+if (md.mobile()) {
+  disableSkrollr();
+  mobileView();
+} else {
+  $(window).on('load resize', function () {
+    if (window.matchMedia('(min-width: 64em)').matches) {
+      desktopView();
+      enableSkrollr();
+    } else {
+      disableSkrollr();
+      mobileView();
+    }
+  });
+}

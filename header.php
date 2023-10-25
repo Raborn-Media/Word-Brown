@@ -57,7 +57,7 @@
                     <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
                         <button class="menu-icon" type="button" data-toggle aria-label="Menu" aria-controls="main-menu">
                             <span></span></button>
-                        <div class="title-bar-title">Menu</div>
+<!--                        <div class="title-bar-title">Menu</div>-->
                     </div>
                     <nav class="top-bar" id="main-menu">
                         <?php wp_nav_menu( array(

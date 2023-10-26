@@ -9,9 +9,9 @@ import skrollr from 'skrollr';
 import MobileDetect from 'mobile-detect';
 import 'jquery-match-height';
 import objectFitImages from 'object-fit-images';
-// import '@fancyapps/fancybox/dist/jquery.fancybox.min';
+import '@fancyapps/fancybox/dist/jquery.fancybox.min';
 import { jarallax, jarallaxElement } from 'jarallax';
-// import ScrollOut from 'scroll-out';
+import ScrollOut from 'scroll-out';
 
 /**
  * Import scripts from Custom Divi blocks
@@ -69,7 +69,7 @@ window.filters = {
 };
 function fetchNews() {
   jQuery.getJSON(
-    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/5',
+    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/4',
     function (response) {
       var list = jQuery('#blog-list');
       // var listArchive = jQuery('#blog-list-archive');
@@ -115,7 +115,7 @@ function fetchNews() {
 
 function fetchArchiveDates() {
   jQuery.getJSON(
-    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/5',
+    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/4',
     function (response) {
       var listArchive = jQuery('#blog-list-archive');
       var addedDates = [];
@@ -142,7 +142,7 @@ function fetchArchiveDates() {
         // Додайте обробник подій до archive-date
         listArchive.find('.archive-date').click(function () {
           var clickedDate = jQuery(this).data('date');
-          console.log(clickedDate);
+          // console.log(clickedDate);
 
           // Очистіть список перед додаванням нових постів
           var list = jQuery('#blog-list');
@@ -207,7 +207,7 @@ function fetchVideos() {
             function (result) {
               list.append(
                 '<li class="lazy-load">' +
-                  '<a data-fancybox class="video-wrap " video="' +
+                  '<a class="video-wrap " video="' +
                   result.href +
                   '">' +
                   // '<a href="' + result.href + '">' +
@@ -242,6 +242,42 @@ function fetchVideos() {
  * Scripts which runs after DOM load
  */
 $(document).on('ready', function () {
+  // Initialize FancyBox
+  $('[data-fancybox]').fancybox();
+
+  // Handle click event on .open-modal
+  $('.open-modal').click(function (e) {
+    e.preventDefault();
+
+    // Get the target modal ID
+    var targetModalID = $(this).attr('href');
+
+    // Open the modal using FancyBox
+    $.fancybox.open({
+      src: targetModalID,
+      type: 'inline',
+    });
+  });
+
+  // Handle click event on .next-modal
+  $('.next-modal').click(function (e) {
+    e.preventDefault();
+
+    // Find the current modal
+    var currentModal = $(this).closest('.modal');
+
+    // Find the next modal
+    var nextModal = currentModal.next('.modal');
+
+    // If there is a next modal, open it using FancyBox
+    if (nextModal.length) {
+      $.fancybox.open({
+        src: nextModal,
+        // type: 'inline',
+      });
+    }
+  });
+
   $('.black-logos-container .companies-list__item').on(
     'mouseenter',
     function () {
@@ -403,25 +439,25 @@ $(document).on('ready', function () {
   /**
    * Detect element appearance in viewport
    */
-  // ScrollOut({
-  //   offset: function() {
-  //     return window.innerHeight - 200;
-  //   },
-  //   once: true,
-  //   onShown: function(element) {
-  //     if ($(element).is('.ease-order')) {
-  //       $(element)
-  //         .find('.ease-order__item')
-  //         .each(function(i) {
-  //           let $this = $(this);
-  //           $(this).attr('data-scroll', '');
-  //           window.setTimeout(function() {
-  //             $this.attr('data-scroll', 'in');
-  //           }, 300 * i);
-  //         });
-  //     }
-  //   },
-  // });
+  ScrollOut({
+    offset: function () {
+      return window.innerHeight - 100;
+    },
+    // once: true,
+    onShown: function (element) {
+      if ($(element).is('.ease-order')) {
+        $(element)
+          .find('.ease-order__item')
+          .each(function (i) {
+            let $this = $(this);
+            $(this).attr('data-scroll', '');
+            window.setTimeout(function () {
+              $this.attr('data-scroll', 'in');
+            }, 300 * i);
+          });
+      }
+    },
+  });
 
   /**
    * Remove placeholder on click
@@ -575,7 +611,7 @@ $(window).on('load resize orientationchange', function () {
 
     // Calculate the desired height for the gallery element
     var galleryHeight = imageHeight * 2 + 15;
-    console.log(galleryHeight);
+    // console.log(galleryHeight);
     // Set the height of the gallery element
     $('.gallery').height(galleryHeight);
   } else {

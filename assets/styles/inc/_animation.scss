@@ -4,7 +4,7 @@
 
 @include breakpoint(large) {
   [data-scroll] {
-    transition: opacity 0.5s ease-in-out,
+    transition: opacity 2s ease-out,
       transform 1s cubic-bezier(0.16, 0.88, 0.45, 1);
   }
 
@@ -21,7 +21,7 @@
   }
 
   .fade-in {
-    transition-duration: 1s;
+    transition-duration: 2s;
   }
 
   [class*='ease-'] {

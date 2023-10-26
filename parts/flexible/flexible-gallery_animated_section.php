@@ -40,7 +40,7 @@ $section_text  = get_sub_field( 'section_text' );
                                 <div class="container">
                                     <div class="wrap">
                                         <div class="word">
-                                            <span><?php echo $first_word; ?> </span>
+                                            <span><?php echo $first_word; ?>&nbsp;</span>
                                         </div>
                                         <div class="word dynamic">
 
@@ -98,7 +98,7 @@ $section_text  = get_sub_field( 'section_text' );
                                 <div class="container">
                                     <div class="wrap">
                                         <div class="word">
-                                            <span><?php echo $first_word; ?></span>
+                                            <span><?php echo $first_word; ?>&nbsp;</span>
                                         </div>
                                         <div class="word dynamic">
 
@@ -158,7 +158,7 @@ $section_text  = get_sub_field( 'section_text' );
                                  data-top="transform:translateY(0px);">
                                 <div style="top: 75px; position: absolute; width: 400px;">
                                     <div class="word">
-                                        <span><?php echo $first_word; ?></span>
+                                        <span><?php echo $first_word; ?>&nbsp;</span>
                                     </div>
                                     <div class="word dynamic">
 
@@ -301,7 +301,7 @@ $section_text  = get_sub_field( 'section_text' );
                                  data-top="transform:translateY(0px);">
                                 <div style="top: 75px; position: absolute; width: 400px;">
                                     <div class="word">
-                                        <span><?php echo $first_word; ?></span>
+                                        <span><?php echo $first_word; ?>&nbsp;</span>
                                     </div>
                                     <div class="word dynamic">
 
@@ -373,7 +373,7 @@ $section_text  = get_sub_field( 'section_text' );
                                 <div style="top: 100px; position: relative;">
 
                                     <div class="word">
-                                        <span><?php echo $first_word; ?> </span>
+                                        <span><?php echo $first_word; ?>&nbsp;</span>
                                     </div>
                                     <div class="word dynamic">
 

@@ -24,10 +24,10 @@ $section_gallery = get_sub_field( 'section_gallery' );
                 $size = 'full'; // (thumbnail, medium, large, full or custom size)
                 $i    = 1;
                 if ( $section_gallery ): ?>
-                    <div class="section-gallery">
+                    <div class="section-gallery ease-order">
                         <?php foreach ( $section_gallery as $image ): ?>
-                            <div class="section-gallery__item image-<?php echo $i; ?>">
-                                <?php echo wp_get_attachment_image( $image['id'], $size ); ?>
+                            <div class="fade-in ease-order__item section-gallery__item image-<?php echo $i; ?>" data-scroll>
+                                <?php echo wp_get_attachment_image( $image['id'], $size); ?>
                             </div>
                             <?php
                             $i ++;

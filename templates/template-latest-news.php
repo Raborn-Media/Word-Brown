@@ -22,7 +22,7 @@ get_header();
     <div class="media-wrap">
         <?php get_template_part( 'parts/news', 'press' ); ?>
         <?php get_template_part( 'parts/media', 'videos' ); ?>
-<!--        --><?php //get_template_part( 'parts/brand', 'assets' ); ?>
+        <?php get_template_part( 'parts/brand', 'assets' ); ?>
     </div>
 
     <!-- BEGIN  partnering-section -->

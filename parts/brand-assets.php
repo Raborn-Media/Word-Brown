@@ -1,192 +1,45 @@
-<section id="brand-assets">
+<?php
+$brands_assets_section_title = get_field( 'brands_assets_section_title' );
+$brands_assets_section_text  = get_field( 'brands_assets_section_text' );
+?>
 
+<!-- BEGIN  brand-assets-section -->
+<div class="brand-assets-section">
     <div class="grid-container">
         <div class="grid-x">
             <div class="cell">
-                <h2 class="underlined-header">Brand Assets</h2>
-            </div>
+                <?php if ( $brands_assets_section_title ) : ?>
+                    <h2 class="section-title">
+                        <?php echo $brands_assets_section_title; ?>
+                    </h2>
+                <?php endif; ?>
+                <?php if ( $brands_assets_section_text ) : ?>
+                    <article class="section-text">
+                        <?php echo $brands_assets_section_text; ?>
+                    </article>
+                <?php endif; ?>
 
-            <div class="grid-container">
-                <div class="grid-x">
-                    <div class="small-24 large-18 small-offset-3 cell brand-intro">
-                        <h3>Request our Brand Assets</h3>
-                        <p>To download high resolution logos and style guides, click on the logo below, then
-                            choose your preferred file format, then read and accept our brand guidelines.</p>
-                    </div>
-                </div>
-            </div>
-            <div id="company-asset-list">
-                <div class="grid-container">
-                    <div class="grid-x">
-
-                        <div class="cologo">
-                            <div class="logo-general"></div>
-                        </div>
-
-                        <div class="cologo">
-                            <div class="logo-choice"></div>
-                        </div>
-
-                        <div class="cologo">
-                            <div class="logo-california"></div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="general-agency" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="close">&times;</span>
-                            <h3>Choose Your File Format</h3>
-                            <img src="
-        <?= get_template_directory_uri(); ?>/img/WB.2019.Logo.PMS.Full.svg"/>
-                        </div>
-                        <div class="modal-body">
-                            <div class="grid-container">
-                                <div class="grid-x">
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/WB.2018.Logo.PMS.Full.png"
-                                           download>
-                                            <div class='download-box'>
-                                                Download SVG
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/WB.2018.Logo.PMS.Full.svg"
-                                           download>
-                                            <div class='download-box'>
-                                                Download PNG
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/WB.2018.Logo.PMS.Full.eps"
-                                           download>
-                                            <div class='download-box'>
-                                                Download EPS
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
+                <?php if ( have_rows( 'logos_list' ) ) : ?>
+                    <div class="logos-list">
+                        <?php while ( have_rows( 'logos_list' ) ) : the_row();
+                            $list_item_title = get_sub_field( 'list_item_title' );
+                            $list_item_logo  = get_sub_field( 'list_item_logo' );
+                            ?>
+                            <div class="logos-list__item">
+                                <?php if ( $list_item_title ) : ?>
+                                    <h5 class="logo-title">
+                                        <?php echo $list_item_title; ?>
+                                    </h5>
+                                <?php endif; ?>
+                                <div class="logo matchHeight">
+                                    <?php echo wp_get_attachment_image( $list_item_logo['id'], 'large' ); ?>
                                 </div>
                             </div>
-                        </div>
+                        <?php endwhile; ?>
                     </div>
-                </div>
-
-                <div id="choice-administrators" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="close">&times;</span>
-                            <h3>Choose Your File Format</h3>
-                            <img
-                                src="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/CHOICE.Administrators.png"/>
-                        </div>
-                        <div class="modal-body">
-                            <div class="grid-container">
-                                <div class="grid-x">
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/CHOICE.Administrators.png"
-                                           download>
-                                            <div class='download-box'>
-                                                Download PNG
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/CHOICE.Administrators.jpg"
-                                           download>
-                                            <div class='download-box'>
-                                                Download JPG
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/CHOICE.Administrators.PMS.ProcessBlue.eps"
-                                           download>
-                                            <div class='download-box'>
-                                                Download EPS
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="california-rx-card" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="close">&times;</span>
-                            <h3>Choose Your File Format</h3>
-                            <img
-                                src="
-        <?= get_template_directory_uri(); ?>/img/about/company-logo-calrx-black.svg"/>
-                        </div>
-                        <div class="modal-body">
-                            <div class="grid-container">
-                                <div class="grid-x">
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/California%20Rx%20Card.png"
-                                           download>
-                                            <div class='download-box'>
-                                                Download PNG
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate-logos/California%20Rx%20Card.jpg"
-                                           download>
-                                            <div class='download-box'>
-                                                Download JPG
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cologo">
-                                        <a href="
-        <?= get_template_directory_uri(); ?>/img/corporate logos/CaliforniaRx_logo.eps"
-                                           download>
-                                            <div class='download-box'>
-                                                Download EPS
-                                                <br/>
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <?php endif; ?>
             </div>
         </div>
     </div>
-</section>
+</div>
+<!-- END  brand-assets-section -->

@@ -44,4 +44,23 @@
     display: block;
     max-width: fit-content;
   }
+
+  @include breakpoint(medium down) {
+    .opportunities-list {
+      .opportunity {
+        width: 30%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  @include breakpoint(small down) {
+    .opportunities-list {
+      gap: 0;
+      align-items: flex-start;
+
+      .opportunity {
+        width: 50%;
+      }
+    }
+  }
 }

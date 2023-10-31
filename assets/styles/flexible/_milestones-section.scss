@@ -98,4 +98,23 @@
       }
     }
   }
+
+  @include breakpoint(medium down) {
+    .milestones-tabs-row {
+      .tabs {
+        flex-direction: column;
+
+        .tabs-title.is-active {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  //@include breakpoint(small down) {
+  //  .tabs-content .tabs-panel__content-item {
+  //    width: calc(100vw - 70px) !important;
+  //  }
+  //}
 }

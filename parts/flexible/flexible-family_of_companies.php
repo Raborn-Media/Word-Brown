@@ -31,12 +31,12 @@ $logos_display_style = get_sub_field( 'logos_display_style' );
                     <div class="companies-list <?php echo $logos_display_style == true ? '' : 'black-logos-container'; ?>">
                         <?php while ( have_rows( 'companies_list' ) ) : the_row();
                             $company_logo      = get_sub_field( 'company_logo' );
-                            $company_link      = get_sub_field( 'company_link' );
+                            $company_link      = get_sub_field( 'logo_link' );
                             ?>
                             <?php if ( $company_logo ) :
                                 $company_logo_name = $company_logo['name'];
                                 ?>
-                                <a href="<?php echo $company_link; ?>"
+                                <a href="<?php echo $company_link['url']; ?>"
                                    target="_self"
                                    class="companies-list__item matchHeight <?php echo $logos_display_style == true ? '' : 'black-logos'; ?>">
                                     <?php display_svg( $company_logo, $company_logo_name, 'small' ) ?>

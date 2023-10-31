@@ -172,18 +172,17 @@ function get_news_feeds($data)
     $filter = $data['filter'];
     $total  = 0;
 
-//    TODO: Switch Cal to https:www.mycalchoice.com/feed
     $feed_results = [];
     $feed_sources = [
         'all'       => [
-            'http://mycalchoice.staging.wpengine.com/feed/',
+            'https://www.mycalchoice.com/feed',
             'http://brokerblog.wordandbrown.com/feed'
         ],
         'wbgeneral' => [
             'http://brokerblog.wordandbrown.com/feed'
         ],
         'calchoice' => [
-            'http://mycalchoice.staging.wpengine.com/feed/'
+            'https://www.mycalchoice.com/feed'
         ]
     ];
 
@@ -197,20 +196,37 @@ function get_news_feeds($data)
         }
     }
 
+
     if (count($feed_results)) {
         $feed_results = array_map(function ($result) {
+            $content = $result->get_description();
+
+            if ($content) {
+                $doc = new DOMDocument();
+                libxml_use_internal_errors(true);
+                $doc->loadHTML($content);
+                libxml_clear_errors();
+
+                $img_tags  = $doc->getElementsByTagName('img');
+                $thumbnail = 'https://ad24d43cb5.nxcli.io/wp-content/uploads/2023/10/png-image-e1698757679571.png';
+
+                if ($img_tags->length > 0) {
+                    $thumbnail = $img_tags->item(0)->getAttribute('src');
+                }
+            } else {
+                $thumbnail = 'https://ad24d43cb5.nxcli.io/wp-content/uploads/2023/10/png-image-e1698757679571.png'; // Немає доступного контенту
+            }
 
             return [
-                'title'        => $result->get_title(),
-                'description'  => explode('...', strip_tags($result->get_description()))[0] . '...',
-                'author'       => $result->get_author()->name,
-                'thumbnail'    => 'https://ad24d43cb5.nxcli.io/wp-content/uploads/2023/10/partners-employers-img.jpg',
-//                'thumbnail'   => $result->data['child']['http://search.yahoo.com/mrss/']['group'][0]['child']['http://search.yahoo.com/mrss/']['thumbnail'][0]['attribs']['']['url'],
-                'href'         => $result->get_link(),
-                'category'     => $result->data['child']['']['category'][0]['data'],
-                'date'         => date('F d, Y', strtotime($result->get_date())),
+                'title'            => $result->get_title(),
+                'description'      => explode('...', strip_tags($result->get_description()))[0] . '...',
+                'author'           => $result->get_author()->name,
+                'thumbnail'        => $thumbnail,
+                'href'             => $result->get_link(),
+                'category'         => $result->data['child']['']['category'][0]['data'],
+                'date'             => date('F d, Y', strtotime($result->get_date())),
                 'list_filter_date' => date('F Y', strtotime($result->get_date())),
-                'archive_date' => date('F Y', strtotime($result->get_date())),
+                'archive_date'     => date('F Y', strtotime($result->get_date())),
             ];
         }, $feed_results);
 

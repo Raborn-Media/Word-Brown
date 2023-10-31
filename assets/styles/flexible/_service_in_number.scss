@@ -3,6 +3,7 @@
   color: $white;
   text-align: center;
   padding: 100px 0;
+
   .section-title {
     color: $white;
     margin: 0 auto 70px;
@@ -22,6 +23,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     img {
       display: block;
       margin-bottom: 20px;
@@ -34,19 +36,38 @@
       line-height: 1;
       display: block;
       margin-bottom: 20px;
+
       &:after {
         content: '+';
         font-size: 40px;
         margin-left: -15px;
       }
     }
+
     p {
       font-size: 22px;
     }
   }
+
   .lives-impacted h3:after {
     content: 'M';
     font-family: $font;
     margin-left: -15px;
+  }
+
+  @include breakpoint(small down) {
+    .services-list {
+      flex-direction: column;
+
+      &__item {
+        margin-bottom: 30px;
+        h3 {
+          font-size: 50px;
+        }
+      }
+      &__item:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }

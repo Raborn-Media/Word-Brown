@@ -36,23 +36,23 @@
                                     id="modal-<?php echo $post->ID; ?>" <?php bg( get_attached_img_url( get_the_ID(), 'full_hd' ) ); ?>
                                     class="modal">
                                     <div class="member-bio">
-                                        <h4 class="member-name">
-                                            <?php echo $members_full_name; ?>
-                                        </h4>
-                                        <p class="members-position">
-                                            <?php echo $members_position; ?>
-                                        </p>
-                                        <p class="members-company">
-                                            <?php echo $members_company; ?>
-                                        </p>
-                                        <article>
-                                            <?php the_content(); ?>
-                                        </article>
+                                        <div class="member-bio__heading">
+                                            <h4 class="member-name">
+                                                <?php echo $members_full_name; ?>
+                                            </h4>
+                                            <p class="members-position">
+                                                <?php echo $members_position; ?>
+                                            </p>
+                                            <p class="members-company">
+                                                <?php echo $members_company; ?>
+                                            </p>
+                                        </div>
+                                        <div class="bio-text">
+                                            <article>
+                                                <?php the_content(); ?>
+                                            </article>
+                                        </div>
                                     </div>
-<!--                                    <div class="nav-buttons">-->
-<!--                                        <button class="prev-modal">Previous</button>-->
-<!--                                        <button class="next-modal">Next</button>-->
-<!--                                    </div>-->
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -91,18 +91,22 @@
                                     id="modal-<?php echo $post->ID; ?>" <?php bg( get_attached_img_url( get_the_ID(), 'full_hd' ) ); ?>
                                     class="modal">
                                     <div class="member-bio">
-                                        <h4 class="member-name">
-                                            <?php echo $members_full_name; ?>
-                                        </h4>
-                                        <p class="members-position">
-                                            <?php echo $members_position; ?>
-                                        </p>
-                                        <p class="members-company">
-                                            <?php echo $members_company; ?>
-                                        </p>
-                                        <article>
-                                            <?php the_content(); ?>
-                                        </article>
+                                        <div class="member-bio__heading">
+                                            <h4 class="member-name">
+                                                <?php echo $members_full_name; ?>
+                                            </h4>
+                                            <p class="members-position">
+                                                <?php echo $members_position; ?>
+                                            </p>
+                                            <p class="members-company">
+                                                <?php echo $members_company; ?>
+                                            </p>
+                                        </div>
+                                        <div class="bio-text">
+                                            <article>
+                                                <?php the_content(); ?>
+                                            </article>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -139,23 +143,26 @@
                             <p class="members-company">
                                 <?php echo $members_company; ?>
                             </p>
-
                             <div
                                 id="modal-<?php echo $post->ID; ?>" <?php bg( get_attached_img_url( get_the_ID(), 'full_hd' ) ); ?>
                                 class="modal">
                                 <div class="member-bio">
-                                    <h4 class="member-name">
-                                        <?php echo $members_full_name; ?>
-                                    </h4>
-                                    <p class="members-position">
-                                        <?php echo $members_position; ?>
-                                    </p>
-                                    <p class="members-company">
-                                        <?php echo $members_company; ?>
-                                    </p>
-                                    <article>
-                                        <?php the_content(); ?>
-                                    </article>
+                                    <div class="member-bio__heading">
+                                        <h4 class="member-name">
+                                            <?php echo $members_full_name; ?>
+                                        </h4>
+                                        <p class="members-position">
+                                            <?php echo $members_position; ?>
+                                        </p>
+                                        <p class="members-company">
+                                            <?php echo $members_company; ?>
+                                        </p>
+                                    </div>
+                                    <div class="bio-text">
+                                        <article>
+                                            <?php the_content(); ?>
+                                        </article>
+                                    </div>
                                 </div>
                             </div>
                         </div>

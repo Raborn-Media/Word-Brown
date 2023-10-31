@@ -55,6 +55,7 @@
   }
 }
 
+#news-press__single,
 #news-press {
   padding-top: 65px;
   padding-bottom: 54px;
@@ -67,12 +68,14 @@
     margin-bottom: 20px;
   }
 
+  #blog-list-archive__single,
   #blog-list-archive {
     list-style: none;
   }
 }
 
-.blog-list {
+#blog-list__single,
+#blog-list {
   list-style: none;
   margin-left: 0;
 }
@@ -87,9 +90,12 @@
   .post-image {
     width: 30%;
     height: 100%;
+    //aspect-ratio: 581/590;
+    aspect-ratio: 0.98/1;
 
     img {
       width: 100%;
+
       height: 100%;
       object-fit: cover;
     }
@@ -106,9 +112,14 @@
       color: $corporate-black;
     }
 
+    .post-date {
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
     p {
-      font-size: 18px;
-      line-height: 38px;
+      //font-size: 18px;
+      //line-height: 38px;
     }
 
     .list-filter-date {
@@ -126,12 +137,14 @@
   margin-top: 33px;
 }
 
+#videos-single,
 #videos {
   background-color: #f0f0f0;
   padding: 87px 0 70px;
   //position: relative;
 }
 
+#video-list__single,
 #video-list {
   margin-left: 0;
   list-style: none;
@@ -169,6 +182,18 @@
         line-height: 26px;
         margin-bottom: 0;
       }
+    }
+  }
+}
+.date-filter-wrap {
+  padding: 0 15px;
+}
+
+#archiveSelect {
+  border-color: $gold;
+  option {
+    &:hover {
+      background-color: $gold;
     }
   }
 }
@@ -229,12 +254,14 @@ body.fixed {
 .brand-assets-section {
   padding-top: 69px;
   padding-bottom: 83px;
+
   .grid-container {
     max-width: 1400px;
   }
 
   .section-text {
     margin-bottom: 50px;
+
     a {
       margin-left: 5px;
     }
@@ -274,6 +301,7 @@ body.fixed {
       &:nth-child(3n) {
         border-right: none;
       }
+
       &:last-child {
         border-right: none;
       }
@@ -439,6 +467,41 @@ body.fixed {
           font-size: 18px;
         }
       }
+    }
+  }
+}
+@include breakpoint(medium down) {
+  #news-press-filter,
+  #video-filter {
+    flex-direction: column !important;
+  }
+  .blog-list-row {
+    flex-direction: column-reverse !important;
+    gap: 20px;
+  }
+
+  #video-list__single,
+  #video-list {
+    li {
+      max-width: 50%;
+    }
+  }
+}
+@include breakpoint(small down) {
+  .feed-post {
+    flex-direction: column;
+    .post-content,
+    .post-image {
+      width: 100%;
+      max-width: 100%;
+      padding: 15px;
+    }
+  }
+
+  #video-list__single,
+  #video-list {
+    li {
+      max-width: 100%;
     }
   }
 }

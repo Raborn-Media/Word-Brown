@@ -70,4 +70,21 @@
       }
     }
   }
+
+  @include breakpoint(small down) {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    .content-col {
+      article {
+        padding: 0 20px;
+      }
+
+      .button {
+        max-width: 100%;
+      }
+    }
+    .image-col {
+      overflow: hidden;
+    }
+  }
 }

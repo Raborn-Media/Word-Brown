@@ -25,6 +25,12 @@
     transform: rotate(180deg);
   }
 
+  .grid-container {
+    max-width: 1156px;
+    position: relative;
+    height: 100%;
+  }
+
   .hero-text {
     padding: 50px;
     max-width: 850px;
@@ -32,7 +38,7 @@
     color: $white;
     position: absolute;
     bottom: 0;
-    left: 20%;
+    left: 0;
     z-index: 5;
 
     .page-title {
@@ -63,6 +69,9 @@
       max-width: 100%;
       padding: 20px;
     }
+  }
+  @include breakpoint(small down) {
+    padding-bottom: 0 !important;
   }
 }
 

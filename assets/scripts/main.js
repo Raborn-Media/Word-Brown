@@ -67,6 +67,7 @@ window.filters = {
   social: 'all',
   videos: 'all',
 };
+
 function fetchNews() {
   jQuery.getJSON(
     '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/4',
@@ -78,11 +79,10 @@ function fetchNews() {
       if (response.results.length) {
         for (var i = 0; i < response.results.length; i++) {
           var result = response.results[i];
-
           list.append(
             '<li class="lazy-load feed-post">' +
               '<div class="post-image">' +
-              '<a href="' +
+              '<a target="blanck" href="' +
               result.href +
               '">' +
               '<img src="' +
@@ -91,7 +91,7 @@ function fetchNews() {
               '</a>' +
               '</div>' +
               '<div class="post-content">' +
-              '<a href="' +
+              '<a target="blanck" href="' +
               result.href +
               '">' +
               '<h3>' +
@@ -113,9 +113,224 @@ function fetchNews() {
   );
 }
 
+// function fetchArchiveDates() {
+//   jQuery.getJSON(
+//     '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/99',
+//     function (response) {
+//       var listArchive = jQuery('#blog-list-archive');
+//       var addedDates = [];
+//
+//       if (response.results.length) {
+//         for (var i = 0; i < response.results.length; i++) {
+//           var result = response.results[i];
+//           if (addedDates.indexOf(result.archive_date) === -1) {
+//             listArchive.append(
+//               '<li class="archive-item">' +
+//                 '<div class="archive-date" data-date="' +
+//                 result.archive_date +
+//                 '">' +
+//                 result.archive_date +
+//                 '</div>' +
+//                 '</li>'
+//             );
+//             var selectElement = $('#archiveSelect');
+//             // if (addedDates.indexOf(result.archive_date) === -1) {
+//             var option = new Option(result.archive_date, result.archive_date);
+//             selectElement.append(option);
+//
+//             // Add the archive_date to the addedDates array
+//             addedDates.push(result.archive_date);
+//           }
+//         }
+//
+//         let listItemContent =
+//           '<li class="lazy-load feed-post">' +
+//           '<div class="post-image">' +
+//           '<a target="_blank" href="' +
+//           result.href +
+//           '">' +
+//           '<img src="' +
+//           result.thumbnail +
+//           '" alt="Image">' +
+//           '</a>' +
+//           '</div>' +
+//           '<div class="post-content">' +
+//           '<a target="_blank" href="' +
+//           result.href +
+//           '">' +
+//           '<h3>' +
+//           result.title +
+//           '</h3>' +
+//           '</a>' +
+//           '<div class="post-date">' +
+//           result.date +
+//           '</div>' +
+//           '<div class="list-filter-date">' +
+//           result.list_filter_date +
+//           '</div>' +
+//           '<p>' +
+//           result.description +
+//           '</p>' +
+//           '</div>' +
+//           '</li>';
+//
+//         // Додайте обробник подій до archive-date
+//         listArchive.find('.archive-date').click(function () {
+//           var clickedDate = jQuery(this).data('date');
+//           // console.log(clickedDate);
+//
+//           // Очистіть список перед додаванням нових постів
+//           var list = jQuery('#blog-list');
+//           list.empty();
+//
+//           // Перевірте кожен пост
+//           for (var i = 0; i < response.results.length; i++) {
+//             var result = response.results[i];
+//             if (result.list_filter_date === clickedDate) {
+//               list.append(listItemContent);
+//             }
+//           }
+//         });
+//         $('#archiveSelect').change(function () {
+//           var selectedDate = $(this).val();
+//
+//           // Clear the list before adding new posts
+//           var list = $('#blog-list');
+//           list.empty();
+//
+//           // Check each post
+//           for (var i = 0; i < response.results.length; i++) {
+//             var result = response.results[i];
+//             if (result.list_filter_date === selectedDate) {
+//               list.append(listItemContent);
+//             }
+//           }
+//         });
+//       }
+//     }
+//   );
+// }
+function fetchArchiveDatesSingle() {
+  jQuery.getJSON(
+    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/99',
+    function (response) {
+      var listArchive = jQuery('#blog-list-archive__single');
+      var addedDates = [];
+
+      if (response.results.length) {
+        for (var i = 0; i < response.results.length; i++) {
+          var result = response.results[i];
+          if (addedDates.indexOf(result.archive_date) === -1) {
+            listArchive.append(
+              '<li class="archive-item">' +
+                '<div class="archive-date" data-date="' +
+                result.archive_date +
+                '">' +
+                result.archive_date +
+                '</div>' +
+                '</li>'
+            );
+            var selectElement = jQuery('#archiveSelect');
+            var option = new Option(result.archive_date, result.archive_date);
+            selectElement.append(option);
+
+            // Add the archive_date to the addedDates array
+            addedDates.push(result.archive_date);
+          }
+        }
+
+        listArchive.find('.archive-date').click(function () {
+          var clickedDate = jQuery(this).data('date');
+          var list = jQuery('#blog-list__single');
+          list.empty();
+
+          for (var i = 0; i < response.results.length; i++) {
+            var result = response.results[i];
+            if (result.list_filter_date === clickedDate) {
+              list.append(
+                '<li class="lazy-load feed-post">' +
+                  '<div class="post-image">' +
+                  '<a target="_blank" href="' +
+                  result.href +
+                  '">' +
+                  '<img src="' +
+                  result.thumbnail +
+                  '" alt="Image">' +
+                  '</a>' +
+                  '</div>' +
+                  '<div class="post-content">' +
+                  '<a target="_blank" href="' +
+                  result.href +
+                  '">' +
+                  '<h3>' +
+                  result.title +
+                  '</h3>' +
+                  '</a>' +
+                  '<div class="post-date">' +
+                  result.date +
+                  '</div>' +
+                  '<div class="list-filter-date">' +
+                  result.list_filter_date +
+                  '</div>' +
+                  '<p>' +
+                  result.description +
+                  '</p>' +
+                  '</div>' +
+                  '</li>'
+              );
+            }
+          }
+        });
+
+        jQuery('#archiveSelect__single').change(function () {
+          var selectedDate = jQuery(this).val();
+          var list = jQuery('#blog-list__single');
+          list.empty();
+
+          for (var i = 0; i < response.results.length; i++) {
+            var result = response.results[i];
+            if (result.list_filter_date === selectedDate) {
+              list.append(
+                '<li class="lazy-load feed-post">' +
+                  '<div class="post-image">' +
+                  '<a target="_blank" href="' +
+                  result.href +
+                  '">' +
+                  '<img src="' +
+                  result.thumbnail +
+                  '" alt="Image">' +
+                  '</a>' +
+                  '</div>' +
+                  '<div class="post-content">' +
+                  '<a target="_blank" href="' +
+                  result.href +
+                  '">' +
+                  '<h3>' +
+                  result.title +
+                  '</h3>' +
+                  '</a>' +
+                  '<div class="post-date">' +
+                  result.date +
+                  '</div>' +
+                  '<div class="list-filter-date">' +
+                  result.list_filter_date +
+                  '</div>' +
+                  '<p>' +
+                  result.description +
+                  '</p>' +
+                  '</div>' +
+                  '</li>'
+              );
+            }
+          }
+        });
+      }
+    }
+  );
+}
 function fetchArchiveDates() {
   jQuery.getJSON(
-    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/4',
+    '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/99',
     function (response) {
       var listArchive = jQuery('#blog-list-archive');
       var addedDates = [];
@@ -133,29 +348,27 @@ function fetchArchiveDates() {
                 '</div>' +
                 '</li>'
             );
+            var selectElement = jQuery('#archiveSelect');
+            var option = new Option(result.archive_date, result.archive_date);
+            selectElement.append(option);
 
             // Add the archive_date to the addedDates array
             addedDates.push(result.archive_date);
           }
         }
 
-        // Додайте обробник подій до archive-date
         listArchive.find('.archive-date').click(function () {
           var clickedDate = jQuery(this).data('date');
-          // console.log(clickedDate);
-
-          // Очистіть список перед додаванням нових постів
           var list = jQuery('#blog-list');
           list.empty();
 
-          // Перевірте кожен пост
           for (var i = 0; i < response.results.length; i++) {
             var result = response.results[i];
             if (result.list_filter_date === clickedDate) {
               list.append(
                 '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
-                  '<a href="' +
+                  '<a target="_blank" href="' +
                   result.href +
                   '">' +
                   '<img src="' +
@@ -164,7 +377,50 @@ function fetchArchiveDates() {
                   '</a>' +
                   '</div>' +
                   '<div class="post-content">' +
-                  '<a href="' +
+                  '<a target="_blank" href="' +
+                  result.href +
+                  '">' +
+                  '<h3>' +
+                  result.title +
+                  '</h3>' +
+                  '</a>' +
+                  '<div class="post-date">' +
+                  result.date +
+                  '</div>' +
+                  '<div class="list-filter-date">' +
+                  result.list_filter_date +
+                  '</div>' +
+                  '<p>' +
+                  result.description +
+                  '</p>' +
+                  '</div>' +
+                  '</li>'
+              );
+            }
+          }
+        });
+
+        jQuery('#archiveSelect').change(function () {
+          var selectedDate = jQuery(this).val();
+          var list = jQuery('#blog-list');
+          list.empty();
+
+          for (var i = 0; i < response.results.length; i++) {
+            var result = response.results[i];
+            if (result.list_filter_date === selectedDate) {
+              list.append(
+                '<li class="lazy-load feed-post">' +
+                  '<div class="post-image">' +
+                  '<a target="_blank" href="' +
+                  result.href +
+                  '">' +
+                  '<img src="' +
+                  result.thumbnail +
+                  '" alt="Image">' +
+                  '</a>' +
+                  '</div>' +
+                  '<div class="post-content">' +
+                  '<a target="_blank" href="' +
                   result.href +
                   '">' +
                   '<h3>' +
@@ -238,6 +494,7 @@ function fetchVideos() {
     }
   );
 }
+
 /**
  * Scripts which runs after DOM load
  */
@@ -292,23 +549,23 @@ $(document).on('ready', function () {
       $('.companies-list__item').removeClass('gray-bg');
     }
   );
-  $('a#headerpush').on('click', function (event) {
-    if (this.hash !== '') {
-      event.preventDefault();
-
-      var hash = this.hash;
-
-      $('html, body').animate(
-        {
-          scrollTop: $(hash).offset().top,
-        },
-        800,
-        function () {
-          window.location.hash = hash;
-        }
-      );
-    }
-  });
+  // $('a#headerpush').on('click', function (event) {
+  //   if (this.hash !== '') {
+  //     event.preventDefault();
+  //
+  //     var hash = this.hash;
+  //
+  //     $('html, body').animate(
+  //       {
+  //         scrollTop: $(hash).offset().top,
+  //       },
+  //       800,
+  //       function () {
+  //         window.location.hash = hash;
+  //       }
+  //     );
+  //   }
+  // });
 
   // $('input').focusin(function () {
   //   input = $(this);
@@ -344,10 +601,8 @@ $(document).on('ready', function () {
     $(this).parent().addClass('active');
 
     window.filters.news = filter;
-    window.filters.social = filter;
 
     fetchNews();
-    // fetchSocial();
 
     e.preventDefault();
     return false;
@@ -369,24 +624,8 @@ $(document).on('ready', function () {
 
   fetchNews();
   fetchArchiveDates();
+  fetchArchiveDatesSingle();
   fetchVideos();
-  // quoteSlider();
-  // if (window.matchMedia('(max-width: 640px)').matches) {
-  //   /* the viewport is less than 768 pixels wide */
-  //   $('.quotes-list').slick();
-  // }
-
-  // $('svg path, svg polygon').each(function () {
-  //   var originalColor = $(this).css('fill');
-  //
-  //   $(this).on('mouseenter', function () {
-  //     $(this).css('fill', originalColor);
-  //   });
-  //
-  //   $(this).on('mouseleave', function () {
-  //     $(this).css('fill', '#000000'); // Set the default color
-  //   });
-  // });
   /**
    * Scroll to top
    */
@@ -571,22 +810,18 @@ $(window).on('scroll', function () {
   var headerHeight = $('.header').outerHeight();
 
   if (Y > 1) {
-    $('.page-template-template-latest-news header').addClass('header-bg');
-    $('.page-template-template-contact header').addClass('header-bg');
-    $('.page-template-default header').addClass('header-bg');
+    $('header').addClass('header-bg');
     $('.mobile-header-contacts-wrapper').addClass('scroll-hide');
     $('.navbar-collapse').css('top', headerHeight);
   } else if (Y < 1) {
-    $('.page-template-template-latest-news header').removeClass('header-bg');
-    $('.page-template-template-contact header').removeClass('header-bg');
-    $('.page-template-default header').removeClass('header-bg');
+    $('header').removeClass('header-bg');
     $('.mobile-header-contacts-wrapper').removeClass('scroll-hide');
     $('.navbar-collapse').css('top', headerHeight);
   }
 });
 
 $(window).on('load resize orientationchange', function () {
-  $('.carousel').each(function () {
+  $('.quotes-list').each(function () {
     var $carousel = $(this);
     /* Initializes a slick carousel only on mobile screens */
     // slick on mobile
@@ -599,6 +834,8 @@ $(window).on('load resize orientationchange', function () {
         $carousel.slick({
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: false,
+          dots: true,
           mobileFirst: true,
           adaptiveHeight: true,
         });

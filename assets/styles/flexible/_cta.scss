@@ -1,5 +1,6 @@
 .cta-section {
   padding: 55px 0 73px;
+
   &__content {
     display: flex;
     flex-direction: row;
@@ -8,11 +9,28 @@
     column-gap: 50px;
 
     .cta-title {
-      font-size: 50px;
+      //font-size: 50px;
     }
 
     .button {
       padding: 25px 76px;
+    }
+  }
+
+  @include breakpoint(medium down) {
+    &__content {
+      flex-wrap: wrap;
+    }
+  }
+  @include breakpoint(medium down) {
+    &__content {
+      .cta-title {
+        margin-bottom: 30px;
+      }
+
+      .button {
+        padding: 25px;
+      }
     }
   }
 }

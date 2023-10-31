@@ -8,36 +8,25 @@
     text-transform: uppercase;
     font-size: 16px;
   }
+
   .section-title {
-    font-size: 50px;
+    //font-size: 50px;
     line-height: 64px;
     margin-bottom: 50px;
     letter-spacing: 1.1px;
-    color: $corporate-black;
   }
-  .section-text {
-    max-width: 840px;
-    p {
-      font-size: 20px;
-      line-height: 30px;
-    }
-  }
-}
 
-.home {
-  .section-title {
-    font-size: 56px;
-    color: $corporate-blue;
-    &:after {
-      width: 150px;
-      height: 4px;
+  .section-text {
+    //max-width: 840px;
+    p {
+      //font-size: 20px;
+      //line-height: 30px;
     }
   }
-  .section-text {
-    max-width: 745px;
-    p {
-      font-size: 24px;
-      line-height: 40px;
+
+  @include breakpoint(medium down) {
+    .section-title {
+      line-height: 1.1;
     }
   }
 }

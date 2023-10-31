@@ -27,6 +27,11 @@
       padding: 30px 15px;
       min-height: 100px;
       max-width: fit-content;
+
+      &:hover {
+        background-color: $light-gray;
+      }
+
       svg {
         display: block;
         width: 100%;
@@ -41,9 +46,11 @@
 
     .vb-01 {
       max-width: 301px;
+
       path {
         fill: #000000;
       }
+
       .cls-2 {
         fill: #01529c;
       }
@@ -56,6 +63,7 @@
       max-width: 169px !important;
       display: block;
       height: auto;
+
       path {
         fill: #059bda;
       }
@@ -73,25 +81,73 @@
     }
 
     .black-logos {
+      //filter: grayscale(1);
+      img,
       svg {
-        path,
-        .cls-2 {
-          fill: #000000;
-        }
+        filter: grayscale(90%);
+        //  path,
+        //  .cls-2 {
+        //    fill: #000000;
+        //  }
+        //
+        //  polygon {
+        //    fill: transparent;
+        //    stroke: #000;
+        //    stroke-width: 1px;
+        //    //fill-rule: evenodd;
+        //    text-stroke: 1px solid #000;
+        //  }
+      }
+    }
+  }
 
-        polygon {
-          fill: transparent;
-          stroke: #000;
-          stroke-width: 1px;
-          //fill-rule: evenodd;
-          text-stroke: 1px solid #000;
-        }
+  @include breakpoint(1200px down) {
+    .companies-list {
+      justify-content: center;
+      .companies-list__item {
+        overflow: hidden;
+        max-width: 50%;
+        width: 50%;
+        justify-content: center;
+      }
+    }
+  }
+  @include breakpoint(small down) {
+    .companies-list {
+      justify-content: center;
+      .companies-list__item {
+        max-width: 100%;
+        width: 100%;
+        justify-content: center;
       }
     }
   }
 }
+
 .black-logos-container {
-  .gray-bg {
-    background-color: $light-gray;
+  //.gray-bg {
+  //  background-color: $light-gray;
+  //}
+
+  @include breakpoint(1200px down) {
+    .companies-list {
+      justify-content: center;
+      .companies-list__item {
+        overflow: hidden;
+        max-width: 50%;
+        width: 50%;
+        justify-content: center;
+      }
+    }
+  }
+  @include breakpoint(small down) {
+    .companies-list {
+      justify-content: center;
+      .companies-list__item {
+        max-width: 100%;
+        width: 100%;
+        justify-content: center;
+      }
+    }
   }
 }

@@ -113,103 +113,6 @@ function fetchNews() {
   );
 }
 
-// function fetchArchiveDates() {
-//   jQuery.getJSON(
-//     '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/99',
-//     function (response) {
-//       var listArchive = jQuery('#blog-list-archive');
-//       var addedDates = [];
-//
-//       if (response.results.length) {
-//         for (var i = 0; i < response.results.length; i++) {
-//           var result = response.results[i];
-//           if (addedDates.indexOf(result.archive_date) === -1) {
-//             listArchive.append(
-//               '<li class="archive-item">' +
-//                 '<div class="archive-date" data-date="' +
-//                 result.archive_date +
-//                 '">' +
-//                 result.archive_date +
-//                 '</div>' +
-//                 '</li>'
-//             );
-//             var selectElement = $('#archiveSelect');
-//             // if (addedDates.indexOf(result.archive_date) === -1) {
-//             var option = new Option(result.archive_date, result.archive_date);
-//             selectElement.append(option);
-//
-//             // Add the archive_date to the addedDates array
-//             addedDates.push(result.archive_date);
-//           }
-//         }
-//
-//         let listItemContent =
-//           '<li class="lazy-load feed-post">' +
-//           '<div class="post-image">' +
-//           '<a target="_blank" href="' +
-//           result.href +
-//           '">' +
-//           '<img src="' +
-//           result.thumbnail +
-//           '" alt="Image">' +
-//           '</a>' +
-//           '</div>' +
-//           '<div class="post-content">' +
-//           '<a target="_blank" href="' +
-//           result.href +
-//           '">' +
-//           '<h3>' +
-//           result.title +
-//           '</h3>' +
-//           '</a>' +
-//           '<div class="post-date">' +
-//           result.date +
-//           '</div>' +
-//           '<div class="list-filter-date">' +
-//           result.list_filter_date +
-//           '</div>' +
-//           '<p>' +
-//           result.description +
-//           '</p>' +
-//           '</div>' +
-//           '</li>';
-//
-//         // Додайте обробник подій до archive-date
-//         listArchive.find('.archive-date').click(function () {
-//           var clickedDate = jQuery(this).data('date');
-//           // console.log(clickedDate);
-//
-//           // Очистіть список перед додаванням нових постів
-//           var list = jQuery('#blog-list');
-//           list.empty();
-//
-//           // Перевірте кожен пост
-//           for (var i = 0; i < response.results.length; i++) {
-//             var result = response.results[i];
-//             if (result.list_filter_date === clickedDate) {
-//               list.append(listItemContent);
-//             }
-//           }
-//         });
-//         $('#archiveSelect').change(function () {
-//           var selectedDate = $(this).val();
-//
-//           // Clear the list before adding new posts
-//           var list = $('#blog-list');
-//           list.empty();
-//
-//           // Check each post
-//           for (var i = 0; i < response.results.length; i++) {
-//             var result = response.results[i];
-//             if (result.list_filter_date === selectedDate) {
-//               list.append(listItemContent);
-//             }
-//           }
-//         });
-//       }
-//     }
-//   );
-// }
 function fetchArchiveDatesSingle() {
   jQuery.getJSON(
     '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/99',
@@ -549,34 +452,6 @@ $(document).on('ready', function () {
       $('.companies-list__item').removeClass('gray-bg');
     }
   );
-  // $('a#headerpush').on('click', function (event) {
-  //   if (this.hash !== '') {
-  //     event.preventDefault();
-  //
-  //     var hash = this.hash;
-  //
-  //     $('html, body').animate(
-  //       {
-  //         scrollTop: $(hash).offset().top,
-  //       },
-  //       800,
-  //       function () {
-  //         window.location.hash = hash;
-  //       }
-  //     );
-  //   }
-  // });
-
-  // $('input').focusin(function () {
-  //   input = $(this);
-  //   input.data('place-holder-text', input.attr('placeholder'));
-  //   input.attr('placeholder', '');
-  // });
-  //
-  // $('input').focusout(function () {
-  //   input = $(this);
-  //   input.attr('placeholder', input.data('place-holder-text'));
-  // });
 
   $('#youtube-lightbox .fa').click(function () {
     $('#youtube-lightbox').addClass('hidden');
@@ -726,7 +601,7 @@ $(document).on('ready', function () {
   $(document).on('gform_confirmation_loaded', function (event, formId) {
     let $target = $('#gform_confirmation_wrapper_' + formId);
     if ($target.length) {
-      $('html, body').animate({ scrollTop: $target.offset().top - 50 }, 500);
+      $('html, body').animate({ scrollTop: $target.offset().top - 150 }, 500);
       return false;
     }
   });

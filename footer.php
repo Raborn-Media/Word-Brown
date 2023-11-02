@@ -10,11 +10,13 @@
         <div class="grid-x">
             <div class="cell large-2">
                 <div class="footer__logo">
-                    <?php if ( $footer_logo = get_field( 'footer_logo', 'options' ) ) :
-                        echo wp_get_attachment_image( $footer_logo['id'], 'medium' );
-                    else :
-                        show_custom_logo();
-                    endif; ?>
+                    <a href="<?php echo get_home_url(); ?>">
+                        <?php if ( $footer_logo = get_field( 'footer_logo', 'options' ) ) :
+                            echo wp_get_attachment_image( $footer_logo['id'], 'medium' );
+                        else :
+                            show_custom_logo();
+                        endif; ?>
+                    </a>
                 </div>
             </div>
             <div class="cell large-2">
@@ -33,7 +35,8 @@
                     <?php _e( 'the word and brown companies' ); ?>
                 </h6>
                 <?php if ( $address = get_field( 'address', 'options' ) ) : ?>
-                    <a class="address" href="https://www.google.com/maps/place/701+S+Parker+St,+Orange,+CA+92868/@33.77665,-117.8607707,17z/data=!3m1!4b1!4m5!3m4!1s0x80dcd9c16c7b9fa5:0xce878957cb3e53ae!8m2!3d33.77665!4d-117.858582">
+                    <a class="address"
+                       href="https://www.google.com/maps/place/701+S+Parker+St,+Orange,+CA+92868/@33.77665,-117.8607707,17z/data=!3m1!4b1!4m5!3m4!1s0x80dcd9c16c7b9fa5:0xce878957cb3e53ae!8m2!3d33.77665!4d-117.858582">
                         <?php echo $address; ?>
                     </a>
                 <?php endif; ?>

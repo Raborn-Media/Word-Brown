@@ -1,3 +1,15 @@
 .parallax-banner-section {
   height: 500px;
+
+  .jarallax-img {
+    object-position: center top !important;
+    margin-top: 150px !important;
+  }
+
+  @include breakpoint(small down) {
+    .jarallax-img {
+      object-position: 30% top !important;
+      margin-top: 170px !important;
+    }
+  }
 }

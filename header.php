@@ -46,8 +46,10 @@
                     ?>
                     <div class="logo text-center medium-text-left">
                         <h1>
+                            <a href="<?php echo get_home_url();?>" class="custom-logo-link" rel="home" title="%2$s" itemscope>
                             <?php echo wp_get_attachment_image($dark_logo['id'], 'large'); ?><span
                                 class="show-for-sr"><?php echo get_bloginfo( 'name' ); ?></span>
+                            </a>
                         </h1>
                     </div>
                 <?php endif; ?>

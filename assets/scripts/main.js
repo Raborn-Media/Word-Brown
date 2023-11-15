@@ -64,7 +64,6 @@ function resizeVideo() {
 
 window.filters = {
   news: 'all',
-  social: 'all',
   videos: 'all',
 };
 
@@ -74,36 +73,50 @@ function fetchNews() {
     function (response) {
       var list = jQuery('#blog-list');
       // var listArchive = jQuery('#blog-list-archive');
-
       list.empty();
       if (response.results.length) {
         for (var i = 0; i < response.results.length; i++) {
           var result = response.results[i];
+          var imageElement = '';
+          if (result.thumbnail) {
+            imageElement = '<img src="' + result.thumbnail + '" alt="Image">';
+          }
           list.append(
             '<li class="lazy-load feed-post">' +
               '<div class="post-image">' +
-              '<a target="blanck" href="' +
+              '<a target="blank" href="' +
               result.href +
               '">' +
-              '<img src="' +
-              result.thumbnail +
-              '" alt="Image">' +
+              imageElement + // Insert the image element if thumbnail is not empty
               '</a>' +
               '</div>' +
               '<div class="post-content">' +
-              '<a target="blanck" href="' +
+              '<a target="blank" href="' +
               result.href +
               '">' +
               '<h3>' +
               result.title +
               '</h3>' +
               '</a>' +
+              '<div class="post-info">' +
               '<div class="post-date">' +
               result.date +
+              '</div>' +
+              '<div class="post-resource">' +
+              result.source +
+              '</div>' +
+              '</div>' +
+              '<div class="list-filter-date">' +
+              result.list_filter_date +
               '</div>' +
               '<p>' +
               result.description +
               '</p>' +
+              '<a target="blank" class="read-more" href="' +
+              result.href +
+              '">' +
+              'Read more' +
+              '</a>' +
               '</div>' +
               '</li>'
           );
@@ -150,27 +163,35 @@ function fetchArchiveDatesSingle() {
           for (var i = 0; i < response.results.length; i++) {
             var result = response.results[i];
             if (result.list_filter_date === clickedDate) {
+              var imageElement = '';
+              if (result.thumbnail) {
+                imageElement =
+                  '<img src="' + result.thumbnail + '" alt="Image">';
+              }
               list.append(
                 '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
-                  '<a target="_blank" href="' +
+                  '<a target="blank" href="' +
                   result.href +
                   '">' +
-                  '<img src="' +
-                  result.thumbnail +
-                  '" alt="Image">' +
+                  imageElement + // Insert the image element if thumbnail is not empty
                   '</a>' +
                   '</div>' +
                   '<div class="post-content">' +
-                  '<a target="_blank" href="' +
+                  '<a target="blank" href="' +
                   result.href +
                   '">' +
                   '<h3>' +
                   result.title +
                   '</h3>' +
                   '</a>' +
+                  '<div class="post-info">' +
                   '<div class="post-date">' +
                   result.date +
+                  '</div>' +
+                  '<div class="post-resource">' +
+                  result.source +
+                  '</div>' +
                   '</div>' +
                   '<div class="list-filter-date">' +
                   result.list_filter_date +
@@ -178,6 +199,11 @@ function fetchArchiveDatesSingle() {
                   '<p>' +
                   result.description +
                   '</p>' +
+                  '<a target="blank" class="read-more" href="' +
+                  result.href +
+                  '">' +
+                  'Read more' +
+                  '</a>' +
                   '</div>' +
                   '</li>'
               );
@@ -193,27 +219,35 @@ function fetchArchiveDatesSingle() {
           for (var i = 0; i < response.results.length; i++) {
             var result = response.results[i];
             if (result.list_filter_date === selectedDate) {
+              var imageElement = '';
+              if (result.thumbnail) {
+                imageElement =
+                  '<img src="' + result.thumbnail + '" alt="Image">';
+              }
               list.append(
                 '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
-                  '<a target="_blank" href="' +
+                  '<a target="blank" href="' +
                   result.href +
                   '">' +
-                  '<img src="' +
-                  result.thumbnail +
-                  '" alt="Image">' +
+                  imageElement + // Insert the image element if thumbnail is not empty
                   '</a>' +
                   '</div>' +
                   '<div class="post-content">' +
-                  '<a target="_blank" href="' +
+                  '<a target="blank" href="' +
                   result.href +
                   '">' +
                   '<h3>' +
                   result.title +
                   '</h3>' +
                   '</a>' +
+                  '<div class="post-info">' +
                   '<div class="post-date">' +
                   result.date +
+                  '</div>' +
+                  '<div class="post-resource">' +
+                  result.source +
+                  '</div>' +
                   '</div>' +
                   '<div class="list-filter-date">' +
                   result.list_filter_date +
@@ -221,6 +255,11 @@ function fetchArchiveDatesSingle() {
                   '<p>' +
                   result.description +
                   '</p>' +
+                  '<a target="blank" class="read-more" href="' +
+                  result.href +
+                  '">' +
+                  'Read more' +
+                  '</a>' +
                   '</div>' +
                   '</li>'
               );
@@ -268,27 +307,35 @@ function fetchArchiveDates() {
           for (var i = 0; i < response.results.length; i++) {
             var result = response.results[i];
             if (result.list_filter_date === clickedDate) {
+              var imageElement = '';
+              if (result.thumbnail) {
+                imageElement =
+                  '<img src="' + result.thumbnail + '" alt="Image">';
+              }
               list.append(
                 '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
-                  '<a target="_blank" href="' +
+                  '<a target="blank" href="' +
                   result.href +
                   '">' +
-                  '<img src="' +
-                  result.thumbnail +
-                  '" alt="Image">' +
+                  imageElement + // Insert the image element if thumbnail is not empty
                   '</a>' +
                   '</div>' +
                   '<div class="post-content">' +
-                  '<a target="_blank" href="' +
+                  '<a target="blank" href="' +
                   result.href +
                   '">' +
                   '<h3>' +
                   result.title +
                   '</h3>' +
                   '</a>' +
+                  '<div class="post-info">' +
                   '<div class="post-date">' +
                   result.date +
+                  '</div>' +
+                  '<div class="post-resource">' +
+                  result.source +
+                  '</div>' +
                   '</div>' +
                   '<div class="list-filter-date">' +
                   result.list_filter_date +
@@ -296,6 +343,11 @@ function fetchArchiveDates() {
                   '<p>' +
                   result.description +
                   '</p>' +
+                  '<a target="blank" class="read-more" href="' +
+                  result.href +
+                  '">' +
+                  'Read more' +
+                  '</a>' +
                   '</div>' +
                   '</li>'
               );
@@ -311,27 +363,35 @@ function fetchArchiveDates() {
           for (var i = 0; i < response.results.length; i++) {
             var result = response.results[i];
             if (result.list_filter_date === selectedDate) {
+              var imageElement = '';
+              if (result.thumbnail) {
+                imageElement =
+                  '<img src="' + result.thumbnail + '" alt="Image">';
+              }
               list.append(
                 '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
-                  '<a target="_blank" href="' +
+                  '<a target="blank" href="' +
                   result.href +
                   '">' +
-                  '<img src="' +
-                  result.thumbnail +
-                  '" alt="Image">' +
+                  imageElement + // Insert the image element if thumbnail is not empty
                   '</a>' +
                   '</div>' +
                   '<div class="post-content">' +
-                  '<a target="_blank" href="' +
+                  '<a target="blank" href="' +
                   result.href +
                   '">' +
                   '<h3>' +
                   result.title +
                   '</h3>' +
                   '</a>' +
+                  '<div class="post-info">' +
                   '<div class="post-date">' +
                   result.date +
+                  '</div>' +
+                  '<div class="post-resource">' +
+                  result.source +
+                  '</div>' +
                   '</div>' +
                   '<div class="list-filter-date">' +
                   result.list_filter_date +
@@ -339,6 +399,11 @@ function fetchArchiveDates() {
                   '<p>' +
                   result.description +
                   '</p>' +
+                  '<a target="blank" class="read-more" href="' +
+                  result.href +
+                  '">' +
+                  'Read more' +
+                  '</a>' +
                   '</div>' +
                   '</li>'
               );
@@ -380,7 +445,7 @@ function fetchVideos() {
                   result.title +
                   '</h4>' +
                   '<p class="post-date">' +
-                  result.timestamp +
+                  result.date +
                   '</p>' +
                   '<p>' +
                   result.author +

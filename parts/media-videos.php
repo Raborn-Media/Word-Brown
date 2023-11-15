@@ -89,7 +89,7 @@
                                 result.title +
                                 '</h4>' +
                                 '<p class="post-date">' +
-                                result.timestamp +
+                                result.date +
                                 '</p>' +
                                 '<p>' +
                                 result.author +

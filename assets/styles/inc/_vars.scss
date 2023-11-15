@@ -35,8 +35,11 @@ $fa: 'Font Awesome 6 Free';
 }
 
 @font-face {
-  font-family: 'avenir'; /* Назва, яку ви хочете дати вашому шрифту */
-  src: url('../../fonts/Avenir.ttc') format('truetype-collection');
+  font-family: 'avenir'; /* The name you want to give your font */
+  //src: url('../../fonts/Avenir.ttc') format('truetype-collection');
+  src: url('../../fonts/Avenir.woff2') format('woff2'),
+    url('../../fonts/avenir.woff') format('woff');
+
   font-weight: normal;
   font-style: normal;
 }

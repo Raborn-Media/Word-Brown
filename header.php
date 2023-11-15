@@ -53,6 +53,13 @@
                         </h1>
                     </div>
                 <?php endif; ?>
+
+                <div class="scroll-logo text-center medium-text-left">
+                    <h1>
+                        <?php show_custom_logo(); ?><span
+                            class="show-for-sr"><?php echo get_bloginfo( 'name' ); ?></span>
+                    </h1>
+                </div>
             </div>
             <div class="medium-8 small-12 cell">
                 <?php if ( has_nav_menu( 'header-menu' ) ) : ?>

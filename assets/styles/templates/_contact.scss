@@ -168,6 +168,7 @@
     }
 
     .company-contact-info {
+      width: 100%;
       max-width: 358px;
       margin-bottom: 50px;
     }
@@ -266,7 +267,7 @@
 
         &::placeholder {
           font-size: 20px;
-          color: #000;
+          color: #a9a9a9;
           line-height: 32px;
           font-weight: 300;
         }

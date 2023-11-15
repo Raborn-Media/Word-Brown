@@ -39,7 +39,8 @@
 
       .value-hover-text {
         opacity: 0;
-        color: $gold;
+        color: #707070;
+        //color: $gold;
         transition: all 1s ease-out;
         padding: 0 5px;
       }
@@ -50,7 +51,7 @@
         }
 
         .value-title {
-          color: $gold;
+          color: #707070;
         }
 
         .value-hover-text {

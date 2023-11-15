@@ -33,6 +33,7 @@
   .benefits-text,
   .culture-text {
     max-width: 49%;
+    padding-bottom: 60px;
 
     article {
       display: inline-block;
@@ -52,7 +53,7 @@
 
   .culture-text {
     position: relative;
-    padding-top: 60px;
+    padding: 60px 0;
 
     &:before {
       content: '';
@@ -119,11 +120,12 @@
       max-width: 100%;
     }
   }
-  @include breakpoint(medium down) {
+  @include breakpoint(1040 down) {
     .gallery {
       flex-direction: column;
       //height: 555px;
       overflow: auto;
+
       &::-webkit-scrollbar {
         width: rem-calc(5px);
         height: rem-calc(15px);
@@ -149,6 +151,7 @@
   @include breakpoint(1920px) {
     .gallery {
       max-width: 940px;
+
       &__image {
         max-width: 235px;
       }

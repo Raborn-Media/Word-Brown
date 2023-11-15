@@ -22,6 +22,7 @@
   li {
     position: relative;
     padding-bottom: 15px;
+    text-transform: uppercase;
 
     &:before {
       content: '';
@@ -84,7 +85,7 @@
   display: flex;
   flex-direction: row;
   padding-bottom: 47px;
-  margin-bottom: 27px;
+  margin-bottom: 40px;
   border-bottom: 1px solid #c0c0c0;
 
   .post-image {
@@ -112,9 +113,24 @@
       color: $corporate-black;
     }
 
-    .post-date {
+    .post-info {
       margin-top: 10px;
       margin-bottom: 15px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      column-gap: 30px;
+
+      .post-resource {
+        font-style: italic;
+      }
+      @include breakpoint(small down) {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 15px;
+      }
     }
 
     p {
@@ -124,6 +140,18 @@
 
     .list-filter-date {
       display: none;
+    }
+
+    .read-more {
+      color: $gold;
+      text-transform: capitalize;
+      font-weight: 600;
+      &:after {
+        content: '\f054';
+        font-family: $fa;
+        font-size: 14px;
+        margin-left: 3px;
+      }
     }
   }
 }
@@ -185,12 +213,17 @@
     }
   }
 }
+
 .date-filter-wrap {
-  padding: 0 15px;
+  padding: 0 15px 0 55px;
+  @include breakpoint(medium down) {
+    padding: 0 25px;
+  }
 }
 
 #archiveSelect {
   border-color: $gold;
+
   option {
     &:hover {
       background-color: $gold;
@@ -353,7 +386,7 @@ body.fixed {
   padding-bottom: 68px;
 
   .grid-container {
-    max-width: 1160px;
+    max-width: 1315px;
   }
 
   .gform_heading {
@@ -415,7 +448,7 @@ body.fixed {
       border-bottom: 2px solid $gold;
       text-align: center;
 
-      //font-size: 26px !important;
+      font-size: 26px !important;
       font-style: italic;
       color: #606060;
       font-family: $sub-font;
@@ -470,6 +503,7 @@ body.fixed {
     }
   }
 }
+
 @include breakpoint(medium down) {
   #news-press-filter,
   #video-filter {
@@ -487,9 +521,11 @@ body.fixed {
     }
   }
 }
+
 @include breakpoint(small down) {
   .feed-post {
     flex-direction: column;
+
     .post-content,
     .post-image {
       width: 100%;

@@ -22,6 +22,13 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#" filter-news-press="jrreport">
+                            <!--                                <img src="-->
+                            <? //= get_template_directory_uri(); ?><!--/assets/images/choice-admin.png"">-->
+                            <?php _e('John & Rusty report') ?>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#" filter-news-press="calchoice">
                             <!--                                <img src="-->
                             <? //= get_template_directory_uri(); ?><!--/assets/images/choice-admin.png"">-->
@@ -86,144 +93,42 @@
                     for (var i = 0; i < response.results.length; i++) {
                         var result = response.results[i];
 
-                        setTimeout(function (result) {
+                        setTimeout(function(result) {
+                            var imageElement = '';
+                            if (result.thumbnail) {
+                                imageElement = '<img src="' + result.thumbnail + '" alt="Image">';
+                            }
+
                             list.append(
                                 '<li class="lazy-load feed-post">' +
                                 '<div class="post-image">' +
-                                '<a target="blanck" href="' +
-                                result.href +
-                                '">' +
-                                '<img src="' +
-                                result.thumbnail +
-                                '" alt="Image">' +
+                                '<a target="blank" href="' + result.href + '">' +
+                                imageElement + // Insert the image element if thumbnail is not empty
                                 '</a>' +
                                 '</div>' +
                                 '<div class="post-content">' +
-                                '<a target="blanck" href="' +
-                                result.href +
-                                '">' +
-                                '<h3>' +
-                                result.title +
-                                '</h3>' +
+                                '<a target="blank" href="' + result.href + '">' +
+                                '<h3>' + result.title + '</h3>' +
                                 '</a>' +
-                                '<div class="post-date">' +
-                                result.date +
+                                '<div class="post-info">' +
+                                '<div class="post-date">' + result.date + '</div>' +
+                                '<div class="post-resource">' + result.source + '</div>' +
                                 '</div>' +
-                                '<div class="list-filter-date">' +
-                                result.list_filter_date +
-                                '</div>' +
-                                '<p>' +
-                                result.description +
-                                '</p>' +
+                                '<div class="list-filter-date">' + result.list_filter_date + '</div>' +
+                                '<p>' + result.description + '</p>' +
+                                '<a target="blank" class="read-more" href="' + result.href + '">' +
+                                'Read more' +
+                                '</a>' +
                                 '</div>' +
                                 '</li>'
                             );
                         }, i * 100, result);
 
+
                     }
                 }
             });
         }
-
-        // function fetchArchiveDatesSingle() {
-        //     // jQuery.getJSON('/wp-json/media-feeds/v1/news/' + window.filter + '/' + (window.page * 5) + '/99', function (response) {
-        //     //     if (!response.total || response.total <= (window.page * 5) + 5) {
-        //     //         jQuery('#view-all-posts').fadeOut();
-        //     //     }
-        //     jQuery.getJSON(
-        //         '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/5',
-        //         function (response) {
-        //             var listArchive = jQuery('#blog-list-archive__single');
-        //             var addedDates = [];
-        //
-        //             if (response.results.length) {
-        //                 for (var i = 0; i < response.results.length; i++) {
-        //                     var result = response.results[i];
-        //                     if (addedDates.indexOf(result.archive_date) === -1) {
-        //                         listArchive.append(
-        //                             '<li class="archive-item">' +
-        //                             '<div class="archive-date" data-date="' +
-        //                             result.archive_date +
-        //                             '">' +
-        //                             result.archive_date +
-        //                             '</div>' +
-        //                             '</li>'
-        //                         );
-        //                         var selectElement = jQuery('#archiveSelect');
-        //                         // if (addedDates.indexOf(result.archive_date) === -1) {
-        //                         var option = new Option(result.archive_date, result.archive_date);
-        //                         selectElement.append(option);
-        //
-        //                         // Add the archive_date to the addedDates array
-        //                         addedDates.push(result.archive_date);
-        //                     }
-        //                 }
-        //
-        //                 let listItemContent =
-        //                     '<li class="lazy-load feed-post">' +
-        //                     '<div class="post-image">' +
-        //                     '<a target="_blank" href="' +
-        //                     result.href +
-        //                     '">' +
-        //                     '<img src="' +
-        //                     result.thumbnail +
-        //                     '" alt="Image">' +
-        //                     '</a>' +
-        //                     '</div>' +
-        //                     '<div class="post-content">' +
-        //                     '<a target="_blank" href="' +
-        //                     result.href +
-        //                     '">' +
-        //                     '<h3>' +
-        //                     result.title +
-        //                     '</h3>' +
-        //                     '</a>' +
-        //                     '<div class="post-date">' +
-        //                     result.date +
-        //                     '</div>' +
-        //                     '<div class="list-filter-date">' +
-        //                     result.list_filter_date +
-        //                     '</div>' +
-        //                     '<p>' +
-        //                     result.description +
-        //                     '</p>' +
-        //                     '</div>' +
-        //                     '</li>';
-        //
-        //                 listArchive.find('.archive-date').click(function () {
-        //                     var clickedDate = jQuery(this).data('date');
-        //                     // console.log(clickedDate);
-        //
-        //                     var list = jQuery('#blog-list__single');
-        //                     list.empty();
-        //
-        //                     // Перевірте кожен пост
-        //                     for (var i = 0; i < response.results.length; i++) {
-        //                         var result = response.results[i];
-        //                         if (result.list_filter_date === clickedDate) {
-        //                             list.append(listItemContent);
-        //                         }
-        //                     }
-        //                 });
-        //                 jQuery('#archiveSelect__single').change(function () {
-        //                     var selectedDate = jQuery(this).val();
-        //
-        //                     // Clear the list before adding new posts
-        //                     var list = jQuery('#blog-list__single');
-        //                     list.empty();
-        //
-        //                     // Check each post
-        //                     for (var i = 0; i < response.results.length; i++) {
-        //                         var result = response.results[i];
-        //                         if (result.list_filter_date === selectedDate) {
-        //                             list.append(listItemContent);
-        //                         }
-        //                     }
-        //                 });
-        //             }
-        //         }
-        //     );
-        // }
 
         jQuery(document).ready(function ($) {
             $('[filter-news-press]').click(function(e) {

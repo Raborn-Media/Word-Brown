@@ -158,7 +158,8 @@
         max-width: 35vw;
         //right: -50%;
         right: 0;
-        padding: 20px;
+        padding: 40px;
+        font-family: $sub-font;
 
         p:first-child {
           &:before {
@@ -166,15 +167,16 @@
             width: 61px;
             height: 46px;
             display: block;
-            margin-top: -35px;
+            margin-top: -55px;
             background-image: url('../../images/quotationMarks.png');
-            background-size: contain;
+            background-size: 100% 100%;
             margin-bottom: 15px;
           }
         }
 
         small {
           font-weight: 400;
+          text-align: right;
         }
 
         @include breakpoint(medium down) {

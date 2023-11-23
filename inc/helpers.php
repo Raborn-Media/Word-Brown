@@ -59,9 +59,9 @@ function foundation_pagination($query = '')
 }
 
 /**
- * Enqueue external fonts with font-display: swap; property
+ * Enqueue external fonts2 with font-display: swap; property
  *
- * @param string $url fonts link GoogleFonts/Typekit
+ * @param string $url fonts2 link GoogleFonts/Typekit
  * @param bool $echo echo or return the styles
  *
  * @return string|void

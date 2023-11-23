@@ -94,8 +94,9 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
         background-color: transparent;
         border: none;
         padding: 0;
-        margin: 20px 0;
-        margin-bottom: 20px !important;
+        //margin: 20px 0;
+        margin: 0;
+        //margin-bottom: 20px !important;
       }
 
       &.gfield_contains_required {
@@ -151,6 +152,7 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
 
     .gfield_required {
       color: $alert-color;
+      display: none !important;
     }
 
     .gform_footer {
@@ -772,4 +774,7 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   position: absolute !important;
   left: -9000px;
   display: none !important;
+}
+.gform_validation_errors {
+  text-align: center;
 }

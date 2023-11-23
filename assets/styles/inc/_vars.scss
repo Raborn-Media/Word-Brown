@@ -12,14 +12,12 @@ $corporate-black: #222;
 
 $footer-text-color: #858585;
 //
-$text-color: $corporate-black;
+$text-color: #383838;
 
 //$primary-color: $blue;
 //$sub-color: $primary-color;
 
 //$font: 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
-$avenir: 'avenir', serif;
-$font: $avenir;
 $sub-font: 'minion-pro', serif;
 $fa: 'Font Awesome 6 Free';
 //$fab: 'Font Awesome 6 Brands';
@@ -29,17 +27,111 @@ $fa: 'Font Awesome 6 Free';
 
 // Project mixins
 
-// Custom fonts
+// Custom fonts2
 :root {
   --content-size: 120rem;
 }
 
-@font-face {
-  font-family: 'avenir'; /* The name you want to give your font */
-  //src: url('../../fonts/Avenir.ttc') format('truetype-collection');
-  src: url('../../fonts/Avenir.woff2') format('woff2'),
-    url('../../fonts/avenir.woff') format('woff');
+$avenir-35-light: 'Avenir LT W01_35 Light1475496', serif;
+$avenir-35-light-i: 'Avenir LT W01_35 Light_1475502', serif;
 
-  font-weight: normal;
-  font-style: normal;
+$avenir-45-book: 'Avenir LT W01_45 Book1475508', serif;
+$avenir-45-book-i: 'Avenir LT W01_45 Book O1475514', serif;
+
+$avenir-55-roman: 'Avenir LT W01_55 Roman1475520', serif;
+$avenir-55-roman-i: 'Avenir LT W01_55 Obliqu1475526', serif;
+
+$avenir-65-medium: 'Avenir LT W01_65 Medium1475532', serif;
+$avenir-65-medium-i: 'Avenir LT W01_65 Medium1475538', serif;
+
+$avenir-85-heavy: 'Avenir LT W01_85 Heavy1475544', serif;
+$avenir-85-heavy-i: 'Avenir LT W01_85 Heavy_1475550', serif;
+
+$avenir-95-black: 'Avenir LT W01_95 Black1475556', serif;
+$avenir-95-black-i: 'Avenir LT W01_95 Black_1475562', serif;
+
+$font: $avenir-45-book;
+
+@font-face {
+  font-family: 'Avenir LT W01_45 Book O1475514';
+  src: url('../../fonts/476612d9-282d-4f76-95cd-b4dd31e7ed21.woff2')
+      format('woff2'),
+    url('../../fonts/f1ebae2b-5296-4244-8771-5f40e60a564a.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_55 Roman1475520';
+  src: url('../../fonts/b290e775-e0f9-4980-914b-a4c32a5e3e36.woff2')
+      format('woff2'),
+    url('../../fonts/4b978f72-bb48-46c3-909a-2a8cd2f8819c.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_65 Medium1475532';
+  src: url('../../fonts/17b90ef5-b63f-457b-a981-503bb7afe3c0.woff2')
+      format('woff2'),
+    url('../../fonts/c9aeeabd-dd65-491d-b4be-3e0db9ae47a0.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_95 Black1475556';
+  src: url('../../fonts/c78eb7af-a1c8-4892-974b-52379646fef4.woff2')
+      format('woff2'),
+    url('../../fonts/75b36c58-2a02-4057-a537-09af0832ae46.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_35 Light1475496';
+  src: url('../../fonts/0078f486-8e52-42c0-ad81-3c8d3d43f48e.woff2')
+      format('woff2'),
+    url('../../fonts/908c4810-64db-4b46-bb8e-823eb41f68c0.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_35 Light_1475502';
+  src: url('../../fonts/a59168c1-917d-4de9-a244-0316c057c357.woff2')
+      format('woff2'),
+    url('../../fonts/6dc0e7d8-9284-44e1-8f05-984a41daa3a4.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_45 Book1475508';
+  src: url('../../fonts/065a6b14-b2cc-446e-9428-271c570df0d9.woff2')
+      format('woff2'),
+    url('../../fonts/65d75eb0-2601-4da5-a9a4-9ee67a470a59.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_55 Obliqu1475526';
+  src: url('../../fonts/1a7173fa-062b-49ad-9915-bc57d3bfc1f5.woff2')
+      format('woff2'),
+    url('../../fonts/cdda031e-26e9-4269-83d1-5a218caa10db.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_65 Medium1475538';
+  src: url('../../fonts/deb5e718-7abb-4df3-9365-edfa95317090.woff2')
+      format('woff2'),
+    url('../../fonts/04801919-17ee-4c6b-8b17-eb1965cb3ed6.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_85 Heavy1475544';
+  src: url('../../fonts/d513e15e-8f35-4129-ad05-481815e52625.woff2')
+      format('woff2'),
+    url('../../fonts/61bd362e-7162-46bd-b67e-28f366c4afbe.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_85 Heavy_1475550';
+  src: url('../../fonts/3c210c80-960f-4684-850b-25390b4d08af.woff2')
+      format('woff2'),
+    url('../../fonts/cb5c71ad-e582-4d00-929c-67fbfaeb1c27.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir LT W01_95 Black_1475562';
+  src: url('../../fonts/a2477e08-09d9-4d4b-97a9-23a1e22cb44c.woff2')
+      format('woff2'),
+    url('../../fonts/19d12bba-92b1-43ad-9bab-cd36a4195c2a.woff') format('woff');
 }

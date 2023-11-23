@@ -31,7 +31,7 @@ $section_gallery = get_sub_field( 'section_gallery' );
                 <div class="gallery">
                     <?php foreach( $section_gallery as $image ): ?>
                         <div class="gallery__image">
-                            <?php echo wp_get_attachment_image( $image['id'], 'large' ); ?>
+                            <?php echo wp_get_attachment_image( $image['id'], 'large', false, ['data-no-lazy' => '1'] ); ?>
                         </div>
                     <?php endforeach; ?>
                 </div>

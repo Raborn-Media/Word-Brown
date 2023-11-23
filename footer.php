@@ -103,12 +103,12 @@
     <div class="grid-container">
         <div class="footer__copy">
             <div class="grid-x">
-                <div class="cell large-7">
+                <div class="cell large-8">
                     <?php if ( $copyright = get_field( 'copyright', 'options' ) ) : ?>
                         <?php echo $copyright; ?>
                     <?php endif; ?>
                 </div>
-                <div class="cell large-5">
+                <div class="cell large-4">
                     <div class="footer-links">
                         <?php if ( have_rows( 'footer_links', 'options' ) ) : ?>
                             <?php while ( have_rows( 'footer_links', 'options' ) ) : the_row();

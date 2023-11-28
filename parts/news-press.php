@@ -96,16 +96,21 @@
                         setTimeout(function(result) {
                             var imageElement = '';
                             if (result.thumbnail) {
-                                imageElement = '<img src="' + result.thumbnail + '" alt="Image">';
+                                imageElement =
+                                    '<div class="post-image">' +
+                                    '<a target="blank" href="' +
+                                    result.href +
+                                    '">' +
+                                    '<img src="' +
+                                    result.thumbnail +
+                                    '" alt="Image">' +
+                                    '</a>' +
+                                    '</div>';
                             }
 
                             list.append(
                                 '<li class="lazy-load feed-post">' +
-                                '<div class="post-image">' +
-                                '<a target="blank" href="' + result.href + '">' +
-                                imageElement + // Insert the image element if thumbnail is not empty
-                                '</a>' +
-                                '</div>' +
+                                imageElement +
                                 '<div class="post-content">' +
                                 '<a target="blank" href="' + result.href + '">' +
                                 '<h3>' + result.title + '</h3>' +

@@ -169,17 +169,19 @@ function fetchArchiveDatesSingle() {
               var imageElement = '';
               if (result.thumbnail) {
                 imageElement =
-                  '<img src="' + result.thumbnail + '" alt="Image">';
-              }
-              list.append(
-                '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
                   '<a target="blank" href="' +
                   result.href +
                   '">' +
-                  imageElement + // Insert the image element if thumbnail is not empty
+                  '<img src="' +
+                  result.thumbnail +
+                  '" alt="Image">' +
                   '</a>' +
-                  '</div>' +
+                  '</div>';
+              }
+              list.append(
+                '<li class="lazy-load feed-post">' +
+                  imageElement +
                   '<div class="post-content">' +
                   '<a target="blank" href="' +
                   result.href +
@@ -225,17 +227,19 @@ function fetchArchiveDatesSingle() {
               var imageElement = '';
               if (result.thumbnail) {
                 imageElement =
-                  '<img src="' + result.thumbnail + '" alt="Image">';
-              }
-              list.append(
-                '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
                   '<a target="blank" href="' +
                   result.href +
                   '">' +
-                  imageElement + // Insert the image element if thumbnail is not empty
+                  '<img src="' +
+                  result.thumbnail +
+                  '" alt="Image">' +
                   '</a>' +
-                  '</div>' +
+                  '</div>';
+              }
+              list.append(
+                '<li class="lazy-load feed-post">' +
+                  imageElement +
                   '<div class="post-content">' +
                   '<a target="blank" href="' +
                   result.href +
@@ -313,17 +317,19 @@ function fetchArchiveDates() {
               var imageElement = '';
               if (result.thumbnail) {
                 imageElement =
-                  '<img src="' + result.thumbnail + '" alt="Image">';
-              }
-              list.append(
-                '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
                   '<a target="blank" href="' +
                   result.href +
                   '">' +
-                  imageElement + // Insert the image element if thumbnail is not empty
+                  '<img src="' +
+                  result.thumbnail +
+                  '" alt="Image">' +
                   '</a>' +
-                  '</div>' +
+                  '</div>';
+              }
+              list.append(
+                '<li class="lazy-load feed-post">' +
+                  imageElement +
                   '<div class="post-content">' +
                   '<a target="blank" href="' +
                   result.href +
@@ -369,17 +375,19 @@ function fetchArchiveDates() {
               var imageElement = '';
               if (result.thumbnail) {
                 imageElement =
-                  '<img src="' + result.thumbnail + '" alt="Image">';
-              }
-              list.append(
-                '<li class="lazy-load feed-post">' +
                   '<div class="post-image">' +
                   '<a target="blank" href="' +
                   result.href +
                   '">' +
-                  imageElement + // Insert the image element if thumbnail is not empty
+                  '<img src="' +
+                  result.thumbnail +
+                  '" alt="Image">' +
                   '</a>' +
-                  '</div>' +
+                  '</div>';
+              }
+              list.append(
+                '<li class="lazy-load feed-post">' +
+                  imageElement +
                   '<div class="post-content">' +
                   '<a target="blank" href="' +
                   result.href +

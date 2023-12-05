@@ -44,6 +44,9 @@
           }
         }
       }
+      .phone {
+        margin-bottom: 0;
+      }
     }
 
     .button {
@@ -79,6 +82,29 @@
         width: 100vw;
       }
       min-height: 350px;
+    }
+  }
+  @include breakpoint(small down) {
+    padding-bottom: 0 !important;
+    .content-col {
+      article {
+        p {
+          a {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 400px) {
+    .content-col {
+      article {
+        p {
+          a {
+            font-size: 4vw;
+          }
+        }
+      }
     }
   }
 }

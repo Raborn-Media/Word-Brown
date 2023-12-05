@@ -128,28 +128,39 @@ function fetchNews() {
     }
   );
 }
-
+function listElem(elem) {
+  let list =
+    '<li class="archive-item">' +
+    '<div class="archive-date" data-date="' +
+    elem +
+    '">' +
+    elem +
+    '</div>' +
+    '</li>';
+  return list;
+}
 function fetchArchiveDatesSingle() {
   jQuery.getJSON(
     '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/99',
     function (response) {
       var listArchive = jQuery('#blog-list-archive__single');
       var addedDates = [];
+      let years = {};
 
       if (response.results.length) {
         for (var i = 0; i < response.results.length; i++) {
           var result = response.results[i];
+          if (years[result.archive_year]) {
+            if (!years[result.archive_year].includes(result.archive_date)) {
+              years[result.archive_year].push(result.archive_date);
+            }
+          } else {
+            years[result.archive_year] = [];
+            years[result.archive_year].push(result.archive_date);
+          }
+          // console.log(years);
           if (addedDates.indexOf(result.archive_date) === -1) {
-            listArchive.append(
-              '<li class="archive-item">' +
-                '<div class="archive-date" data-date="' +
-                result.archive_date +
-                '">' +
-                result.archive_date +
-                '</div>' +
-                '</li>'
-            );
-            var selectElement = jQuery('#archiveSelect');
+            var selectElement = jQuery('#archiveSelect__single');
             var option = new Option(result.archive_date, result.archive_date);
             selectElement.append(option);
 
@@ -157,6 +168,23 @@ function fetchArchiveDatesSingle() {
             addedDates.push(result.archive_date);
           }
         }
+        let list = '';
+
+        jQuery.each(years, function (index, element) {
+          let listItems = '';
+          jQuery.each(element, function (i, e) {
+            listItems += listElem(e);
+          });
+          list +=
+            '<li class="archive-item">' +
+            '<div class="archive-year">' +
+            index +
+            '</div>' +
+            '<ul class="months">' +
+            listItems +
+            '</ul>';
+          listArchive.append(list);
+        });
 
         listArchive.find('.archive-date').click(function () {
           var clickedDate = jQuery(this).data('date');
@@ -277,26 +305,27 @@ function fetchArchiveDatesSingle() {
     }
   );
 }
+
 function fetchArchiveDates() {
   jQuery.getJSON(
     '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/99',
     function (response) {
       var listArchive = jQuery('#blog-list-archive');
       var addedDates = [];
+      let years = {};
 
       if (response.results.length) {
         for (var i = 0; i < response.results.length; i++) {
           var result = response.results[i];
+          if (years[result.archive_year]) {
+            if (!years[result.archive_year].includes(result.archive_date)) {
+              years[result.archive_year].push(result.archive_date);
+            }
+          } else {
+            years[result.archive_year] = [];
+            years[result.archive_year].push(result.archive_date);
+          }
           if (addedDates.indexOf(result.archive_date) === -1) {
-            listArchive.append(
-              '<li class="archive-item">' +
-                '<div class="archive-date" data-date="' +
-                result.archive_date +
-                '">' +
-                result.archive_date +
-                '</div>' +
-                '</li>'
-            );
             var selectElement = jQuery('#archiveSelect');
             var option = new Option(result.archive_date, result.archive_date);
             selectElement.append(option);
@@ -305,6 +334,23 @@ function fetchArchiveDates() {
             addedDates.push(result.archive_date);
           }
         }
+        let datesList = '';
+
+        jQuery.each(years, function (index, element) {
+          let listItems = '';
+          jQuery.each(element, function (i, e) {
+            listItems += listElem(e);
+          });
+          datesList +=
+            '<li class="archive-item">' +
+            '<div class="archive-year">' +
+            index +
+            '</div>' +
+            '<ul class="months">' +
+            listItems +
+            '</ul>';
+          listArchive.append(datesList);
+        });
 
         listArchive.find('.archive-date').click(function () {
           var clickedDate = jQuery(this).data('date');

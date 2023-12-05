@@ -15,13 +15,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    max-width: 1063px;
+    //max-width: 1063px;
+    max-width: 1200px;
     margin: 0 auto;
 
     &__item {
       text-align: center;
       width: 100%;
       max-width: 16.5%;
+      padding: 0 15px;
 
       img {
         height: 64px;
@@ -38,11 +40,14 @@
       }
 
       .value-hover-text {
-        opacity: 0;
+        //opacity: 0;
         color: #707070;
         //color: $gold;
         transition: all 1s ease-out;
         padding: 0 5px;
+        p {
+          font-size: 22px;
+        }
       }
 
       &:hover {

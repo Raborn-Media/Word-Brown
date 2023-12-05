@@ -184,6 +184,8 @@ header {
         //background: $primary-color; /* menu item background color */
         color: $white; /* menu item text color */
         line-height: 45px;
+        font-size: 22px;
+        text-align: center;
 
         &:focus {
           &,

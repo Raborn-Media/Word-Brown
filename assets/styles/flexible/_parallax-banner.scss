@@ -1,5 +1,6 @@
 .parallax-banner-section {
   height: 500px;
+  position: relative;
 
   .jarallax-img {
     object-position: center top !important;
@@ -7,9 +8,12 @@
   }
 
   @include breakpoint(small down) {
+    //height: 300px;
+
     .jarallax-img {
       object-position: 30% top !important;
-      margin-top: 170px !important;
+      margin-top: 230px !important;
+      height: 300px;
     }
   }
 }

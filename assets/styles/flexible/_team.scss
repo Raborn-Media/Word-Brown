@@ -8,6 +8,22 @@
 
   .item-imege {
     margin-bottom: 13px;
+    position: relative;
+    .profile {
+      position: absolute;
+      z-index: 5;
+      bottom: 10px;
+      right: 10px;
+      color: $white;
+      opacity: 0;
+      transition: all 0.5s ease-out;
+    }
+
+    &:hover {
+      .profile {
+        opacity: 1;
+      }
+    }
   }
 
   .member-name {
@@ -19,14 +35,17 @@
 
   .members-position {
     font-size: 12px;
-    line-height: 25px;
-    margin-bottom: 0;
+    line-height: 18px;
+    margin-bottom: 4px;
     font-weight: 900;
+    @media (min-width: 1024px) and (max-width: 1100px) {
+      font-size: 10px;
+    }
   }
 
   .members-company {
     font-size: 12px;
-    line-height: 25px;
+    line-height: 18px;
     margin-bottom: 0;
   }
 
@@ -77,8 +96,9 @@
     }
 
     .member-name {
-      font-size: 2rem;
+      font-size: 34px;
       font-family: $sub_font;
+      color: $white;
     }
 
     .members-position {
@@ -256,7 +276,7 @@
 }
 
 .five-in-row {
-  max-width: 920px;
+  //max-width: 920px;
   margin-left: auto;
   margin-right: auto;
   display: flex;

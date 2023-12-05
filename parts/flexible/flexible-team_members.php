@@ -21,6 +21,9 @@
                                 <div class="item-imege">
                                     <a href="#modal-<?php echo $post->ID; ?>" class="open-modal">
                                         <?php the_post_thumbnail(); ?>
+                                        <span class="profile">
+                                            <?php _e('View Profile'); ?>
+                                        </span>
                                     </a>
                                 </div>
                                 <h4 class="member-name">
@@ -76,6 +79,9 @@
                                 <div class="item-imege">
                                     <a href="#modal-<?php echo $post->ID; ?>" class="open-modal">
                                         <?php the_post_thumbnail(); ?>
+                                        <span class="profile">
+                                            <?php _e('View Profile'); ?>
+                                        </span>
                                     </a>
                                 </div>
                                 <h4 class="member-name">
@@ -131,6 +137,9 @@
                                 <div class="item-imege">
                                     <a href="#modal-<?php echo $post->ID; ?>" class="open-modal">
                                         <?php the_post_thumbnail(); ?>
+                                        <span class="profile">
+                                            <?php _e('View Profile'); ?>
+                                        </span>
                                     </a>
                                 </div>
                                 <h4 class="member-name">
@@ -187,6 +196,9 @@
                             <div class="item-imege">
                                 <a href="#modal-<?php echo $post->ID; ?>" class="open-modal">
                                     <?php the_post_thumbnail(); ?>
+                                    <span class="profile">
+                                        <?php _e('View Profile'); ?>
+                                    </span>
                                 </a>
                             </div>
                             <h4 class="member-name">

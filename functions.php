@@ -245,6 +245,7 @@ function get_news_feeds($data) {
                 'date'             => date('F d, Y', strtotime($result->get_date())),
                 'list_filter_date' => date('F Y', strtotime($result->get_date())),
                 'archive_date'     => date('F Y', strtotime($result->get_date())),
+                'archive_year'     => date('Y', strtotime($result->get_date())),
                 'timestamp'        => strtotime($result->get_date())
             ];
         }, $feed_results);

@@ -864,6 +864,11 @@ function enableSkrollr() {
     smoothScrolling: true,
     smoothScrollingDuration: 500,
     forceHeight: false,
+    mobileCheck: function () {
+      return /Android|iPhone|iPad|iPod|BlackBerry/i.test(
+        navigator.userAgent || navigator.vendor || window.opera
+      );
+    },
     easing: {
       inverted: function (p) {
         return 1 - p * p * p * p * p;
@@ -900,8 +905,11 @@ if (md.mobile()) {
       desktopView();
       enableSkrollr();
     } else {
-      disableSkrollr();
       mobileView();
+      disableSkrollr;
     }
   });
 }
+// document.addEventListener('mousewheel', this.mousewheel.bind(this), {
+//   passive: false,
+// });

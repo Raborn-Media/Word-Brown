@@ -104,6 +104,9 @@
   }
 }
 
+* {
+  touch-action: manipulation;
+}
 #culture #culture-mobile {
   margin-bottom: 2rem;
   padding-top: 0rem;

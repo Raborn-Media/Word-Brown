@@ -11,17 +11,16 @@ $banner_image = get_sub_field('banner_image');
         $image_url = $banner_image_src[0];
         ?>
         <img
-            src="https:<?php echo esc_url($image_url); ?>"
+            src="<?php echo esc_url($image_url); ?>"
             width="1903"
             height="870"
             class="jarallax-img"
-            data-no-lazy="1"
+            loading="eager"
             alt=""
             decoding="async"
             fetchpriority="high"
             style="object-fit: cover; object-position: 50% 50%; max-width: none; position: fixed; top: 0px; left: 0px; width: 408px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; margin-top: 101.5px; transform: translate3d(0px, 73px, 0px);"
             data-ll-status="loaded"
-            sizes="(max-width: 1903px) 100vw, 1903px"
         >
         <?php
     }

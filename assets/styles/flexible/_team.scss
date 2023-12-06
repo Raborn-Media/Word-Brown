@@ -64,9 +64,14 @@
   min-height: 75vh;
   width: 80%;
   background-repeat: no-repeat;
-  background-position: right 5px top -25px;
+  background-position: right 5px top;
   background-size: 60%;
   position: relative;
+
+  @media (min-width: 1440px) {
+    background-position: right 5px top -25px;
+    background-size: contain;
+  }
 
   .member-bio {
     padding: 0 50px;

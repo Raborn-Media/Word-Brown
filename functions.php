@@ -223,20 +223,33 @@ function get_news_feeds($data) {
                 libxml_clear_errors();
 
                 $img_tags  = $doc->getElementsByTagName('img');
-//                $thumbnail = 'https://ad24d43cb5.nxcli.io/wp-content/uploads/2023/10/png-image-e1698757679571.png';
                 $thumbnail = '';
 
                 if ($img_tags->length > 0) {
                     $thumbnail = $img_tags->item(0)->getAttribute('src');
                 }
             } else {
-//                $thumbnail = 'https://ad24d43cb5.nxcli.io/wp-content/uploads/2023/10/png-image-e1698757679571.png';
                 $thumbnail = '';
             }
 
+            // Get the content from $result and strip HTML tags.
+            $content = strip_tags($result->get_content());
+
+// Explode the content into an array of words.
+            $words = explode(' ', $content);
+
+// Limit the words to 50.
+            $limitedWords = array_slice($words, 0, 50);
+
+// Implode the limited words back into a string.
+            $limitedContent = implode(' ', $limitedWords);
+
+// Add an ellipsis at the end of the limited content.
+            $description = $limitedContent . '...';
+
             return [
                 'title'            => $result->get_title(),
-                'description'      => explode('...', strip_tags($result->get_description()))[0] . '...',
+                'description'      => $description,
                 'author'           => $result->get_author()->name,
                 'thumbnail'        => $thumbnail,
                 'href'             => $result->get_link(),

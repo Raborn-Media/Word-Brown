@@ -128,6 +128,7 @@ function fetchNews() {
     }
   );
 }
+
 function listElem(elem) {
   let list =
     '<li class="archive-item">' +
@@ -139,6 +140,7 @@ function listElem(elem) {
     '</li>';
   return list;
 }
+
 function fetchArchiveDatesSingle() {
   jQuery.getJSON(
     '/wp-json/media-feeds/v1/news/' + window.filters.news + '/0/99',
@@ -770,11 +772,26 @@ $(document).on('ready', function () {
   resizeVideo();
 });
 
+function replaceBrWithSpace() {
+  var screenWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+
+  if (screenWidth < 1024) {
+    var paragraphs = document.querySelectorAll('p');
+    paragraphs.forEach(function (paragraph) {
+      paragraph.innerHTML = paragraph.innerHTML.replace(/<br>/g, ' ');
+    });
+  }
+}
+
 /**
  * Scripts which runs after all elements load
  */
 $(window).on('load', function () {
   // jQuery code goes here
+  replaceBrWithSpace();
 
   let $preloader = $('.preloader');
   if ($preloader.length) {
@@ -788,6 +805,7 @@ $(window).on('load', function () {
 $(window).on('resize', function () {
   // jQuery code goes here
   resizeVideo();
+  replaceBrWithSpace();
 });
 
 /**

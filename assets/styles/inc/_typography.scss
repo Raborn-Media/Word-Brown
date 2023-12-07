@@ -339,7 +339,7 @@ input[type='button'] {
 @include breakpoint(medium down) {
   p {
     br {
-      display: none;
+      //display: none;
     }
   }
 }

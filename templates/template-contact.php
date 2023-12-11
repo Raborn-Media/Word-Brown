@@ -42,7 +42,8 @@ $media_contact             = get_field( 'media_contact' );
                             <div class="companies-list__item">
                                 <div class="company-logo">
                                     <div class="image-wrap">
-                                        <?php echo wp_get_attachment_image( $company_logo['id'], 'large' ); ?>
+<!--                                        --><?php //echo wp_get_attachment_image( $company_logo['id'], 'large' ); ?>
+                                        <?php echo display_svg( $company_logo, $company_logo['name'] ); ?>
                                     </div>
                                 </div>
                                 <article class="company-contact-info">

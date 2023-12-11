@@ -20,6 +20,7 @@ header {
   }
 
   img {
+    width: 100%;
     max-height: 150px;
   }
   @include breakpoint(small down) {
@@ -79,6 +80,7 @@ header {
       }
 
       img {
+        width: 100%;
         max-height: 150px;
       }
 

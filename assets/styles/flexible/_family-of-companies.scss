@@ -37,66 +37,33 @@
         width: 100%;
         max-width: 100%;
       }
-    }
-
-    //.companies-list__item-img {
-    //  width: 100%;
-    //  height: auto;
-    //}
-
-    .vb-01 {
-      max-width: 301px;
-
-      path {
-        fill: #000000;
+      .choice-admin-logo-cmyk {
+        max-width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+        .cls-1 {
+          fill: #0097d7;
+        }
       }
-
-      .cls-2 {
-        fill: #01529c;
+      .california-rx-logo-color {
+        .cls-1 {
+          fill: #b61f36;
+        }
+        .cls-2 {
+          fill: #000000;
+        }
       }
-    }
-
-    .choice-administrators-01-01,
-    .choice-administrators-4,
-    .choice-administrators-2 {
-      width: 100%;
-      max-width: 169px !important;
-      display: block;
-      height: auto;
-
-      path {
-        fill: #059bda;
+      .word-brown-logo-2019-2 {
+        .cls-1 {
+          fill: #000000;
+        }
       }
     }
-
-    .company-logo-calrx-color,
-    .company-logo-calrx-color {
-      padding: 0 15px;
-      transform: scale(1.2);
-    }
-
-    .nv-drug-card-logo-benefit123-01,
-    .nevada-drug-card-logo-color {
-      max-width: 267px;
-    }
-
     .black-logos {
       //filter: grayscale(1);
       img,
       svg {
         filter: grayscale(90%);
-        //  path,
-        //  .cls-2 {
-        //    fill: #000000;
-        //  }
-        //
-        //  polygon {
-        //    fill: transparent;
-        //    stroke: #000;
-        //    stroke-width: 1px;
-        //    //fill-rule: evenodd;
-        //    text-stroke: 1px solid #000;
-        //  }
       }
     }
   }

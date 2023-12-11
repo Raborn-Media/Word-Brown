@@ -44,7 +44,7 @@
                 <?php else:
                     $dark_logo = get_field('header_logo_on_dark', 'options');
                     ?>
-                    <div class="logo text-center medium-text-left">
+                    <div class="logo dark-logo text-center medium-text-left">
                         <h1>
                             <a href="<?php echo get_home_url();?>" class="custom-logo-link" rel="home" title="%2$s" itemscope>
                             <?php echo wp_get_attachment_image($dark_logo['id'], 'large'); ?><span

@@ -129,6 +129,7 @@
       .company-logo {
         justify-content: center;
         padding-right: 0;
+
         .image-wrap {
           width: 100%;
           text-align: center;
@@ -291,6 +292,7 @@
       }
     }
   }
+
   @include breakpoint(small down) {
     padding-bottom: 0 !important;
   }
@@ -308,4 +310,40 @@
 
 .validation_message {
   display: none !important;
+}
+
+.choice-admin-logo-cmyk {
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .cls-1 {
+    fill: #0097d7;
+  }
+}
+
+.california-rx-logo-color {
+  .cls-1 {
+    fill: #b61f36;
+  }
+
+  .cls-2 {
+    fill: #000000;
+  }
+}
+
+.word-brown-logo-2019-2 {
+  .cls-1 {
+    fill: #000000;
+  }
+}
+
+.wbc-logo-horizontal-on-light-2 {
+  .cls-1 {
+    fill: #b38808;
+  }
+
+  .cls-2 {
+    fill: #8e979d;
+  }
 }

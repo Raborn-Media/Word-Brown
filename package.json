@@ -90,6 +90,7 @@
     "@fancyapps/fancybox": "^3.5.7",
     "@fortawesome/fontawesome-free": "^6.2.1",
     "foundation-sites": "^6.6.3",
+    "gsap": "^3.12.3",
     "jarallax": "^2.0.4",
     "jquery": "^3.5.1",
     "jquery-match-height": "^0.7.2",

@@ -1,12 +1,12 @@
 // Import everything from autoload folder
 import './autoload/**/*'; // eslint-disable-line
-
+import './animation';
 // Import local dependencies
 import './plugins/lazyload';
 import './plugins/modernizr.min';
 import 'slick-carousel';
-import skrollr from 'skrollr';
-import MobileDetect from 'mobile-detect';
+// import skrollr from 'skrollr';
+// import MobileDetect from 'mobile-detect';
 import 'jquery-match-height';
 import objectFitImages from 'object-fit-images';
 import '@fancyapps/fancybox/dist/jquery.fancybox.min';
@@ -871,63 +871,63 @@ $(window).on('load resize orientationchange', function () {
   }
 });
 
-var md = new MobileDetect(window.navigator.userAgent);
+// var md = new MobileDetect(window.navigator.userAgent);
 
-function enableSkrollr() {
-  // Enable Skroll
-  var s = skrollr.init();
-  s.destroy();
-  skrollr.init({
-    skrollrBody: 'culture-desktop',
-    smoothScrolling: true,
-    smoothScrollingDuration: 500,
-    forceHeight: false,
-    mobileCheck: function () {
-      return /Android|iPhone|iPad|iPod|BlackBerry/i.test(
-        navigator.userAgent || navigator.vendor || window.opera
-      );
-    },
-    easing: {
-      inverted: function (p) {
-        return 1 - p * p * p * p * p;
-      },
-    },
-  });
-  //alert('enable');
-}
+// function enableSkrollr() {
+//   // Enable Skroll
+//   var s = skrollr.init();
+//   s.destroy();
+//   skrollr.init({
+//     skrollrBody: 'culture-desktop',
+//     smoothScrolling: true,
+//     smoothScrollingDuration: 500,
+//     forceHeight: false,
+//     mobileCheck: function () {
+//       return /Android|iPhone|iPad|iPod|BlackBerry/i.test(
+//         navigator.userAgent || navigator.vendor || window.opera
+//       );
+//     },
+//     easing: {
+//       inverted: function (p) {
+//         return 1 - p * p * p * p * p;
+//       },
+//     },
+//   });
+//   //alert('enable');
+// }
 
-function disableSkrollr() {
-  var s = skrollr.init();
-  s.destroy();
-  //alert('disable');
-}
+// function disableSkrollr() {
+//   var s = skrollr.init();
+//   s.destroy();
+//   //alert('disable');
+// }
 
-var desktopView = function () {
-  //alert('desktop');
-  $('#culture-mobile, #culture-desktop').removeClass('visible-module');
-  $('#culture-desktop').addClass('visible-module');
-};
+// var desktopView = function () {
+//   //alert('desktop');
+//   $('#culture-mobile, #culture-desktop').removeClass('visible-module');
+//   $('#culture-desktop').addClass('visible-module');
+// };
+//
+// var mobileView = function () {
+//   //alert('mobile');
+//   $('#culture-mobile, #culture-desktop').removeClass('visible-module');
+//   $('#culture-mobile').addClass('visible-module');
+// };
 
-var mobileView = function () {
-  //alert('mobile');
-  $('#culture-mobile, #culture-desktop').removeClass('visible-module');
-  $('#culture-mobile').addClass('visible-module');
-};
-
-if (md.mobile()) {
-  disableSkrollr();
-  mobileView();
-} else {
-  $(window).on('load resize', function () {
-    if (window.matchMedia('(min-width: 64em)').matches) {
-      desktopView();
-      enableSkrollr();
-    } else {
-      mobileView();
-      disableSkrollr;
-    }
-  });
-}
+// if (md.mobile()) {
+//   disableSkrollr();
+//   mobileView();
+// } else {
+//   $(window).on('load resize', function () {
+//     if (window.matchMedia('(min-width: 64em)').matches) {
+//       desktopView();
+//       enableSkrollr();
+//     } else {
+//       mobileView();
+//       disableSkrollr;
+//     }
+//   });
+// }
 // document.addEventListener('mousewheel', this.mousewheel.bind(this), {
 //   passive: false,
 // });

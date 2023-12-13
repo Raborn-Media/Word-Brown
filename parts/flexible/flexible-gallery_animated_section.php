@@ -24,10 +24,10 @@ $section_text  = get_sub_field( 'section_text' );
         </div>
 
         <!-- Culture of Excellence, Mobile -->
-        <div id="culture-mobile">
+        <div id="culture-mobile" class="hide-for-large">
             <div class="row grid-x">
-                <div class="small-12 columns cell">
-                    <div class="small-12 large-12 columns cell">
+                <div class="small-12 cell">
+                    <div class="small-12 large-12 cell">
                         <?php if ( have_rows( 'first_animated_text' ) ) : ?>
                             <?php while ( have_rows( 'first_animated_text' ) ) : the_row();
                                 $first_word           = get_sub_field( 'first_word' );
@@ -36,31 +36,24 @@ $section_text  = get_sub_field( 'section_text' );
                                 $third_animated_word  = get_sub_field( '3rd_animated_word' );
                                 $last_word            = get_sub_field( 'last_word' );
                                 ?>
-
-                                <div class="container">
-                                    <div class="wrap">
+                                <div class="container mobile-top-words-container">
+                                    <div class="words-wrap mobile-top-words-wrap">
                                         <div class="word">
                                             <span><?php echo $first_word; ?>&nbsp;</span>
                                         </div>
                                         <div class="word dynamic">
-                                            <span class="word-wrap"
-                                                  data-100-center-center="transform:translateY(0px); opacity: 1;"
-                                                  data--100-center-center="transform:translateY(50px); opacity: 0.67;"
-                                                  data--300-center-center="transform:translateY(100px); opacity: 0.3;">
-                                                <?php echo $first_animated_word; ?>
-                                            </span>
-                                            <span class="word-wrap"
-                                                  data-100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                                  data--100-center-center="transform:translateY(0px); opacity: 1;"
-                                                  data--300-center-center="transform:translateY(50px); opacity: 0.67;">
-                                                <?php echo $second_animated_word; ?>
-                                            </span>
-                                            <span class="word-wrap"
-                                                  data-100-center-center="transform:translateY(-100px); opacity: 0.3;"
-                                                  data--100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                                  data--300-center-center="transform:translateY(0px); opacity: 1;">
-                                                <?php echo $third_animated_word; ?>
-                                            </span>
+
+								        <span class="word-wrap">
+                                            <?php echo $first_animated_word; ?>
+                                        </span>
+
+                                            <span class="word-wrap">
+                                            <?php echo $second_animated_word; ?>
+                                        </span>
+
+                                            <span class="word-wrap">
+                                            <?php echo $third_animated_word; ?>
+                                        </span>
 
                                         </div>
                                         <div class="word">
@@ -76,9 +69,8 @@ $section_text  = get_sub_field( 'section_text' );
                         <?php while ( have_rows( 'right_column_images' ) ) : the_row();
                             $top_image = get_sub_field( 'top_image' );
                             ?>
-                            <div class="small-12 large-12 columns cell text-center">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container mobile-mid-top-image-container">
+                                <div class="image-wrap mobile-mid-top-image-wrap">
                                     <?php echo wp_get_attachment_image( $top_image['id'], 'large' ); ?>
                                 </div>
                             </div>
@@ -92,9 +84,8 @@ $section_text  = get_sub_field( 'section_text' );
                             $third_image  = get_sub_field( 'third_image' );
                             $bottom_image = get_sub_field( 'bottom_image' );
                             ?>
-                            <div class="small-12 large-12 columns cell text-center">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(20px); opacity: 1;">
+                            <div class="container mobile-mid-second-image-container">
+                                <div class="image-wrap mobile-mid-second-image-wrap">
                                     <?php echo wp_get_attachment_image( $top_image['id'], 'large' ); ?>
                                 </div>
                             </div>
@@ -104,7 +95,7 @@ $section_text  = get_sub_field( 'section_text' );
             </div>
 
             <div class="row grid-x">
-                <div class="small-12 columns cell">
+                <div class="small-12 cell">
                     <?php if ( have_rows( 'second_animated_text' ) ) : ?>
                         <?php while ( have_rows( 'second_animated_text' ) ) : the_row();
                             $first_word           = get_sub_field( 'first_word' );
@@ -113,37 +104,28 @@ $section_text  = get_sub_field( 'section_text' );
                             $third_animated_word  = get_sub_field( '3rd_animated_word' );
                             $last_word            = get_sub_field( 'last_word' );
                             ?>
-                            <div class="small-12 large-12 columns cell">
-                                <div class="container">
-                                    <div class="wrap">
-                                        <div class="word">
-                                            <span><?php echo $first_word; ?>&nbsp;</span>
-                                        </div>
-                                        <div class="word dynamic">
+                            <div class="container mobile-mid-words-container">
+                                <div class="words-wrap mobile-mid-words-wrap">
+                                    <div class="word">
+                                        <span><?php echo $first_word; ?>&nbsp;</span>
+                                    </div>
+                                    <div class="word dynamic">
 
-                                            <span class="word-wrap"
-                                                  data-100-center-center="transform:translateY(0px); opacity: 1;"
-                                                  data--100-center-center="transform:translateY(50px); opacity: 0.67;"
-                                                  data--300-center-center="transform:translateY(100px); opacity: 0.3;">
-                                                <?php echo $first_animated_word; ?>
-                                            </span>
-                                            <span class="word-wrap"
-                                                  data-100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                                  data--100-center-center="transform:translateY(0px); opacity: 1;"
-                                                  data--300-center-center="transform:translateY(50px); opacity: 0.67;">
-                                                <?php echo $second_animated_word; ?>
-                                            </span>
-                                            <span class="word-wrap"
-                                                  data-100-center-center="transform:translateY(-100px); opacity: 0.3;"
-                                                  data--100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                                  data--300-center-center="transform:translateY(0px); opacity: 1;">
-                                                <?php echo $third_animated_word; ?>
-                                            </span>
+								        <span class="word-wrap">
+                                            <?php echo $first_animated_word; ?>
+                                        </span>
 
-                                        </div>
-                                        <div class="word">
-                                            <span><?php echo $last_word; ?></span>
-                                        </div>
+                                        <span class="word-wrap">
+                                            <?php echo $second_animated_word; ?>
+                                        </span>
+
+                                        <span class="word-wrap">
+                                            <?php echo $third_animated_word; ?>
+                                        </span>
+
+                                    </div>
+                                    <div class="word">
+                                        <span><?php echo $last_word; ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -156,13 +138,13 @@ $section_text  = get_sub_field( 'section_text' );
                             $third_image  = get_sub_field( 'third_image' );
                             $bottom_image = get_sub_field( 'bottom_image' );
                             ?>
-                            <div class="small-12 large-12 columns cell text-center">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container mobile-mid-third-image-container">
+                                <div class="image-wrap mobile-mid-third-image-wrap">
                                     <?php echo wp_get_attachment_image( $third_image['id'], 'large' ); ?>
                                 </div>
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(20px); opacity: 1;">
+                            </div>
+                            <div class="container mobile-mid-bottom-image-container">
+                                <div class="image-wrap mobile-mid-bottom-image-wrap">
                                     <?php echo wp_get_attachment_image( $bottom_image['id'], 'large' ); ?>
                                 </div>
                             </div>
@@ -173,9 +155,9 @@ $section_text  = get_sub_field( 'section_text' );
         </div>
         <!-- Culture of Excellence, Desktop -->
 
-        <div id="culture-desktop">
+        <div id="culture-desktop" class="show-for-large culture-animation">
             <div class="row grid-x">
-                <div class="small-12 large-4 columns cell">
+                <div class="small-12 large-4 cell">
                     <?php if ( have_rows( 'first_animated_text' ) ) : ?>
                         <?php while ( have_rows( 'first_animated_text' ) ) : the_row();
                             $first_word           = get_sub_field( 'first_word' );
@@ -185,32 +167,24 @@ $section_text  = get_sub_field( 'section_text' );
                             $last_word            = get_sub_field( 'last_word' );
                             ?>
 
-                            <div class="container" style="height: 300px;"
-                                 data-bottom-top="transform:translateY(500px);"
-                                 data-top="transform:translateY(0px);">
-                                <div style="top: 75px; position: absolute; width: 400px;">
+                            <div class="container top-words-container">
+                                <div class="words-wrap top-words-wrap">
                                     <div class="word">
                                         <span><?php echo $first_word; ?>&nbsp;</span>
                                     </div>
                                     <div class="word dynamic">
 
-								<span class="word-wrap"
-                                      data-100-center-center="transform:translateY(0px); opacity: 1;"
-                                      data--100-center-center="transform:translateY(50px); opacity: 0.67;"
-                                      data--300-center-center="transform:translateY(100px); opacity: 0.3;"
-                                ><?php echo $first_animated_word; ?></span>
+								        <span class="word-wrap">
+                                            <?php echo $first_animated_word; ?>
+                                        </span>
 
-                                        <span class="word-wrap"
-                                              data-100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                              data--100-center-center="transform:translateY(0px); opacity: 1;"
-                                              data--300-center-center="transform:translateY(50px); opacity: 0.67;"
-                                        ><?php echo $second_animated_word; ?></span>
+                                        <span class="word-wrap">
+                                            <?php echo $second_animated_word; ?>
+                                        </span>
 
-                                        <span class="word-wrap"
-                                              data-100-center-center="transform:translateY(-100px); opacity: 0.3;"
-                                              data--100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                              data--300-center-center="transform:translateY(0px); opacity: 1;"
-                                        ><?php echo $third_animated_word; ?></span>
+                                        <span class="word-wrap">
+                                            <?php echo $third_animated_word; ?>
+                                        </span>
 
                                     </div>
                                     <div class="word">
@@ -227,30 +201,20 @@ $section_text  = get_sub_field( 'section_text' );
                             $central_image = get_sub_field( 'central_image' );
                             $bottom_image  = get_sub_field( 'bottom_image' );
                             ?>
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container left-top-image-container">
+                                <div class="image-wrap left-top-image-wrap">
                                     <?php echo wp_get_attachment_image( $top_image['id'], 'large' ); ?>
-                                    <!--                        <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/WBC.Home.Page.LauraV.08.22.jpg"-->
-                                    <!--                             alt="">-->
                                 </div>
                             </div>
 
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(200px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container left-second-image-container">
+                                <div class="image-wrap left-second-image-wrap">
                                     <?php echo wp_get_attachment_image( $central_image['id'], 'large' ); ?>
-                                    <!--                        <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-1b.jpg" alt="">-->
                                 </div>
                             </div>
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container left-third-image-container">
+                                <div class="image-wrap left-third-image-wrap">
                                     <?php echo wp_get_attachment_image( $bottom_image['id'], 'large' ); ?>
-                                    <!--                        <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-1c.jpg" alt="">-->
                                 </div>
                             </div>
                         <?php endwhile; ?>
@@ -264,57 +228,42 @@ $section_text  = get_sub_field( 'section_text' );
                         $bottom_image = get_sub_field( 'bottom_image' );
                         ?>
 
-                        <div class="small-12 large-4 columns cell">
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                        <div class="small-12 large-4 cell">
+                            <div class="container mid-top-image-container">
+                                <div class="image-wrap mid-top-image-wrap">
                                     <?php echo wp_get_attachment_image( $top_image['id'], 'large' ); ?>
-                                    <!--                                <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-2a.jpg" alt="">-->
                                 </div>
                             </div>
 
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(200px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container mid-second-image-container">
+                                <div class="image-wrap mid-second-image-wrap">
                                     <?php echo wp_get_attachment_image( $second_image['id'], 'large' ); ?>
-                                    <!--                                <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-2b.jpg" alt="">-->
                                 </div>
                             </div>
 
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container mid-third-image-container">
+                                <div class="image-wrap mid-third-image-wrap">
                                     <?php echo wp_get_attachment_image( $third_image['id'], 'large' ); ?>
-                                    <!--                                <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-2c.jpg" alt="">-->
                                 </div>
                             </div>
 
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container mid-bottom-image-container">
+                                <div class="image-wrap mid-bottom-image-wrap">
                                     <?php echo wp_get_attachment_image( $bottom_image['id'], 'large' ); ?>
-                                    <!--                                <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-2d.jpg" alt="">-->
                                 </div>
                             </div>
 
                         </div>
                     <?php endwhile; ?>
                 <?php endif; ?>
-                <div class="small-12 large-4 columns cell right-col">
+                <div class="small-12 large-4 cell right-col">
                     <?php if ( have_rows( 'right_column_images' ) ) : ?>
                         <?php while ( have_rows( 'right_column_images' ) ) : the_row();
                             $top_image = get_sub_field( 'top_image' );
                             ?>
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container right-top-image-container">
+                                <div class="image-wrap right-top-image-wrap">
                                     <?php echo wp_get_attachment_image( $top_image['id'], 'large' ); ?>
-                                    <!--                        <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-3a.jpg" alt="">-->
                                 </div>
                             </div>
                         <?php endwhile; ?>
@@ -329,32 +278,24 @@ $section_text  = get_sub_field( 'section_text' );
                             $last_word            = get_sub_field( 'last_word' );
                             ?>
 
-                            <div class="container" style="height: 300px;"
-                                 data-bottom-top="transform:translateY(500px);"
-                                 data-top="transform:translateY(0px);">
-                                <div style="top: 75px; position: absolute; width: 400px;">
+                            <div class="container mid-words-container">
+                                <div class="words-wrap mid-words-wrap">
                                     <div class="word">
                                         <span><?php echo $first_word; ?>&nbsp;</span>
                                     </div>
                                     <div class="word dynamic">
 
-								<span class="word-wrap"
-                                      data-100-center-center="transform:translateY(0px); opacity: 1;"
-                                      data--100-center-center="transform:translateY(50px); opacity: 0.67;"
-                                      data--300-center-center="transform:translateY(100px); opacity: 0.3;"
-                                ><?php echo $first_animated_word; ?></span>
+								        <span class="word-wrap">
+                                            <?php echo $first_animated_word; ?>
+                                        </span>
 
-                                        <span class="word-wrap"
-                                              data-100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                              data--100-center-center="transform:translateY(0px); opacity: 1;"
-                                              data--300-center-center="transform:translateY(50px); opacity: 0.67;"
-                                        ><?php echo $second_animated_word; ?></span>
+                                        <span class="word-wrap">
+                                            <?php echo $second_animated_word; ?>
+                                        </span>
 
-                                        <span class="word-wrap"
-                                              data-100-center-center="transform:translateY(-100px); opacity: 0.3;"
-                                              data--100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                              data--300-center-center="transform:translateY(0px); opacity: 1;"
-                                        ><?php echo $third_animated_word; ?></span>
+                                        <span class="word-wrap">
+                                            <?php echo $third_animated_word; ?>
+                                        </span>
 
                                     </div>
                                     <div class="word">
@@ -369,21 +310,15 @@ $section_text  = get_sub_field( 'section_text' );
                             $central_image = get_sub_field( 'central_image' );
                             $bottom_image  = get_sub_field( 'bottom_image' );
                             ?>
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(500px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container right-second-image-container">
+                                <div class="image-wrap right-second-image-wrap">
                                     <?php echo wp_get_attachment_image( $central_image['id'], 'large' ); ?>
-                                    <!--                        <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-3b.jpg" alt="">-->
                                 </div>
                             </div>
 
-                            <div class="container">
-                                <div data-bottom-top="transform:translateY(200px); opacity: 0;"
-                                     data--10-bottom="transform:translateY(0px); opacity: 1;">
+                            <div class="container right-third-image-container">
+                                <div class="image-wrap right-third-image-wrap">
                                     <?php echo wp_get_attachment_image( $bottom_image['id'], 'large' ); ?>
-                                    <!--                        <img src="-->
-                                    <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-3c.jpg" alt="">-->
                                 </div>
                             </div>
                         <?php endwhile; ?>
@@ -392,7 +327,7 @@ $section_text  = get_sub_field( 'section_text' );
             </div>
 
             <div class="row grid-x">
-                <div class="small-12 large-4 columns cell">
+                <div class="small-12 large-4 cell">
                     <?php if ( have_rows( 'third_animated_text' ) ) : ?>
                         <?php while ( have_rows( 'third_animated_text' ) ) : the_row();
                             $first_word           = get_sub_field( 'first_word' );
@@ -401,33 +336,24 @@ $section_text  = get_sub_field( 'section_text' );
                             $third_animated_word  = get_sub_field( '3rd_animated_word' );
 //                $last_word            = get_sub_field( 'last_word' );
                             ?>
-                            <div class="container" style="height: 300px;"
-                                 data-bottom-top="transform:translateY(300px);"
-                                 data-top="transform:translateY(-100px);">
-                                <div style="top: 100px; position: relative;">
-
+                            <div class="container bottom-words-container">
+                                <div class="words-wrap bottom-words-wrap">
                                     <div class="word">
                                         <span><?php echo $first_word; ?>&nbsp;</span>
                                     </div>
                                     <div class="word dynamic">
 
-								<span class="word-wrap"
-                                      data-100-center-center="transform:translateY(0px); opacity: 1;"
-                                      data--100-center-center="transform:translateY(50px); opacity: 0.67;"
-                                      data--300-center-center="transform:translateY(100px); opacity: 0.3;"
-                                ><?php echo $first_animated_word; ?></span>
+                                        <span class="word-wrap">
+                                            <?php echo $first_animated_word; ?>
+                                        </span>
 
-                                        <span class="word-wrap"
-                                              data-100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                              data--100-center-center="transform:translateY(0px); opacity: 1;"
-                                              data--300-center-center="transform:translateY(50px); opacity: 0.67;"
-                                        ><?php echo $second_animated_word; ?></span>
+                                        <span class="word-wrap">
+                                            <?php echo $second_animated_word; ?>
+                                        </span>
 
-                                        <span class="word-wrap"
-                                              data-100-center-center="transform:translateY(-100px); opacity: 0.3;"
-                                              data--100-center-center="transform:translateY(-50px); opacity: 0.67;"
-                                              data--300-center-center="transform:translateY(0px); opacity: 1;"
-                                        ><?php echo $third_animated_word; ?></span>
+                                        <span class="word-wrap">
+                                            <?php echo $third_animated_word; ?>
+                                        </span>
 
                                     </div>
 
@@ -436,30 +362,22 @@ $section_text  = get_sub_field( 'section_text' );
                         <?php endwhile; ?>
                     <?php endif; ?>
                 </div>
-                <div class="small-12 large-8 columns cell">
+                <div class="small-12 large-8 cell">
                     <?php if ( $bottom_text_image = get_sub_field( 'bottom_text_image' ) ) : ?>
-                        <div class="container">
-                            <div class="container" style="height: 300px;"
-                                 data-bottom-top="transform:translateY(300px);"
-                                 data-top="transform:translateY(-100px);">
+                        <div class="container bottom-first-image-container">
+                            <div class="image-wrap bottom-first-image-wrap">
                                 <?php echo wp_get_attachment_image( $bottom_text_image['id'], 'large' ); ?>
-                                <!--            <img src="-->
-                                <?php //echo get_template_directory_uri() ?><!--/img/home/cltr-bottom.jpg" alt="">-->
                             </div>
                         </div>
                     <?php endif; ?>
                 </div>
             </div>
             <div class="row grid-x">
-                <div class="small-12 large-12 columns cell">
+                <div class="small-12 large-12 cell">
                     <?php if ( $bottom_section_image = get_sub_field( 'bottom_section_image' ) ) : ?>
-                        <div class="container">
-                            <div class="container" style="height: 300px;"
-                                 data-bottom-top="transform:translateY(300px);"
-                                 data-top="transform:translateY(-100px);">
+                        <div class="container bottom-second-image-container">
+                            <div class="image-wrap bottom-second-image-wrap">
                                 <?php echo wp_get_attachment_image( $bottom_section_image['id'], 'large' ); ?>
-                                <!--                        <img src="-->
-                                <?php //echo get_template_directory_uri() ?><!--/img/giving-back/giving_back1.png" alt="">-->
                             </div>
                         </div>
                     <?php endif; ?>

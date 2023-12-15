@@ -361,6 +361,10 @@ body.fixed {
         img {
           //width: 80%;
         }
+
+        .choice-admin-logo-cmyk {
+          width: 75%;
+        }
       }
 
       &:nth-child(3n) {
@@ -386,6 +390,9 @@ body.fixed {
         .logo {
           img {
             width: 80%;
+          }
+          .choice-admin-logo-cmyk {
+            width: 75%;
           }
         }
       }

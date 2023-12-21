@@ -15,6 +15,9 @@
     .logo {
       padding: 25px;
       border-right: 1px solid #c0c0c0;
+      svg {
+        width: 100%;
+      }
     }
 
     .logo:last-child {

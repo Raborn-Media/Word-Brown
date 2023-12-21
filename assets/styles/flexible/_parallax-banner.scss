@@ -5,6 +5,7 @@
   .jarallax-img {
     object-position: center top !important;
     margin-top: 150px !important;
+    z-index: -100;
   }
 
   @include breakpoint(small down) {

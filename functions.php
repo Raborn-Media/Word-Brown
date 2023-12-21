@@ -163,24 +163,24 @@ add_filter( 'use_block_editor_for_post_type', '__return_false' );
 // API ENDPOINTS FOR MEDIA FEEDS
 ////////////////////////////////////////////////////////////////////////
 include_once( ABSPATH . WPINC . '/feed.php' );
-function get_custom_source_text($source_link) {
+function get_custom_source_text( $source_link ) {
     $source_mapping = [
         'https://brokerblog.wordandbrown.com/' => 'Source: Word & Brown Insurance Broker Blog',
-        'https://www.mycalchoice.com/' => 'Source: MyCalChoice',
-        'https://jrreport.wordandbrown.com/' => 'Source: Health Care News for Insurance Brokers | J&amp;R Report'
+        'https://www.mycalchoice.com/'         => 'Source: MyCalChoice',
+        'https://jrreport.wordandbrown.com/'   => 'Source: Health Care News for Insurance Brokers | J&amp;R Report'
     ];
 
     // Перевірка, чи лінк є в масиві
-    if (isset($source_mapping[$source_link])) {
-        return $source_mapping[$source_link];
+    if ( isset( $source_mapping[ $source_link ] ) ) {
+        return $source_mapping[ $source_link ];
     } else {
         return $source_link;
     }
 }
 
-function get_news_feeds($data) {
-    $count  = intval($data['count']);
-    $skip   = intval($data['skip']);
+function get_news_feeds( $data ) {
+    $count  = intval( $data['count'] );
+    $skip   = intval( $data['skip'] );
     $filter = $data['filter'];
     $total  = 0;
 
@@ -202,47 +202,47 @@ function get_news_feeds($data) {
         ]
     ];
 
-    foreach ($feed_sources[$filter] as $source) {
-        $result = fetch_feed($source);
+    foreach ( $feed_sources[ $filter ] as $source ) {
+        $result = fetch_feed( $source );
 
-        if (!is_wp_error($result)) {
+        if ( ! is_wp_error( $result ) ) {
             $total        += $result->get_item_quantity();
-            $max          = $result->get_item_quantity($skip + $count);
-            $feed_results = array_merge($feed_results, $result->get_items(0, $max));
+            $max          = $result->get_item_quantity( $skip + $count );
+            $feed_results = array_merge( $feed_results, $result->get_items( 0, $max ) );
         }
     }
 
-    if (count($feed_results)) {
-        $feed_results = array_map(function ($result) {
+    if ( count( $feed_results ) ) {
+        $feed_results = array_map( function ( $result ) {
             $content = $result->get_description();
 
-            if ($content) {
+            if ( $content ) {
                 $doc = new DOMDocument();
-                libxml_use_internal_errors(true);
-                $doc->loadHTML($content);
+                libxml_use_internal_errors( true );
+                $doc->loadHTML( $content );
                 libxml_clear_errors();
 
-                $img_tags  = $doc->getElementsByTagName('img');
+                $img_tags  = $doc->getElementsByTagName( 'img' );
                 $thumbnail = '';
 
-                if ($img_tags->length > 0) {
-                    $thumbnail = $img_tags->item(0)->getAttribute('src');
+                if ( $img_tags->length > 0 ) {
+                    $thumbnail = $img_tags->item( 0 )->getAttribute( 'src' );
                 }
             } else {
                 $thumbnail = '';
             }
 
             // Get the content from $result and strip HTML tags.
-            $content = strip_tags($result->get_content());
+            $content = strip_tags( $result->get_content() );
 
 // Explode the content into an array of words.
-            $words = explode(' ', $content);
+            $words = explode( ' ', $content );
 
 // Limit the words to 50.
-            $limitedWords = array_slice($words, 0, 50);
+            $limitedWords = array_slice( $words, 0, 50 );
 
 // Implode the limited words back into a string.
-            $limitedContent = implode(' ', $limitedWords);
+            $limitedContent = implode( ' ', $limitedWords );
 
 // Add an ellipsis at the end of the limited content.
             $description = $limitedContent . '...';
@@ -253,21 +253,21 @@ function get_news_feeds($data) {
                 'author'           => $result->get_author()->name,
                 'thumbnail'        => $thumbnail,
                 'href'             => $result->get_link(),
-                'source'           => get_custom_source_text($result->get_feed()->get_permalink()),
+                'source'           => get_custom_source_text( $result->get_feed()->get_permalink() ),
                 'category'         => $result->data['child']['']['category'][0]['data'],
-                'date'             => date('F d, Y', strtotime($result->get_date())),
-                'list_filter_date' => date('F Y', strtotime($result->get_date())),
-                'archive_date'     => date('F Y', strtotime($result->get_date())),
-                'archive_year'     => date('Y', strtotime($result->get_date())),
-                'timestamp'        => strtotime($result->get_date())
+                'date'             => date( 'F d, Y', strtotime( $result->get_date() ) ),
+                'list_filter_date' => date( 'F Y', strtotime( $result->get_date() ) ),
+                'archive_date'     => date( 'F Y', strtotime( $result->get_date() ) ),
+                'archive_year'     => date( 'Y', strtotime( $result->get_date() ) ),
+                'timestamp'        => strtotime( $result->get_date() )
             ];
-        }, $feed_results);
+        }, $feed_results );
 
-        usort($feed_results, function ($a, $b) {
+        usort( $feed_results, function ( $a, $b ) {
             return $a['timestamp'] < $b['timestamp'];
-        });
+        } );
 
-        $feed_results = array_slice($feed_results, $skip, $count);
+        $feed_results = array_slice( $feed_results, $skip, $count );
     }
 
     return [
@@ -315,8 +315,8 @@ function get_video_feeds( $data ) {
                 'thumbnail'   => $result->data['child']['http://search.yahoo.com/mrss/']['group'][0]['child']['http://search.yahoo.com/mrss/']['thumbnail'][0]['attribs']['']['url'],
                 'href'        => $result->get_link(),
                 'author'      => $result->get_author()->name,
-                'date'   => date( 'F d, Y', $result->data['date']['parsed'] ),
-				'timestamp'   => $result->data['date']['parsed']
+                'date'        => date( 'F d, Y', $result->data['date']['parsed'] ),
+                'timestamp'   => $result->data['date']['parsed']
             ];
         }, $feed_results );
 
@@ -349,3 +349,44 @@ add_action( 'rest_api_init', function () {
         'callback' => 'get_video_feeds'
     ) );
 } );
+
+////////////////////////////////////////////////////////////////////////
+// CUSTOM CONFIRMATION MASSAGE FOR NOMINATE FORM
+////////////////////////////////////////////////////////////////////////
+add_filter( 'gform_confirmation', 'custom_confirmation_message', 10, 4 );
+function custom_confirmation_message( $confirmation, $form, $entry, $ajax ) {
+    // Check if it's the form ID you want to modify the confirmation message for
+    if ( $form['id'] == 3 ) {
+        // Custom confirmation message with JavaScript button
+        $confirmation = '<h3>Thank You!</h3><p>Your nomination has been sent. You`re one step closer to making someone feel awesome!</p><button onclick="reopenForm()">Nominate Another Employee</button><script>function reopenForm() {window.location.reload();}</script>';
+    }
+
+    return $confirmation;
+}
+
+add_filter( 'gform_field_validation_3', 'validate_email', 10, 4 );
+function validate_email( $result, $value, $form, $field ) {
+
+    $whitelisted_domain = array(
+        'wordandbrowncompanies.com',
+        'wordandbrown.com',
+        'choiceadmin.com',
+        'choicebuilder.com',
+        'calchoice.com'
+    );
+
+    if ( $field->get_input_type() === 'email' && $result['is_valid'] ) {
+
+        $result['is_valid'] = false;
+        $result['message']  = 'Email address not approved.';
+
+        foreach ( $whitelisted_domain as $term ) {
+            if ( strpos( $value, $term ) ) {
+                $result['is_valid'] = true;
+                break;
+            }
+        }
+    }
+
+    return $result;
+}

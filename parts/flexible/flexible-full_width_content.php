@@ -13,16 +13,22 @@ $section_content = get_sub_field( 'section_content' );
                         $logo_2 = get_sub_field( 'logo_2' );
                         ?>
 
-                        <?php if ( $logo_1 || $logo_2 )  : ?>
+                        <?php if ( $logo_1 || $logo_2 )  :
+                            ?>
                             <div class="logos">
-                                <?php if ( $logo_1 ) : ?>
+                                <?php if ( $logo_1 ) :
+                                    $logo_1_name = $logo_1['name'];
+                                    ?>
                                     <div class="logo-1 logo">
-                                        <?php echo wp_get_attachment_image( $logo_1['id'], 'large' ); ?>
+                                        <?php display_svg( $logo_1, $logo_1_name ) ?>
                                     </div>
                                 <?php endif; ?>
-                                <?php if ( $logo_2 ) : ?>
-                                    <div class="logo-2 logo">
-                                        <?php echo wp_get_attachment_image( $logo_2['id'], 'large' ); ?>
+
+                                <?php if ( $logo_2 ) :
+                                    $logo_2_name = $logo_2['name'];
+                                    ?>
+                                    <div class="logo-1 logo">
+                                        <?php display_svg( $logo_2, $logo_2_name ) ?>
                                     </div>
                                 <?php endif; ?>
                             </div>

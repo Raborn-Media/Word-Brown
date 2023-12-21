@@ -1,0 +1,215 @@
+.soue-hero {
+  color: $white;
+  padding: 217px 0 53px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  h1 {
+    font-family: $sub-font;
+    font-style: italic;
+    color: $white;
+    font-size: 75px;
+    line-height: 90px;
+  }
+
+  h2 {
+    font-family: $avenir-95-black;
+    color: $white;
+    font-size: 57px;
+    line-height: 90px;
+    letter-spacing: 30px;
+  }
+
+  article {
+    max-width: 790px;
+    margin: 0 auto 48px;
+
+    p {
+      font-size: 22px;
+      line-height: 30px;
+      font-family: $sub-font;
+    }
+  }
+
+  .button {
+    color: $white;
+    border-color: $white;
+    display: block;
+    max-width: 300px;
+    margin: 0 auto 52px;
+    text-transform: none;
+  }
+
+  small {
+    color: #e8d3a9;
+    font-size: 14px;
+    font-family: $sub-font;
+  }
+}
+.page-template-template-soue {
+  .grid-container {
+    max-width: 1200px;
+  }
+  .soue-section-title {
+    font-size: 48px;
+    font-family: $avenir-95-black;
+  }
+}
+
+.soue-about-section {
+  padding-top: 53px;
+
+  .about-image {
+    max-height: 720px;
+    overflow: hidden;
+    margin-top: 83px;
+    padding-right: 100px;
+  }
+  article {
+    margin-bottom: 34px;
+    h2 {
+      font-size: 48px;
+      font-family: $avenir-95-black;
+      color: $corporate-blue;
+    }
+
+    p {
+      color: $corporate-blue;
+      font-size: 22px;
+      font-family: $sub-font;
+    }
+  }
+
+  .core-values {
+    h4 {
+      font-family: $avenir-85-heavy;
+      font-size: 28px;
+      color: $corporate-blue;
+      text-align: center;
+      margin-bottom: 41px;
+    }
+
+    .values-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      &__item {
+        width: 33.3%;
+        text-align: center;
+        padding: 44px 0;
+        border-right: 1px solid #707070;
+        border-top: 1px solid #707070;
+
+        .value-image {
+          margin-bottom: 31px;
+          svg {
+            path {
+              fill: $gold;
+            }
+          }
+        }
+
+        .value-title {
+          font-size: 20px;
+        }
+
+        &:nth-child(3n) {
+          border-right: none;
+        }
+        &:nth-child(-n + 3) {
+          border-top: none;
+        }
+      }
+    }
+  }
+}
+
+.soue-nominate-section {
+  padding-top: 41px;
+  padding-bottom: 54px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .soue-section-title {
+    color: $white;
+    margin-bottom: 55px;
+  }
+  .nominate__form {
+    background-color: $white;
+    padding: 21px 39px 28px;
+    max-width: 856px;
+    margin: 0 auto;
+
+    .gsection {
+      border: none !important;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .gsection_title {
+      color: $corporate-blue;
+      font-family: $avenir-85-heavy;
+      font-size: 28px;
+      line-height: 33px;
+    }
+
+    .gsection_description {
+      font-size: 18px !important;
+      line-height: 21px !important;
+      font-family: $avenir-45-book !important;
+    }
+
+    select,
+    input,
+    textarea {
+      border: 1px solid #54565b;
+      box-shadow: none;
+      min-height: 48px;
+      background-color: #eeedeb;
+
+      &::placeholder {
+        font-size: 20px;
+        color: #a9a9a9;
+        line-height: 32px;
+        font-weight: 300;
+      }
+    }
+
+    textarea {
+      max-height: 288px;
+    }
+
+    .gfield_html {
+      p {
+        font-size: 18px;
+        line-height: 21px;
+        font-family: $avenir-45-book;
+      }
+
+      img {
+        width: 85%;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .gform_footer {
+      justify-content: center;
+
+      .gform_button {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+        background-color: $gold;
+        color: $white;
+        text-transform: none;
+      }
+    }
+
+    .validation_message {
+      display: block !important;
+    }
+  }
+}

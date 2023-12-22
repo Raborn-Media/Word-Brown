@@ -1,6 +1,87 @@
+.page-template-template-soue {
+  .grid-container {
+    max-width: 1200px;
+  }
+
+  section {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .soue-section-title {
+    font-size: 48px;
+    font-family: $avenir-95-black;
+  }
+}
+
+.soue-header {
+  padding: 50px 15px 57px;
+  position: absolute;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.75) 32%,
+      rgba(0, 0, 0, 0.75) 100%
+    )
+    no-repeat;
+
+  //opacity: 0.75;
+  width: 100%;
+
+  .logo-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 60px;
+
+    @include breakpoint(medium down) {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    max-width: fit-content;
+    opacity: 1;
+
+    a {
+      svg {
+        width: 100%;
+        max-width: 235px;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    .soue-nav-link {
+      color: #e8d3a9;
+      letter-spacing: 0.5px;
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
+
+  //@media (max-width: ) {
+  //
+  //}
+  @include breakpoint(medium down) {
+    &__nav {
+      flex-wrap: wrap;
+    }
+  }
+}
+
 .soue-hero {
   color: $white;
-  padding: 217px 0 53px;
+  padding: 217px 0 53px !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,6 +92,7 @@
     color: $white;
     font-size: 75px;
     line-height: 90px;
+    max-width: 100%;
   }
 
   h2 {
@@ -46,14 +128,19 @@
     font-size: 14px;
     font-family: $sub-font;
   }
-}
-.page-template-template-soue {
-  .grid-container {
-    max-width: 1200px;
-  }
-  .soue-section-title {
-    font-size: 48px;
-    font-family: $avenir-95-black;
+
+  @include breakpoint(small down) {
+    padding-top: 260px !important;
+    h1 {
+      font-size: 50px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 35px;
+      letter-spacing: normal;
+      line-height: 1.2;
+    }
   }
 }
 
@@ -65,9 +152,12 @@
     overflow: hidden;
     margin-top: 83px;
     padding-right: 100px;
+    text-align: right;
   }
+
   article {
     margin-bottom: 34px;
+
     h2 {
       font-size: 48px;
       font-family: $avenir-95-black;
@@ -104,6 +194,7 @@
 
         .value-image {
           margin-bottom: 31px;
+
           svg {
             path {
               fill: $gold;
@@ -118,10 +209,21 @@
         &:nth-child(3n) {
           border-right: none;
         }
+
         &:nth-child(-n + 3) {
           border-top: none;
         }
       }
+    }
+  }
+
+  @include breakpoint(medium down) {
+    .about-image {
+      padding-right: 20px;
+      margin-top: 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
     }
   }
 }
@@ -137,6 +239,7 @@
     color: $white;
     margin-bottom: 55px;
   }
+
   .nominate__form {
     background-color: $white;
     padding: 21px 39px 28px;
@@ -189,12 +292,51 @@
         font-family: $avenir-45-book;
       }
 
-      img {
-        width: 85%;
-        display: block;
-        margin: 0 auto;
+      .form-core-values {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        //align-items: center;
+        width: 100%;
+        //max-width: 85%;
+        margin: 25px auto 0;
+        //gap: 30px;
+        row-gap: 30px;
+
+        &__item {
+          width: 33.3%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          max-height: fit-content;
+          gap: 23px;
+
+          p {
+            font-size: 20px;
+            line-height: 24px;
+          }
+
+          img {
+            height: 55px;
+          }
+        }
+
+        @media (max-width: 750px) {
+          &__item {
+            flex-direction: column;
+            //justify-content: space-between;
+          }
+        }
+        @media (max-width: 750px) {
+          &__item {
+            width: 50%;
+          }
+        }
       }
     }
+
     .gform_footer {
       justify-content: center;
 
@@ -205,11 +347,292 @@
         background-color: $gold;
         color: $white;
         text-transform: none;
+
+        &:hover {
+          background-color: $white;
+          color: $gold;
+        }
       }
     }
 
     .validation_message {
       display: block !important;
+    }
+  }
+}
+
+.soue-winners-section {
+  padding: 45px 0;
+  background-color: #eeedeb;
+
+  .soue-section-title {
+    color: $corporate-blue;
+    max-width: 588px;
+    margin: 0 auto 25px;
+  }
+
+  article {
+    max-width: 588px;
+    margin: 0 auto 25px;
+    text-align: center;
+
+    p {
+      color: $corporate-blue;
+      font-size: 22px;
+      line-height: 34px;
+      font-family: $sub-font;
+      font-style: italic;
+
+      small {
+        font-size: 16px;
+        font-style: normal;
+      }
+    }
+  }
+
+  .winners-filter {
+    .filter-heading {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 20px;
+
+      h4 {
+        font-size: 20px;
+        line-height: 24px;
+        font-family: $avenir-85-heavy;
+      }
+
+      .clear-selection {
+        color: $gold;
+        text-decoration: underline;
+        font-size: 16px;
+        line-height: 24px;
+        font-family: $avenir-85-heavy;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .category-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+
+      &__item {
+        background-color: $white;
+        border-radius: 24px;
+        padding: 10px 28px;
+        cursor: pointer;
+        transition: all 0.5s ease-out;
+
+        .cat-title {
+          font-size: 20px;
+          line-height: 24px;
+          font-family: $avenir-85-heavy;
+        }
+
+        &.active-category {
+          background-color: #e8d3a9;
+        }
+
+        &:hover {
+          background-color: #e8d3a9;
+        }
+      }
+    }
+  }
+
+  .winners-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &__winner {
+      width: 100%;
+      max-width: 25%;
+      padding: 0 15px;
+
+      .winner-image {
+        position: relative;
+        margin-bottom: 12px;
+
+        .year-tag {
+          position: absolute;
+          right: 0;
+          top: 30px;
+          padding: 2px 12px 2px 19px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          background-color: $white;
+          gap: 5px;
+          border-radius: 25px 0 0 25px;
+
+          p {
+            margin-bottom: 0;
+            color: $gold;
+          }
+        }
+
+        img {
+          width: 100%;
+          aspect-ratio: 278/415;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      .winner-name {
+        font-family: $avenir-85-heavy;
+        font-size: 20px;
+        line-height: 24px;
+        color: $corporate-blue;
+      }
+
+      .winner-department,
+      .winner-position {
+        font-size: 18px;
+        font-family: $sub-font;
+        line-height: 24px;
+        margin-bottom: 0;
+      }
+
+      .winner-department {
+        font-style: italic;
+      }
+
+      &:nth-child(even) {
+        margin-top: 60px;
+      }
+
+      .employee-of-the-year__label {
+        display: none;
+      }
+
+      &.employee-of-the-year {
+        .winner-image {
+          border: 3px solid;
+          border-bottom: none;
+          border-image: radial-gradient(
+              circle,
+              rgb(231, 185, 95) 0%,
+              rgb(198, 146, 44) 100%
+            )
+            1;
+        }
+
+        .employee-of-the-year__label {
+          background-image: radial-gradient(
+            circle,
+            rgb(231, 185, 95) 0%,
+            rgb(198, 146, 44) 100%
+          );
+          padding: 2px 10px;
+          text-align: center;
+          display: block;
+          //background-color: $gold;
+          color: #542f0a;
+          text-transform: uppercase;
+          font-size: 16px;
+          line-height: 24px;
+          font-family: $avenir-85-heavy;
+
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    @include breakpoint(medium down) {
+      &__winner {
+        max-width: 33.3%;
+      }
+    }
+    @include breakpoint(small down) {
+      &__winner {
+        max-width: 50%;
+      }
+    }
+    @include breakpoint(400px down) {
+      &__winner {
+        max-width: 100%;
+        margin-top: 60px;
+
+        &:nth-child(1) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .more-button-wrap {
+    width: 100%;
+  }
+
+  .button.winners-more-button {
+    text-transform: none;
+    display: block;
+    font-size: 18px;
+    width: 100%;
+    max-width: 300px;
+    margin: 25px auto 0;
+  }
+}
+
+.soue-footer {
+  background-color: #000000;
+  padding: 37px;
+
+  &__logo {
+    width: 100%;
+    max-width: fit-content;
+    margin: 0 auto;
+
+    a {
+      svg {
+        width: 100%;
+        max-width: 357px;
+      }
+    }
+  }
+}
+
+.nominate-form__submition {
+  text-align: center;
+  padding: 30px;
+  h3 {
+    font-size: 48px;
+    font-family: $avenir-95-black;
+    color: $corporate-blue;
+    margin-bottom: 30px;
+  }
+  p {
+    font-size: 18px;
+    line-height: 21px;
+    font-family: $sub-font;
+  }
+
+  .button {
+    margin-top: 30px;
+    background-color: $gold;
+    color: $white;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    text-transform: none;
+
+    &:hover {
+      background-color: $white;
+      color: $gold;
     }
   }
 }

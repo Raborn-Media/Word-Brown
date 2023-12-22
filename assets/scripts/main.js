@@ -1,6 +1,7 @@
 // Import everything from autoload folder
 import './autoload/**/*'; // eslint-disable-line
 import './animation';
+import './winners-filter';
 // Import local dependencies
 import './plugins/lazyload';
 import './plugins/modernizr.min';

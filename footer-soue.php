@@ -5,7 +5,7 @@
 ?>
 
 <!-- BEGIN of footer -->
-<footer class="footer">
+<footer class="soue-footer">
     <div class="grid-container">
         <div class="grid-x">
             <div class="cell ">

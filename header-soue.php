@@ -30,26 +30,30 @@
 </div> -->
 
 <!-- BEGIN of header -->
-<header class="header-soue">
+<header class="soue-header">
     <div class="grid-container menu-grid-container">
         <div class="grid-x grid-margin-x">
-            <div class="medium-4 small-12 cell">
-                <a href="<?php echo get_home_url(); ?>">
-                    <?php if ( $page_logo = get_field( 'page_logo' ) ) : ?>
-                        <?php echo display_svg( $page_logo, '', 'small' ); ?>
-                    <?php endif; ?>
-                </a>
+            <div class="medium-8 small-12 cell logo-column">
+                <div class="soue-header__logo">
+                    <a href="<?php echo get_home_url(); ?>">
+                        <?php if ( $page_logo = get_field( 'page_logo' ) ) : ?>
+                            <?php echo display_svg( $page_logo, '', 'small' ); ?>
+                        <?php endif; ?>
+                    </a>
+                </div>
             </div>
-            <div class="medium-8 small-12 cell">
-                <a href="#soue-about" class="soue-nav-link">
-                    <?php _e('About'); ?>
-                </a>
-                <a href="#soue-nominate" class="soue-nav-link">
-                    <?php _e('Nominate'); ?>
-                </a>
-                <a href="#soue-winners" class="soue-nav-link">
-                    <?php _e('Past Winners'); ?>
-                </a>
+            <div class="medium-4 small-12 cell menu-column">
+                <div class="soue-header__nav">
+                    <a href="#soue-about" class="soue-nav-link">
+                        <?php _e( 'About' ); ?>
+                    </a>
+                    <a href="#soue-nominate" class="soue-nav-link">
+                        <?php _e( 'Nominate' ); ?>
+                    </a>
+                    <a href="#soue-winners" class="soue-nav-link">
+                        <?php _e( 'Past Winners' ); ?>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

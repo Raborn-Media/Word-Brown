@@ -358,7 +358,7 @@ function custom_confirmation_message( $confirmation, $form, $entry, $ajax ) {
     // Check if it's the form ID you want to modify the confirmation message for
     if ( $form['id'] == 3 ) {
         // Custom confirmation message with JavaScript button
-        $confirmation = '<h3>Thank You!</h3><p>Your nomination has been sent. You`re one step closer to making someone feel awesome!</p><button onclick="reopenForm()">Nominate Another Employee</button><script>function reopenForm() {window.location.reload();}</script>';
+        $confirmation = '<div class="nominate-form__submition"><h3>Thank You!</h3><p>Your nomination has been sent. You`re one step closer to making someone feel awesome!</p><button class="button" onclick="reopenForm()">Nominate Another Employee</button></div><script>function reopenForm() {window.location.reload();}</script>';
     }
 
     return $confirmation;
@@ -389,4 +389,234 @@ function validate_email( $result, $value, $form, $field ) {
     }
 
     return $result;
+}
+
+////////////////////////////////////////////////////////////////////////
+// Winners Ajax filter
+////////////////////////////////////////////////////////////////////////
+///  // AJAX Handler to filter winners
+add_action( 'wp_ajax_filter_winners', 'filter_winners' );
+add_action( 'wp_ajax_nopriv_filter_winners', 'filter_winners' );
+function filter_winners() {
+    $category = $_POST['category'];
+    $paged    = intval($_POST['paged']);
+
+    $args = array(
+        'post_type'      => 'winners',
+        'order'          => 'ASC',
+        'orderby'        => 'ID',
+        'posts_per_page' => 12,
+        'paged'          => $paged,
+    );
+    if ($category) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'victory_year',
+            'field'    => 'term_id',
+            'terms'    => $category,
+        ];
+    }
+
+    $winners_query = new WP_Query( $args );
+
+    ob_start();
+
+    if ( $winners_query->have_posts() ) {
+        while ( $winners_query->have_posts() ) {
+            $winners_query->the_post();
+            $employee_of_the_year = get_field( 'employee_of_the_year' );
+            ?>
+            <div
+                class='winners-list__winner <?php echo $employee_of_the_year ? 'employee-of-the-year' : ''; ?>'>
+                <div class="winner-image">
+                    <div class="year-tag">
+                        <?php
+                        $post_id = get_the_ID(); // Assuming you're inside the loop, otherwise, specify the post ID
+
+                        $selected_year    = wp_get_post_terms( $post_id, 'victory_year', array(
+                            'orderby' => 'term_id',
+                            'order'   => 'DESC',
+                            'number'  => 1
+                        ) );
+                        $selected_quarter = wp_get_post_terms( $post_id, 'victoty_quarter', array(
+                            'orderby' => 'term_id',
+                            'order'   => 'DESC',
+                            'number'  => 1
+                        ) );
+                        ?>
+
+                        <?php if ( ! empty( $selected_quarter ) ) {
+                            foreach ( $selected_quarter as $quarter ) { ?>
+                                <p class="quarter-title">
+                                    <?php echo $quarter->name; ?>
+                                </p>
+                            <?php }
+                        }
+
+                        if ( ! empty( $selected_year ) ) {
+                            foreach ( $selected_year as $year ) { ?>
+                                <p class="year-title">
+                                    <?php echo $year->name; ?>
+                                </p>
+                            <?php }
+                        }
+                        ?>
+                    </div>
+                    <?php the_post_thumbnail(); ?>
+
+                    <p class="employee-of-the-year__label">
+                        <?php _e( 'employee' ); ?>
+                        <span><?php _e( 'of the' ); ?></span>
+                        <?php _e( 'year' ); ?>
+                        <?php if ( ! empty( $selected_year ) ) {
+                            foreach (
+                                $selected_year
+
+                                as $year
+                            ) { ?>
+                                <?php echo $year->name; ?>
+                            <?php }
+                        }
+                        ?>
+                    </p>
+                </div>
+                <h4 class="winner-name">
+                    <?php the_title(); ?>
+                </h4>
+                <?php if ( $winner_position = get_field( 'winner_position' ) ) : ?>
+                    <p class="winner-position">
+                        <?php echo $winner_position; ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if ( $winner_department = get_field( 'winner_department' ) ) : ?>
+                    <p class="winner-department">
+                        <?php echo $winner_department; ?>
+                    </p>
+                <?php endif; ?>
+            </div>
+        <?php }
+        wp_reset_postdata();
+        ?>
+        <?php if($winners_query->max_num_pages >= 2 && $winners_query->max_num_pages > $paged) : ?>
+            <div class="more-button-wrap">
+                <button class="button winners-more-button" data-paged="<?php echo $paged + 1?>">
+                    <?php _e( 'View More Past Winners' ); ?>
+                </button>
+            </div>
+        <?php endif; ?>
+        <?php
+    }
+
+    $response = ob_get_clean();
+    echo $response;
+    die();
+}
+
+// AJAX Handler to clear filter
+add_action( 'wp_ajax_clear_filter_winners', 'clear_filter_winners' );
+add_action( 'wp_ajax_nopriv_clear_filter_winners', 'clear_filter_winners' );
+
+function clear_filter_winners() {
+    // Reset query to get all winners
+    $args = array(
+        'post_type'      => 'winners',
+        'order'          => 'ASC',
+        'orderby'        => 'ID',
+        'posts_per_page' => 12,
+    );
+
+    $winners_query = new WP_Query( $args );
+
+    ob_start();
+
+    if ( $winners_query->have_posts() ) {
+        while ( $winners_query->have_posts() ) {
+            $winners_query->the_post();
+            $employee_of_the_year = get_field( 'employee_of_the_year' );
+            ?>
+            <div
+                class='winners-list__winner <?php echo $employee_of_the_year ? 'employee-of-the-year' : ''; ?>'>
+                <div class="winner-image">
+                    <div class="year-tag">
+                        <?php
+                        $post_id = get_the_ID(); // Assuming you're inside the loop, otherwise, specify the post ID
+
+                        $selected_year    = wp_get_post_terms( $post_id, 'victory_year', array(
+                            'orderby' => 'term_id',
+                            'order'   => 'DESC',
+                            'number'  => 1
+                        ) );
+                        $selected_quarter = wp_get_post_terms( $post_id, 'victoty_quarter', array(
+                            'orderby' => 'term_id',
+                            'order'   => 'DESC',
+                            'number'  => 1
+                        ) );
+                        ?>
+
+                        <?php if ( ! empty( $selected_quarter ) ) {
+                            foreach ( $selected_quarter as $quarter ) { ?>
+                                <p class="quarter-title">
+                                    <?php echo $quarter->name; ?>
+                                </p>
+                            <?php }
+                        }
+
+                        if ( ! empty( $selected_year ) ) {
+                            foreach ( $selected_year as $year ) { ?>
+                                <p class="year-title">
+                                    <?php echo $year->name; ?>
+                                </p>
+                            <?php }
+                        }
+                        ?>
+                    </div>
+                    <?php the_post_thumbnail(); ?>
+
+                    <p class="employee-of-the-year__label">
+                        <?php _e( 'employee' ); ?>
+                        <span><?php _e( 'of the' ); ?></span>
+                        <?php _e( 'year' ); ?>
+                        <?php if ( ! empty( $selected_year ) ) {
+                            foreach (
+                                $selected_year
+
+                                as $year
+                            ) { ?>
+                                <?php echo $year->name; ?>
+                            <?php }
+                        }
+                        ?>
+                    </p>
+                </div>
+                <h4 class="winner-name">
+                    <?php the_title(); ?>
+                </h4>
+                <?php if ( $winner_position = get_field( 'winner_position' ) ) : ?>
+                    <p class="winner-position">
+                        <?php echo $winner_position; ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if ( $winner_department = get_field( 'winner_department' ) ) : ?>
+                    <p class="winner-department">
+                        <?php echo $winner_department; ?>
+                    </p>
+                <?php endif; ?>
+            </div>
+        <?php }
+        wp_reset_postdata();
+        ?>
+        <?php if($winners_query->max_num_pages >= 2) : ?>
+            <div class="more-button-wrap">
+                <button class="button winners-more-button" data-paged="2">
+                    <?php _e( 'View More Past Winners' ); ?>
+                </button>
+            </div>
+        <?php endif; ?>
+        <?php
+    }
+
+    $response = ob_get_clean();
+    echo $response;
+    die();
 }

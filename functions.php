@@ -399,7 +399,7 @@ add_action( 'wp_ajax_filter_winners', 'filter_winners' );
 add_action( 'wp_ajax_nopriv_filter_winners', 'filter_winners' );
 function filter_winners() {
     $category = $_POST['category'];
-    $paged    = intval($_POST['paged']);
+    $paged    = intval( $_POST['paged'] );
 
     $args = array(
         'post_type'      => 'winners',
@@ -408,7 +408,7 @@ function filter_winners() {
         'posts_per_page' => 12,
         'paged'          => $paged,
     );
-    if ($category) {
+    if ( $category ) {
         $args['tax_query'][] = [
             'taxonomy' => 'victory_year',
             'field'    => 'term_id',
@@ -426,7 +426,8 @@ function filter_winners() {
             $employee_of_the_year = get_field( 'employee_of_the_year' );
             ?>
             <div
-                class='winners-list__winner <?php echo $employee_of_the_year ? 'employee-of-the-year' : ''; ?>'>
+                class='winners-list__winner ease-btm <?php echo $employee_of_the_year ? 'employee-of-the-year' : ''; ?>'
+                data-scroll>
                 <div class="winner-image">
                     <div class="year-tag">
                         <?php
@@ -497,9 +498,9 @@ function filter_winners() {
         <?php }
         wp_reset_postdata();
         ?>
-        <?php if($winners_query->max_num_pages >= 2 && $winners_query->max_num_pages > $paged) : ?>
+        <?php if ( $winners_query->max_num_pages >= 2 && $winners_query->max_num_pages > $paged ) : ?>
             <div class="more-button-wrap">
-                <button class="button winners-more-button" data-paged="<?php echo $paged + 1?>">
+                <button class="button winners-more-button" data-paged="<?php echo $paged + 1 ?>">
                     <?php _e( 'View More Past Winners' ); ?>
                 </button>
             </div>
@@ -535,7 +536,8 @@ function clear_filter_winners() {
             $employee_of_the_year = get_field( 'employee_of_the_year' );
             ?>
             <div
-                class='winners-list__winner <?php echo $employee_of_the_year ? 'employee-of-the-year' : ''; ?>'>
+                class='winners-list__winner ease-btm <?php echo $employee_of_the_year ? 'employee-of-the-year' : ''; ?>'
+                data-scroll>
                 <div class="winner-image">
                     <div class="year-tag">
                         <?php
@@ -606,7 +608,7 @@ function clear_filter_winners() {
         <?php }
         wp_reset_postdata();
         ?>
-        <?php if($winners_query->max_num_pages >= 2) : ?>
+        <?php if ( $winners_query->max_num_pages >= 2 ) : ?>
             <div class="more-button-wrap">
                 <button class="button winners-more-button" data-paged="2">
                     <?php _e( 'View More Past Winners' ); ?>

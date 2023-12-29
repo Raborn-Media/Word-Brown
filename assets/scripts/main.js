@@ -6,7 +6,6 @@ import './winners-filter';
 import './plugins/lazyload';
 import './plugins/modernizr.min';
 import 'slick-carousel';
-// import skrollr from 'skrollr';
 // import MobileDetect from 'mobile-detect';
 import 'jquery-match-height';
 import objectFitImages from 'object-fit-images';
@@ -679,23 +678,23 @@ $(document).on('ready', function () {
    * Detect element appearance in viewport
    */
   ScrollOut({
-    offset: function () {
-      return window.innerHeight - 100;
-    },
-    // once: true,
-    onShown: function (element) {
-      if ($(element).is('.ease-order')) {
-        $(element)
-          .find('.ease-order__item')
-          .each(function (i) {
-            let $this = $(this);
-            $(this).attr('data-scroll', '');
-            window.setTimeout(function () {
-              $this.attr('data-scroll', 'in');
-            }, 300 * i);
-          });
-      }
-    },
+    // offset: function () {
+    //   return window.innerHeight - 100;
+    // },
+    once: false,
+    // onShown: function (element) {
+    //   if ($(element).is('.ease-order')) {
+    //     $(element)
+    //       .find('.ease-order__item')
+    //       .each(function (i) {
+    //         let $this = $(this);
+    //         $(this).attr('data-scroll', '');
+    //         window.setTimeout(function () {
+    //           $this.attr('data-scroll', 'in');
+    //         }, 300 * i);
+    //       });
+    //   }
+    // },
   });
 
   /**

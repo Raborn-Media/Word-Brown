@@ -85,6 +85,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 
   h1 {
     font-family: $sub-font;
@@ -146,6 +147,7 @@
 
 .soue-about-section {
   padding-top: 53px;
+  background-color: #eeedeb;
 
   .about-image {
     max-height: 720px;
@@ -162,6 +164,7 @@
       font-size: 48px;
       font-family: $avenir-95-black;
       color: $corporate-blue;
+      margin-bottom: 40px;
     }
 
     p {
@@ -226,6 +229,11 @@
       top: 0;
     }
   }
+  @include breakpoint(small down) {
+    .about-image {
+      position: relative;
+    }
+  }
 }
 
 .soue-nominate-section {
@@ -234,6 +242,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 
   .soue-section-title {
     color: $white;
@@ -353,6 +362,16 @@
           color: $gold;
         }
       }
+
+      .gform_button:disabled {
+        background-color: #8a8a8a;
+        border-color: #8a8a8a;
+        opacity: 0.3 !important;
+
+        &:hover {
+          color: $white;
+        }
+      }
     }
 
     .validation_message {
@@ -362,6 +381,7 @@
 }
 
 .soue-winners-section {
+  position: relative;
   padding: 45px 0;
   background-color: #eeedeb;
 
@@ -417,6 +437,9 @@
       }
     }
 
+    @include breakpoint(small down) {
+    }
+
     .category-list {
       display: flex;
       flex-direction: row;
@@ -444,6 +467,46 @@
         &:hover {
           background-color: #e8d3a9;
         }
+      }
+
+      @include breakpoint(small down) {
+        overflow: hidden;
+      }
+    }
+
+    .dropdown-year {
+      border: 2px solid $gold;
+      padding: 8px 16px;
+      font-size: 20px;
+      line-height: 24px;
+      font-family: $avenir-85-heavy;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      .fa-chevron-down {
+        transition: all 0.5s ease-out;
+        transform-origin: center;
+      }
+    }
+    .dropdown-year__active {
+      .fa-chevron-down {
+        &:before {
+          content: '\f00d';
+        }
+        //transform: rotate(180deg);
+      }
+    }
+
+    @include breakpoint(small down) {
+      .category-list-wrap {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s ease-out;
+      }
+      .category-list-wrap__open {
+        grid-template-rows: 1fr;
       }
     }
   }
@@ -475,6 +538,7 @@
           background-color: $white;
           gap: 5px;
           border-radius: 25px 0 0 25px;
+          z-index: 5;
 
           p {
             margin-bottom: 0;
@@ -586,6 +650,17 @@
     max-width: 300px;
     margin: 25px auto 0;
   }
+
+  .scroll-to-up {
+    position: fixed;
+    //bottom: 155px;
+    bottom: 30px;
+    right: 20px;
+
+    .up_arrow_div {
+      background-color: rgba($footer-text-color, 0.99);
+    }
+  }
 }
 
 .soue-footer {
@@ -609,12 +684,14 @@
 .nominate-form__submition {
   text-align: center;
   padding: 30px;
+
   h3 {
     font-size: 48px;
     font-family: $avenir-95-black;
     color: $corporate-blue;
     margin-bottom: 30px;
   }
+
   p {
     font-size: 18px;
     line-height: 21px;
@@ -622,12 +699,12 @@
   }
 
   .button {
-    margin-top: 30px;
+    margin: 30px auto 0;
     background-color: $gold;
     color: $white;
     display: block;
     width: 100%;
-    max-width: 300px;
+    max-width: fit-content;
     text-transform: none;
 
     &:hover {

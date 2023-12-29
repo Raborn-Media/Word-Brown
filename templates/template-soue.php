@@ -46,7 +46,7 @@ $hero_bg = get_field( 'hero_bg' );
 <section id="soue-about" class="soue-about-section">
     <div class="grid-container">
         <div class="grid-x">
-            <div class="cell medium-5">
+            <div class="cell medium-5 show-for-medium">
                 <?php if ( $about_image = get_field( 'about_image' ) ) : ?>
                     <div class="about-image">
                         <?php echo wp_get_attachment_image( $about_image['id'], 'large' ); ?>
@@ -58,6 +58,12 @@ $hero_bg = get_field( 'hero_bg' );
                     <article>
                         <?php echo $about_text; ?>
                     </article>
+                <?php endif; ?>
+
+                <?php if ( $about_image = get_field( 'about_image' ) ) : ?>
+                    <div class="about-image hide-for-medium">
+                        <?php echo wp_get_attachment_image( $about_image['id'], 'large' ); ?>
+                    </div>
                 <?php endif; ?>
 
                 <?php if ( have_rows( 'core_values' ) ) : ?>
@@ -150,16 +156,22 @@ $hero_bg = get_field( 'hero_bg' );
                     ] );
 
                     if ( $winners_categories ) { ?>
-                        <div class="category-list">
-                            <?php
-                            foreach ( $winners_categories as $cat ) { ?>
-                                <div data-category='<?php echo $cat->term_id; ?>'
-                                     class="category-list__item">
-                                    <p class="cat-title">
-                                        <?php echo $cat->name; ?>
-                                    </p>
-                                </div>
-                            <?php }; ?>
+                        <div class="dropdown-year hide-for-medium">
+                            <?php _e( 'Select year' ); ?>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="category-list-wrap">
+                            <div class="category-list">
+                                <?php
+                                foreach ( $winners_categories as $cat ) { ?>
+                                    <div data-category='<?php echo $cat->term_id; ?>'
+                                         class="category-list__item">
+                                        <p class="cat-title">
+                                            <?php echo $cat->name; ?>
+                                        </p>
+                                    </div>
+                                <?php }; ?>
+                            </div>
                         </div>
                     <?php }; ?>
                 </div>
@@ -170,8 +182,8 @@ $hero_bg = get_field( 'hero_bg' );
                         'post_type'      => 'winners',
                         'order'          => 'ASC',
                         'orderby'        => 'ID',
-//                        'posts_per_page' => 12,
-                        'posts_per_page' => 4,
+                        'posts_per_page' => 12,
+//                        'posts_per_page' => 4,
                     );
                     ?>
 
@@ -187,7 +199,8 @@ $hero_bg = get_field( 'hero_bg' );
                             $employee_of_the_year = get_field( 'employee_of_the_year' );
                             ?>
                             <div
-                                class='winners-list__winner <?php echo $employee_of_the_year ? 'employee-of-the-year' : ''; ?>'>
+                                class='winners-list__winner ease-btm <?php echo $employee_of_the_year ? 'employee-of-the-year' : ''; ?>'
+                                data-scroll>
                                 <div class="winner-image">
                                     <div class="year-tag">
                                         <?php
@@ -222,6 +235,7 @@ $hero_bg = get_field( 'hero_bg' );
                                         }
                                         ?>
                                     </div>
+
                                     <?php the_post_thumbnail(); ?>
 
                                     <p class="employee-of-the-year__label">
@@ -239,6 +253,7 @@ $hero_bg = get_field( 'hero_bg' );
                                         }
                                         ?>
                                     </p>
+
                                 </div>
                                 <h4 class="winner-name">
                                     <?php the_title(); ?>
@@ -258,7 +273,7 @@ $hero_bg = get_field( 'hero_bg' );
                         <?php endwhile; ?>
                     <?php endif; ?>
                     <?php wp_reset_postdata(); ?>
-                    <?php if($winners_query->max_num_pages >= 2) : ?>
+                    <?php if ( $winners_query->max_num_pages >= 2 ) : ?>
                         <div class="more-button-wrap">
                             <button class="button winners-more-button" data-paged="2">
                                 <?php _e( 'View More Past Winners' ); ?>
@@ -267,6 +282,12 @@ $hero_bg = get_field( 'hero_bg' );
                     <?php endif; ?>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="scroll-to-up">
+        <div style="text-align: right;" class="container">
+            <div class="up_arrow_div">
+                <i class="fa-solid fa-chevron-up"></i></div>
         </div>
     </div>
 </section>

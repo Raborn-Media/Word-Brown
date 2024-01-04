@@ -47,7 +47,7 @@
 
     <div class="grid-container">
         <div class="grid-x blog-list-row">
-            <div class="small-12 large-9 cell">
+            <div class="small-12 cell">
 
                 <ul id="<?php echo is_page_template('templates/template-news.php') == true ? 'blog-list__single' : 'blog-list'; ?>"></ul>
 
@@ -62,16 +62,16 @@
                 <?php endif; ?>
 
             </div>
-            <div class="small-12 large-3 cell">
-                <div class="date-filter-wrap">
-                    <h4 class="archive-title"><?php _e('Archive'); ?></h4>
-                    <ul class="show-for-large" id="<?php echo is_page_template('templates/template-news.php') == true ? 'blog-list-archive__single' : 'blog-list-archive'; ?>"></ul>
-                    <label for="archiveSelect"></label>
-                    <select class="hide-for-large" id="<?php echo is_page_template('templates/template-news.php') == true ? 'archiveSelect__single' : 'archiveSelect'; ?>">
-                        <option value="" selected><?php _e('Choose date'); ?></option>
-                    </select>
-                </div>
-            </div>
+<!--            <div class="small-12 large-3 cell">-->
+<!--                <div class="date-filter-wrap">-->
+<!--                    <h4 class="archive-title">--><?php //_e('Archive'); ?><!--</h4>-->
+<!--                    <ul class="show-for-large" id="--><?php //echo is_page_template('templates/template-news.php') == true ? 'blog-list-archive__single' : 'blog-list-archive'; ?><!--"></ul>-->
+<!--                    <label for="archiveSelect"></label>-->
+<!--                    <select class="hide-for-large" id="--><?php //echo is_page_template('templates/template-news.php') == true ? 'archiveSelect__single' : 'archiveSelect'; ?><!--">-->
+<!--                        <option value="" selected>--><?php //_e('Choose date'); ?><!--</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 </section>

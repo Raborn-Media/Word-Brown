@@ -3,12 +3,19 @@
  * Template Name: SOUE Template
  */
 get_header( 'soue' );
-$hero_bg = get_field( 'hero_bg' );
+$hero_bg      = get_field( 'hero_bg' );
+$bg_video_url = get_field( 'hero_bg_video' );
 ?>
 
 
 <!-- BEGIN  soue-hero -->
 <section class="soue-hero" <?php bg( $hero_bg['url'], 'full_hd' ); ?>>
+    <video src="<?php echo $bg_video_url; ?>"
+           autoplay
+           preload="none"
+           muted="muted"
+           loop="loop"
+           class="video soue-hero__videoBg"></video>
     <div class="grid-container">
         <div class="grid-x">
             <div class="cell text-center">

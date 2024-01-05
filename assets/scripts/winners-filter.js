@@ -117,7 +117,7 @@ jQuery(document).ready(function ($) {
 
   $(document).on('click', '.winners-more-button', function () {
     let page = $(this).data('paged');
-    let currButton = $(this);
+    let currButton = $('.more-button-wrap');
     $.ajax({
       type: 'POST',
       url: ajax_object.ajax_url,

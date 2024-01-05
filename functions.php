@@ -462,7 +462,13 @@ function filter_winners() {
                         }
                         ?>
                     </div>
-                    <?php the_post_thumbnail(); ?>
+                    <?php if ( has_post_thumbnail() ) : ?>
+                        <?php the_post_thumbnail(); ?>
+                    <?php else:
+                        $winner_placeholder_image = get_field('winner_placeholder_image', 'options');
+                        ?>
+                        <?php echo wp_get_attachment_image($winner_placeholder_image['id'], 'large', false, ['class' => 'placeholder-image']); ?>
+                    <?php endif; ?>
 
                     <p class="employee-of-the-year__label">
                         <?php _e( 'employee' ); ?>

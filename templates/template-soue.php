@@ -85,13 +85,22 @@ $bg_video_url = get_field( 'hero_bg_video' );
                                 $value_text  = get_sub_field( 'value_text' );
                                 ?>
                                 <div class="values-list__item">
-                                    <div class="value-image">
-                                        <?php echo display_svg( $value_image ); ?>
-                                    </div>
+                                    <?php if($value_image) : ?>
+                                        <div class="value-image">
+                                            <?php echo display_svg( $value_image ); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if($value_title) : ?>
+                                        <h5 class="value-title">
+                                            <?php echo $value_title; ?>
+                                        </h5>
+                                    <?php endif; ?>
+                                    <?php if($value_text) : ?>
+                                        <article>
+                                            <?php echo $value_text;?>
+                                        </article>
+                                    <?php endif; ?>
 
-                                    <h5 class="value-title">
-                                        <?php echo $value_title; ?>
-                                    </h5>
                                 </div>
                             <?php endwhile; ?>
                         </div>
@@ -190,7 +199,6 @@ $bg_video_url = get_field( 'hero_bg_video' );
                         'order'          => 'ASC',
                         'orderby'        => 'ID',
                         'posts_per_page' => 12,
-//                        'posts_per_page' => 4,
                     );
                     ?>
 

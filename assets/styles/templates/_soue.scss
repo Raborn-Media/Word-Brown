@@ -174,7 +174,7 @@
 }
 
 .soue-about-section {
-  padding-top: 53px;
+  padding: 50px 0;
   background-color: #eeedeb;
 
   .about-image {
@@ -227,6 +227,7 @@
           margin-bottom: 31px;
 
           svg {
+            height: 64px;
             path {
               fill: $gold;
             }
@@ -237,8 +238,21 @@
           font-size: 20px;
         }
 
+        article {
+          padding: 0 25px;
+          margin-bottom: 0;
+          p {
+            font-size: 18px;
+            color: #343434;
+            line-height: 25px;
+          }
+        }
+
         &:nth-child(3n) {
           border-right: none;
+        }
+        &:nth-child(n + 4) {
+          padding-bottom: 20px;
         }
 
         &:nth-child(-n + 3) {
@@ -312,14 +326,21 @@
 
       &::placeholder {
         font-size: 20px;
-        color: #a9a9a9;
+        color: #383838;
         line-height: 32px;
         font-weight: 300;
       }
     }
 
+    select {
+      background-image: url('../../images/chevron-down-solid.svg');
+      background-position: right;
+      background-size: 10px 10px;
+    }
+
     textarea {
-      max-height: 288px;
+      min-height: 280px;
+      width: 100% !important;
     }
 
     .gfield_html {
@@ -452,7 +473,7 @@
       }
 
       .clear-selection {
-        color: $gold;
+        color: #9a6126;
         text-decoration: underline;
         font-size: 16px;
         line-height: 24px;
@@ -571,6 +592,8 @@
           p {
             margin-bottom: 0;
             color: $gold;
+            font-size: 18px;
+            font-family: $avenir-85-heavy;
           }
         }
 
@@ -580,6 +603,10 @@
           object-fit: cover;
           object-position: center;
         }
+        //.placeholder-image {
+        //  object-fit: none;
+        //  height: 100%;
+        //}
       }
 
       .winner-name {
@@ -587,6 +614,7 @@
         font-size: 20px;
         line-height: 24px;
         color: $corporate-blue;
+        margin-bottom: 0;
       }
 
       .winner-department,
@@ -595,6 +623,9 @@
         font-family: $sub-font;
         line-height: 24px;
         margin-bottom: 0;
+      }
+      .winner-position {
+        display: none;
       }
 
       .winner-department {

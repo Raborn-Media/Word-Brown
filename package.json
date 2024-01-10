@@ -95,6 +95,7 @@
     "jquery": "^3.5.1",
     "jquery-match-height": "^0.7.2",
     "mobile-detect": "^1.4.5",
+    "sass": "^1.69.7",
     "scroll-out": "^2.2.12",
     "skrollr": "^0.6.26",
     "slick-carousel": "^1.8.1",

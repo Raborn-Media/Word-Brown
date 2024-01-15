@@ -462,11 +462,11 @@ if ($('#culture').length) {
     },
   });
   tlBottomFirstImage.from('.bottom-first-image-wrap', {
-    opacity: 0.2, // Initial opacity set to 0
+    opacity: 0.7, // Initial opacity set to 0
     y: 100,
     scrollTrigger: {
       trigger: '.bottom-first-image-container',
-      start: 'top 70%',
+      start: 'top 50%',
       end: 'top 5%',
       // diration: 3,
       scrub: true,
@@ -482,11 +482,11 @@ if ($('#culture').length) {
     },
   });
   tlBottomSecondImage.from('.bottom-second-image-wrap', {
-    opacity: 0.2, // Initial opacity set to 0
+    opacity: 0.7, // Initial opacity set to 0
     y: 100,
     scrollTrigger: {
       trigger: '.bottom-second-image-container',
-      start: 'top 70%',
+      start: 'top 50%',
       end: 'top 5%',
       // diration: 3,
       scrub: true,

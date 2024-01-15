@@ -30,6 +30,7 @@
 
       &:hover {
         background-color: $light-gray;
+        filter: brightness(100%);
       }
 
       svg {
@@ -64,6 +65,7 @@
       img,
       svg {
         filter: grayscale(90%);
+        filter: brightness(30%);
       }
     }
   }

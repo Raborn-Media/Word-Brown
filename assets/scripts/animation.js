@@ -462,11 +462,20 @@ if ($('#culture').length) {
     },
   });
   tlBottomFirstImage.from('.bottom-first-image-wrap', {
-    opacity: 0.7, // Initial opacity set to 0
     y: 100,
     scrollTrigger: {
       trigger: '.bottom-first-image-container',
       start: 'top 50%',
+      end: 'top 5%',
+      // diration: 3,
+      scrub: true,
+    },
+  });
+  tlBottomFirstImage.from('.bottom-first-image-wrap', {
+    opacity: 0.5, // Initial opacity set to 0
+    scrollTrigger: {
+      trigger: '.bottom-first-image-container',
+      start: 'top 70%',
       end: 'top 5%',
       // diration: 3,
       scrub: true,

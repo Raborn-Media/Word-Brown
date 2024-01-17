@@ -366,7 +366,7 @@ $section_text  = get_sub_field( 'section_text' );
                     <?php if ( $bottom_text_image = get_sub_field( 'bottom_text_image' ) ) : ?>
                         <div class="container bottom-first-image-container">
                             <div class="image-wrap bottom-first-image-wrap">
-                                <?php echo wp_get_attachment_image( $bottom_text_image['id'], 'large' ); ?>
+                                <?php echo wp_get_attachment_image( $bottom_text_image['id'], 'full_hd' ); ?>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -377,7 +377,7 @@ $section_text  = get_sub_field( 'section_text' );
                     <?php if ( $bottom_section_image = get_sub_field( 'bottom_section_image' ) ) : ?>
                         <div class="container bottom-second-image-container">
                             <div class="image-wrap bottom-second-image-wrap">
-                                <?php echo wp_get_attachment_image( $bottom_section_image['id'], 'large' ); ?>
+                                <?php echo wp_get_attachment_image( $bottom_section_image['id'], 'full_hd' ); ?>
                             </div>
                         </div>
                     <?php endif; ?>

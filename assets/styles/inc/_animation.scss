@@ -97,6 +97,12 @@
     }
   }
 
+  .bottom-first-image-wrap {
+    img {
+      object-fit: none;
+    }
+  }
+
   .word {
     font-size: 3rem;
     font-family: $sub-font;

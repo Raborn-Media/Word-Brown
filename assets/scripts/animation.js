@@ -476,7 +476,7 @@ if ($('#culture').length) {
     scrollTrigger: {
       trigger: '.bottom-first-image-container',
       start: 'top 70%',
-      end: 'top 5%',
+      end: 'top 20%',
       // diration: 3,
       scrub: true,
     },
@@ -491,12 +491,21 @@ if ($('#culture').length) {
     },
   });
   tlBottomSecondImage.from('.bottom-second-image-wrap', {
-    opacity: 0.7, // Initial opacity set to 0
     y: 100,
     scrollTrigger: {
       trigger: '.bottom-second-image-container',
       start: 'top 50%',
       end: 'top 5%',
+      // diration: 3,
+      scrub: true,
+    },
+  });
+  tlBottomSecondImage.from('.bottom-second-image-wrap', {
+    opacity: 0.5, // Initial opacity set to 0
+    scrollTrigger: {
+      trigger: '.bottom-second-image-container',
+      start: 'top 70%',
+      end: 'top 20%',
       // diration: 3,
       scrub: true,
     },

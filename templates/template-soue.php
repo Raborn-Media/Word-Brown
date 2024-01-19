@@ -36,7 +36,7 @@ $bg_video_url = get_field( 'hero_bg_video' );
                     <?php echo $hero_text; ?>
                 </article>
 
-                <a href="<?php echo $hero_button['url']; ?>" class="button">
+                <a href="<?php echo $hero_button['url']; ?>" class="button soue-hero-btn">
                     <?php echo $hero_button['title']; ?>
                 </a>
 
@@ -53,14 +53,14 @@ $bg_video_url = get_field( 'hero_bg_video' );
 <section id="soue-about" class="soue-about-section">
     <div class="grid-container">
         <div class="grid-x">
-            <div class="cell medium-5 show-for-medium">
+            <div class="cell large-5 show-for-medium">
                 <?php if ( $about_image = get_field( 'about_image' ) ) : ?>
                     <div class="about-image">
                         <?php echo wp_get_attachment_image( $about_image['id'], 'large' ); ?>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="cell medium-7">
+            <div class="cell large-7">
                 <?php if ( $about_text = get_field( 'about_text' ) ) : ?>
                     <article>
                         <?php echo $about_text; ?>

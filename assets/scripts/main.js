@@ -813,6 +813,21 @@ $(window).on('load', function () {
       );
     }
   });
+  $('.soue-hero-btn').on('click', function (event) {
+    if (this.hash !== '') {
+      event.preventDefault();
+      var target = this.hash;
+      $('html, body').animate(
+        {
+          scrollTop: $(target).offset().top,
+        },
+        800,
+        function () {
+          window.location.hash = target;
+        }
+      );
+    }
+  });
 });
 
 /**

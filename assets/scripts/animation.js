@@ -476,7 +476,7 @@ if ($('#culture').length) {
     scrollTrigger: {
       trigger: '.bottom-first-image-container',
       start: 'top 70%',
-      end: 'top 20%',
+      end: 'top 35%',
       // diration: 3,
       scrub: true,
     },
@@ -505,7 +505,7 @@ if ($('#culture').length) {
     scrollTrigger: {
       trigger: '.bottom-second-image-container',
       start: 'top 70%',
-      end: 'top 20%',
+      end: 'top 35%',
       // diration: 3,
       scrub: true,
     },

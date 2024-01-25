@@ -562,20 +562,20 @@ $(document).on('ready', function () {
     }
   });
 
-  $('.black-logos-container .companies-list__item').on(
-    'mouseenter',
-    function () {
-      $(this).removeClass('black-logos');
-      $(this).addClass('gray-bg');
-    }
-  );
-  $('.black-logos-container .companies-list__item').on(
-    'mouseleave',
-    function () {
-      $('.companies-list__item').addClass('black-logos');
-      $('.companies-list__item').removeClass('gray-bg');
-    }
-  );
+  // $('.black-logos-container .companies-list__item').on(
+  //   'mouseenter',
+  //   function () {
+  //     $(this).removeClass('black-logos');
+  //     $(this).addClass('gray-bg');
+  //   }
+  // );
+  // $('.black-logos-container .companies-list__item').on(
+  //   'mouseleave',
+  //   function () {
+  //     $('.companies-list__item').addClass('black-logos');
+  //     $('.companies-list__item').removeClass('gray-bg');
+  //   }
+  // );
 
   $('#youtube-lightbox .fa').click(function () {
     $('#youtube-lightbox').addClass('hidden');

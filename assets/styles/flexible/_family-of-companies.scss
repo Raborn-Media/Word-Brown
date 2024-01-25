@@ -60,14 +60,14 @@
         }
       }
     }
-    .black-logos {
-      //filter: grayscale(1);
-      img,
-      svg {
-        filter: grayscale(90%);
-        filter: brightness(30%);
-      }
-    }
+    // .black-logos {
+    //   //filter: grayscale(1);
+    //   img,
+    //   svg {
+    //     filter: grayscale(90%);
+    //     filter: brightness(30%);
+    //   }
+    // }
   }
 
   @include breakpoint(1200px down) {

@@ -403,7 +403,7 @@ function filter_winners() {
 
     $args = array(
         'post_type'      => 'winners',
-        'order'          => 'ASC',
+        'order'          => 'DESC',
         'orderby'        => 'ID',
         'posts_per_page' => 12,
         'paged'          => $paged,
@@ -527,7 +527,7 @@ function clear_filter_winners() {
     // Reset query to get all winners
     $args = array(
         'post_type'      => 'winners',
-        'order'          => 'ASC',
+        'order'          => 'DESC',
         'orderby'        => 'ID',
         'posts_per_page' => 12,
     );

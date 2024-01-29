@@ -106,9 +106,23 @@
   }
 }
 
-.admin-bar {
+.page-id-258,
+.page-id-252,
+.page-id-255 {
+  margin-top: 120px;
+  .header {
+    background-color: #202020;
+  }
+}
+
+body.admin-bar {
   header {
     top: 32px;
+  }
+  &.page-id-258,
+  &.page-id-252,
+  &.page-id-255 {
+    margin-top: 152px !important;
   }
 }
 

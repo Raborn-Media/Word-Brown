@@ -769,6 +769,13 @@ $(document).on('ready', function () {
     }, 200);
   });
 
+  if ($('.team-members-section').length >= 1) {
+    let anchor = window.location.hash;
+    if (anchor != '') {
+      $('.open-modal[href="' + anchor + '"]').trigger('click');
+    }
+  }
+
   resizeVideo();
 });
 

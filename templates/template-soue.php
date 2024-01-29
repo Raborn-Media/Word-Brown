@@ -196,7 +196,7 @@ $bg_video_url = get_field( 'hero_bg_video' );
                     <?php
                     $args = array(
                         'post_type'      => 'winners',
-                        'order'          => 'ASC',
+                        'order'          => 'DESC',
                         'orderby'        => 'ID',
                         'posts_per_page' => 12,
                     );

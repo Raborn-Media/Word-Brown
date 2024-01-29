@@ -24,3 +24,33 @@
 #loom-companion-mv3 {
   display: none;
 }
+
+.site-map-section {
+  padding: 30px 0;
+
+  &__container {
+    max-width: 1024px;
+  }
+
+  .column-links {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: $gold;
+      line-height: 1.6em;
+
+      &:hover {
+        color: #996a0d;
+      }
+    }
+  }
+  @include breakpoint(medium down) {
+    padding: 30px;
+    text-align: center;
+
+    .links-column {
+      margin-bottom: 30px;
+    }
+  }
+}

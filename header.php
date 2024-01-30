@@ -33,7 +33,7 @@
 <header class="header">
     <div class="grid-container menu-grid-container">
         <div class="grid-x grid-margin-x">
-            <div class="medium-4 small-12 cell">
+            <div class="medium-4 small-6 cell">
                 <?php if ( is_front_page() ): ?>
                     <div class="logo text-center medium-text-left">
                         <h1>
@@ -61,7 +61,7 @@
                     </h1>
                 </div>
             </div>
-            <div class="medium-8 small-12 cell">
+            <div class="medium-8 small-6 cell">
                 <?php if ( has_nav_menu( 'header-menu' ) ) : ?>
                     <div class="title-bar hide-for-large" data-responsive-toggle="main-menu" data-hide-for="large">
                         <button class="menu-icon" type="button" data-toggle aria-label="Menu" aria-controls="main-menu">

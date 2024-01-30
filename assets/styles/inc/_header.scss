@@ -16,14 +16,15 @@
   }
 
   a {
-    display: inline-block;
+    display: block;
   }
 
   img {
     width: 100%;
+    max-width: 355px;
     max-height: 150px;
   }
-  @include breakpoint(small down) {
+  @media (max-width: 500px) {
     img {
       max-width: 85%;
     }
@@ -59,7 +60,12 @@
     .logo {
       display: none;
       opacity: 0;
-      @include breakpoint(small down) {
+      img {
+        width: 100%;
+        max-width: 355px;
+        max-height: 150px;
+      }
+      @media (max-width: 500px) {
         img {
           max-width: 85%;
         }
@@ -76,19 +82,22 @@
       }
 
       a {
-        display: inline-block;
+        display: block;
       }
 
       img {
         width: 100%;
+        max-width: 355px;
         max-height: 150px;
       }
 
       @include breakpoint(small down) {
         text-align: left !important;
         padding-left: 20px;
+      }
+      @media (max-width: 500px) {
         img {
-          max-width: 70%;
+          max-width: 85%;
         }
       }
     }
@@ -133,17 +142,17 @@ body.admin-bar {
     position: relative;
     z-index: 1;
 
-    h1 {
-      font-size: 0;
-    }
-
-    a {
-      display: inline-block;
-    }
-
-    img {
-      max-height: 150px;
-    }
+    //h1 {
+    //  font-size: 0;
+    //}
+    //
+    //a {
+    //  display: block;
+    //}
+    //
+    //img {
+    //  max-height: 150px;
+    //}
   }
   /* TOP BAR Mobile STYLING */
 

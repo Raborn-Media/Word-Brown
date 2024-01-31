@@ -621,12 +621,32 @@
           }
         }
 
-        img {
-          width: 100%;
-          aspect-ratio: 278/415;
-          object-fit: cover;
-          object-position: center;
+        .image {
+          padding-bottom: 149.1%;
+          position: relative;
+          overflow: hidden;
+          img {
+            bottom: 0;
+            position: absolute;
+            right: -25%;
+            top: 0;
+            margin: auto;
+            height: 100%;
+            width: auto;
+            left: -25%;
+            min-width: 100%;
+            display: block;
+            object-fit: cover;
+            max-width: fit-content;
+          }
         }
+
+        //img {
+        //  width: 100%;
+        //  aspect-ratio: 278/415;
+        //  object-fit: cover;
+        //  object-position: center;
+        //}
         //.placeholder-image {
         //  object-fit: none;
         //  height: 100%;

@@ -85,19 +85,19 @@ $bg_video_url = get_field( 'hero_bg_video' );
                                 $value_text  = get_sub_field( 'value_text' );
                                 ?>
                                 <div class="values-list__item">
-                                    <?php if($value_image) : ?>
+                                    <?php if ( $value_image ) : ?>
                                         <div class="value-image">
                                             <?php echo display_svg( $value_image ); ?>
                                         </div>
                                     <?php endif; ?>
-                                    <?php if($value_title) : ?>
+                                    <?php if ( $value_title ) : ?>
                                         <h5 class="value-title">
                                             <?php echo $value_title; ?>
                                         </h5>
                                     <?php endif; ?>
-                                    <?php if($value_text) : ?>
+                                    <?php if ( $value_text ) : ?>
                                         <article>
-                                            <?php echo $value_text;?>
+                                            <?php echo $value_text; ?>
                                         </article>
                                     <?php endif; ?>
 
@@ -250,8 +250,9 @@ $bg_video_url = get_field( 'hero_bg_video' );
                                         }
                                         ?>
                                     </div>
-
-                                    <?php the_post_thumbnail(); ?>
+                                    <div class="image">
+                                        <?php the_post_thumbnail(); ?>
+                                    </div>
 
                                     <p class="employee-of-the-year__label">
                                         <?php _e( 'employee' ); ?>

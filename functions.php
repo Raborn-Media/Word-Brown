@@ -463,7 +463,9 @@ function filter_winners() {
                         ?>
                     </div>
                     <?php if ( has_post_thumbnail() ) : ?>
-                        <?php the_post_thumbnail(); ?>
+                        <div class="image">
+                            <?php the_post_thumbnail(); ?>
+                        </div>
                     <?php else:
                         $winner_placeholder_image = get_field('winner_placeholder_image', 'options');
                         ?>
@@ -578,7 +580,9 @@ function clear_filter_winners() {
                         }
                         ?>
                     </div>
-                    <?php the_post_thumbnail(); ?>
+                    <div class="image">
+                        <?php the_post_thumbnail(); ?>
+                    </div>
 
                     <p class="employee-of-the-year__label">
                         <?php _e( 'employee' ); ?>

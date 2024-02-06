@@ -521,11 +521,20 @@ function fetchVideos() {
     }
   );
 }
-
+function adjustYearTagPosition() {
+  if ($(window).width() <= 1024) {
+    var employeeOfYear = $('.employee-of-the-year__label').outerHeight();
+    $('.employee-of-the-year .year-tag').css('bottom', employeeOfYear + 15);
+  } else {
+    // Reset the position if screen width is larger than 1024px
+    $('.employee-of-the-year .year-tag').css('bottom', 'unset');
+  }
+}
 /**
  * Scripts which runs after DOM load
  */
 $(document).on('ready', function () {
+  adjustYearTagPosition();
   // Initialize FancyBox
   $('[data-fancybox]').fancybox();
 
@@ -844,6 +853,7 @@ $(window).on('resize', function () {
   // jQuery code goes here
   resizeVideo();
   replaceBrWithSpace();
+  adjustYearTagPosition();
 });
 
 /**

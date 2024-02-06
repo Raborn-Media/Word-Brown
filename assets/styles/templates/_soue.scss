@@ -619,6 +619,14 @@
             font-size: 18px;
             font-family: $avenir-85-heavy;
           }
+          @include breakpoint(medium down) {
+            top: 85%;
+            padding: 6px 5px 4px 10px;
+            p {
+              font-size: 14px;
+              line-height: 1;
+            }
+          }
         }
 
         .image {
@@ -638,6 +646,11 @@
             display: block;
             object-fit: cover;
             max-width: fit-content;
+          }
+          img.brandi-damuro,
+          img.amanda-soto {
+            right: 0 !important;
+            left: -120px !important;
           }
         }
 
@@ -714,6 +727,11 @@
 
           span {
             font-size: 12px;
+          }
+        }
+        @include breakpoint(medium down) {
+          .year-tag {
+            top: unset;
           }
         }
       }

@@ -250,9 +250,25 @@ $bg_video_url = get_field( 'hero_bg_video' );
                                         }
                                         ?>
                                     </div>
-                                    <div class="image">
-                                        <?php the_post_thumbnail(); ?>
-                                    </div>
+                                    <?php if ( has_post_thumbnail() ) : ?>
+                                        <div class="image">
+                                            <?php
+                                            $post_thumbnail_id = get_post_thumbnail_id();
+
+                                            // Get the post thumbnail object
+                                            $post_thumbnail = wp_get_attachment_image_src( $post_thumbnail_id );
+
+                                            // Get the image title
+                                            $image_title = get_the_title( $post_thumbnail_id );
+                                            $image_title = sanitize_title( $image_title );
+                                            ?>
+                                            <?php the_post_thumbnail( 'full_hd', array( 'class' => $image_title ) ); ?>
+                                        </div>
+                                    <?php else:
+                                        $winner_placeholder_image = get_field( 'winner_placeholder_image', 'options' );
+                                        ?>
+                                        <?php echo wp_get_attachment_image( $winner_placeholder_image['id'], 'large', false, [ 'class' => 'placeholder-image' ] ); ?>
+                                    <?php endif; ?>
 
                                     <p class="employee-of-the-year__label">
                                         <?php _e( 'employee' ); ?>

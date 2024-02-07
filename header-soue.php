@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/cco6nzg.css">
 
     <?php wp_head(); ?>
+    <link rel="icon" href="https://wbcompaniesstg.wpengine.com/wp-content/uploads/2024/02/favicon.png" sizes="32x32">
 </head>
 
 <body <?php body_class( 'no-outline fxy' ); ?>>

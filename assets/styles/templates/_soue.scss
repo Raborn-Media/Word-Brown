@@ -121,6 +121,7 @@
     font-size: 75px;
     line-height: 90px;
     max-width: 100%;
+    margin: auto;
   }
 
   h2 {
@@ -636,34 +637,19 @@
           img {
             bottom: 0;
             position: absolute;
-            right: -25%;
+            //right: -25%;
             top: 0;
             margin: auto;
             height: 100%;
             width: auto;
-            left: -25%;
+            left: 50%;
+            transform: translateX(-50%);
             min-width: 100%;
             display: block;
             object-fit: cover;
             max-width: fit-content;
           }
-          img.brandi-damuro,
-          img.amanda-soto {
-            right: 0 !important;
-            left: -120px !important;
-          }
         }
-
-        //img {
-        //  width: 100%;
-        //  aspect-ratio: 278/415;
-        //  object-fit: cover;
-        //  object-position: center;
-        //}
-        //.placeholder-image {
-        //  object-fit: none;
-        //  height: 100%;
-        //}
       }
 
       .winner-name {

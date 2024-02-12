@@ -363,7 +363,7 @@ function custom_confirmation_message($confirmation, $form, $entry, $ajax)
     // Check if it's the form ID you want to modify the confirmation message for
     if ($form['id'] == 3) {
         // Custom confirmation message with JavaScript button
-        $confirmation = '<div class="nominate-form__submition"><h3>Thank You!</h3><p>Your nomination has been sent. You`re one step closer to making someone feel awesome!</p><button class="button" onclick="reopenForm()">Nominate Another Employee</button></div><script>function reopenForm() {window.location.reload();}</script>';
+        $confirmation = '<div class="nominate-form__submition"><h3>Thank You!</h3><p>Your nomination has been sent. You&#39;re one step closer to making someone feel awesome!</p><button class="button" onclick="reopenForm()">Nominate Another Employee</button></div><script>function reopenForm() {window.location.reload();}</script>';
     }
 
     return $confirmation;
